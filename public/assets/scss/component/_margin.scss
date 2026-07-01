@@ -1,0 +1,56 @@
+/* Margin Left & Right */
+$mx-array: 0;
+@each $mx in $mx-array {
+  .mx-#{$mx} {
+    margin-left: toRem($mx) !important;
+    margin-right: toRem($mx) !important;
+  }
+}
+/* Margin top */
+$mt-array: 0;
+@each $mta in $mt-array {
+  .mt-#{$mta} {
+    margin-top: toRem($mta) !important;
+  }
+}
+@for $mt from 1 through 30 {
+  .mt-#{$mt} {
+    margin-top: toRem($mt) !important;
+  }
+}
+/* Margin right */
+$mr-array: 0;
+@each $mra in $mr-array {
+  .mr-#{$mra} {
+    margin-right: toRem($mra) !important;
+  }
+}
+@for $mr from 1 through 20 {
+  .mr-#{$mr} {
+    margin-right: toRem($mr) !important;
+  }
+}
+/* Margin bottom */
+$mb-array: 0;
+@each $mba in $mb-array {
+  .mb-#{$mba} {
+    margin-bottom: toRem($mba) !important;
+  }
+}
+@for $mb from 1 through 30 {
+  .mb-#{$mb} {
+    margin-bottom: toRem($mb) !important;
+  }
+}
+/* Margin left */
+$ml-array: 0;
+@each $mla in $ml-array {
+  .ml-#{$mla} {
+    margin-left: toRem($mla) !important;
+  }
+}
+@for $ml from 1 through 20 {
+  .ml-#{$ml} {
+    margin-left: toRem($ml) !important;
+  }
+}

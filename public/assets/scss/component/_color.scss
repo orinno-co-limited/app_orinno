@@ -1,0 +1,38 @@
+$theme-colors: (
+    "white": var(--white),
+    "white-20": var(--white-20),
+    "white-80": var(--white-80),
+    "black": var(--black),
+    "para-text": var(--para-text),
+    "primary-color": var(--primary-color),
+    "heading-color": var(--heading-color),
+    "secondary-color": var(--secondary-color),
+    "body-font-color": var(--body-font-color),
+    "ellips-color-1": var(--ellips-color-1),
+    "ellips-color-2": var(--ellips-color-2),
+    "ellips-color-3": var(--ellips-color-3),
+    "grey-rectangle": var(--grey-rectangle),
+    "yellow": var(--yellow),
+    "deep-blue": var(--deep-blue),
+    "light-blue": var(--light-blue),
+    "button-text": var(--button-text),
+    "scroll-track": var(--scroll-track),
+    "scroll-thumb": var(--scroll-thumb),
+);
+@each $key, $color in $theme-colors {
+    .text-#{$key} {
+        color: $color !important;
+    }
+}
+/* Background Color */
+@each $key, $color in $theme-colors {
+    .bg-#{$key} {
+        background-color: $color !important;
+    }
+}
+/* Border Color */
+@each $key, $color in $theme-colors {
+    .bd-c-#{$key} {
+        border-color: $color !important;
+    }
+}

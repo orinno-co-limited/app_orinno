@@ -1,0 +1,163 @@
+.ld-header {
+    &-section {
+        padding: toRem(37) 0;
+        background-color: $white;
+        &:has(~ main .heroBanner-section) {
+            background-color: var(--grey-rectangle);
+        }
+        &.sticky-on {
+            top: 0;
+            width: 100%;
+            z-index: 20;
+            position: fixed;
+            animation-duration: 0.7s;
+            animation-fill-mode: both;
+            animation-name: fadeInDown;
+            animation-timing-function: ease;
+            transition: 0.3s all ease-in-out;
+            background-color: $grey-rectangle !important;
+            box-shadow: 0 toRem(3) toRem(18) rgba(2, 21, 78, 0.09);
+            padding: toRem(20) 0;
+        }
+    }
+    &-logo {
+        display: inline-block;
+        max-height: toRem(45);
+    }
+}
+
+.menu {
+    // &-navbar-toggler {
+    //   .navbar-toggler-icon {
+    //     background-image: url(../images/icon/menu-icon.svg);
+    //   }
+    // }
+    &-dropdown-toggle {
+        padding-right: toRem(16) !important;
+        &::after {
+            background-image: url(../images/icon/arrow-down-header.svg);
+            border: none;
+            background-size: toRem(8);
+            width: toRem(8);
+            height: toRem(4);
+            background-repeat: no-repeat;
+            position: absolute;
+            top: toRem(12);
+            right: 0;
+            @media screen and (max-width: 991px) {
+                background-image: url(../images/icon/arrow-down-header-white.svg);
+            }
+        }
+        ~ .dropdown-menu {
+            border: none;
+            li {
+                padding: toRem(6) toRem(16);
+                border-bottom: toRem(1) solid $stroke;
+                &:first-child {
+                    padding-top: 0;
+                }
+                &:last-child {
+                    padding-bottom: 0;
+                    border-bottom: none;
+                }
+                a {
+                    width: auto;
+                    padding: 0;
+                    @include fontFamily(16, $fw_regular, 27, $body-font-color);
+                    display: inline-block;
+                    &:hover,
+                    &.active {
+                        background-color: transparent;
+                        color: $primary-color !important;
+                    }
+                }
+            }
+            @media screen and (min-width: 992px) {
+                display: block;
+                top: 40px;
+                border: toRem(1) solid $white;
+                border-radius: toRem(8);
+                opacity: 0;
+                visibility: hidden;
+                margin-top: 0;
+                padding: toRem(13) 0;
+                box-shadow: 0px 17px 60px 0px #3686fc12;
+                transition: all 0.3s ease-in;
+            }
+            // @media screen and (max-width: 991px) {
+            //   border-radius: 0;
+            //   background-color: $primary-color;
+            //   padding-left: toRem(13) 0;
+            // }
+            li {
+                position: relative;
+                a {
+                    position: relative;
+                }
+            }
+        }
+    }
+    &-navbar-nav {
+        li {
+            .nav-link {
+                @media screen and (max-width: 991px) {
+                    color: $white !important;
+                }
+                transition: all 0.3s;
+                &:hover,
+                &.active {
+                    // @media screen and (min-width: 992px) {
+                    color: $primary-color !important;
+                    // }
+                }
+            }
+            &:hover {
+                .dropdown-toggle {
+                    ~ .dropdown-menu {
+                        @media screen and (min-width: 992px) {
+                            opacity: 1;
+                            visibility: visible;
+                            top: 30px;
+                        }
+                    }
+                }
+            }
+            &:has(.dropdown-item.active) {
+                .dropdown-toggle {
+                    color: $primary-color !important;
+                }
+            }
+        }
+    }
+    &-navbar-collapse {
+        @media screen and (max-width: 991px) {
+            background-color: $heading-color;
+            padding: toRem(40) toRem(30);
+        }
+        @media screen and (max-width: 991px) {
+            height: 100vh;
+        }
+    }
+}
+.header-btn {
+    &-1 {
+        padding: toRem(16) toRem(30);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        @include fontFamily(16, $fw_semiBold, 16, $white !important);
+        background-color: $heading-color;
+        border-radius: toRem(50);
+        transition: all 0.3s;
+    }
+    &-2 {
+        padding: toRem(16) toRem(30);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        @include fontFamily(16, $fw_semiBold, 16, $white !important);
+        background: linear-gradient(90deg, #394491 3.25%, #04aded 95.73%);
+        border-radius: toRem(50);
+        transition: all 0.3s;
+    }
+}

@@ -1,0 +1,5155 @@
+/*
+-------------------------------------------------
+  Theme Name: ZaiProty- Admin Dashboard Template
+  Theme URL:
+  Author: zainiktheme
+  Author URL: https://themeforest.net/user/zainiktheme
+  Creation Date: 06-October-2022
+  Description:A default stylesheet for ZaiProty- Admin Dashboard Template
+  Version: 1.00
+  Primary use: admin dashboard, dashboard, admin panel, property management, property, online property etc.
+
+  ---------------------------------------------------
+  Developed By: zainiktheme
+  Developer URL: https://themeforest.net/user/zainiktheme
+  Developer: Suraiya Aysha
+
+  ---------------------------------------------------
+
+  --------------------------------------------------
+  Table of Contents
+  --------------------------------------------------
+  1. General CSS
+  2. Typography CSS
+  3. Button CSS
+  4. Preloader Area Start
+  5. Navbar CSS
+  6. Dashboard Page
+  7. Sign Up Page
+  8. Empty Properties Page
+  9. All Property Page
+  10. Property Details Page
+  11. Add Property Page
+  12. Tenants Page
+  13. Add Tenants Page
+  14. Dashboard Inner Dashboard Layout
+  15. Tenants Details Page
+  16. Billing Center Page
+  17. Documents Page
+  18. Invoice Preview
+  19. Uploaded Documents Common
+  20. Tickets Page CSS
+  21. Default Settings Page
+  22. Color Settings Page
+  23. Tenant Portal Dashboard Page
+  24. Tenant Portal Invoice Details Page
+  25. Tenant Portal Documents Page
+  26. Maintainer Portal Chat Page
+  27. Responsive CSS
+
+------------------------------------------------ */
+
+/*-----------------------------------------------
+    1. General Style Start
+-------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: var(--bg-light) none repeat scroll;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: var(--body-font-family);
+    color: var(--body-font-color);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Theme All Transitions
+------------------------------- */
+a,
+.navbar .dropdown .dropdown-toggle::after,
+.theme-btn,
+.theme-btn-purple,
+.theme-btn-green,
+.theme-btn-red,
+.edit-btn,
+button,
+.theme-btn-back,
+.page-link,
+.tenant-portal-notice-tbl td {
+    transition: all 0.6s ease-in-out;
+}
+
+.fast-transition {
+    transition: all .3s ease-in-out;
+}
+
+.slow-transition {
+    transition: all .7s ease-in-out;
+}
+
+ul li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+a>* {
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a {
+    color: var(--body-font-color);
+}
+
+a:hover {
+    color: var(--primary-color) !important;
+    text-decoration: none;
+}
+
+img::selection {
+    background: transparent;
+}
+
+.page-link:focus {
+    box-shadow: none;
+}
+
+.d-none-content {
+    display: none;
+}
+
+/*----Form Control Reset CSS----*/
+.form-control,
+.form-select {
+    background-color: var(--white-color);
+    height: 50px;
+    color: var(--body-font-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 13px 20px;
+    font-size: 14px;
+}
+
+.form-control:focus {
+    background-color: var(--white-color);
+    box-shadow: none;
+}
+
+.form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: none;
+}
+
+.form-control::placeholder {
+    color: #9f9f9f;
+}
+
+.input-group-text {
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 100px !important;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-close:focus,
+.form-check-input:focus {
+    box-shadow: none;
+}
+
+.form-select {
+    padding: 13px 32px 13px 20px;
+}
+
+/* Custom checkbox Start */
+.custom-checkbox input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.custom-checkbox label {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.custom-checkbox label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 1px solid var(--border-color-2);
+    box-shadow: none;
+    padding: 7px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 7px;
+    border-radius: 2px;
+}
+
+.custom-checkbox input:checked+label:before {
+    border: 1px solid var(--primary-color);
+}
+
+.custom-checkbox input:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    width: 5px;
+    height: 9px;
+    border: solid var(--primary-color);
+    border-width: 0 1px 1px 0;
+    transform: rotate(45deg);
+}
+
+/* Custom checkbox End */
+
+/* Custom Radio Button Start */
+.custom-radiobox [type="radio"]:checked,
+.custom-radiobox [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+.custom-radiobox [type="radio"]:checked+label,
+.custom-radiobox [type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: var(--body-font-color);
+    margin-bottom: 0;
+}
+
+.custom-radiobox [type="radio"]:checked+label:before,
+.custom-radiobox [type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--border-color-2);
+    border-radius: 100%;
+    background: var(--white-color);
+}
+
+.custom-radiobox [type="radio"]:checked+label:after,
+.custom-radiobox [type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.custom-radiobox [type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.custom-radiobox [type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/* Custom Radio Button End */
+
+/*-----------------------------------------------
+    1. General Style End
+-------------------------------------------------*/
+
+/*------------------------------------------
+    2.  Typography Start
+-------------------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
+    margin: 0;
+    color: var(--heading-color);
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 48px;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 48px;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 36px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 15px;
+    line-height: 20px;
+}
+
+h6 {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+p {
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--body-font-color);
+}
+
+figure {
+    margin: 0 0 0;
+}
+
+/*--------------------------------
+    2.1 Theme Color
+-----------------------------------*/
+:root {
+    --navbar-bg: #F8F8F8;
+    --footer-bg: #F8F8F8;
+
+    --white-color: #fff;
+
+    --bg-white: #fff;
+    --bg-light: #F8F8F8;
+    --off-white: #FAFAFA;
+
+    --heading-color: #160E4D;
+    --body-font-color: #737C91;
+
+    --border-color: #EAEAEA;
+    --border-color-2: #A5ABBA;
+
+    /*--primary-color: #3686FC;*/
+    --primary-hover-color: #0063E6;
+    --primary-color-transparent: rgba(231, 240, 255, 0.98);
+
+    /*--secondary-color: #8253FB;*/
+    --secondary-hover-color: #582bc9;
+
+    --red-color: #FF3D3D;
+    --danger-color: #FF3D3D;
+    --red-color-hover: #dc3545;
+
+    --yellow-color: #FBBF37;
+    --orange-color: #FFA043;
+
+    --green-color: #24b855;
+    --green-color-hover: #0d943a;
+
+    --body-font-family: 'Poppins', sans-serif;
+}
+
+.color-heading {
+    color: var(--heading-color);
+}
+
+.color-hover {
+    color: var(--primary-color);
+}
+
+.primary-color {
+    color: var(--primary-color) !important;
+}
+
+.primary-color:hover {
+    color: var(--primary-hover-color) !important;
+}
+
+.secondary-color {
+    color: var(--secondary-color);
+}
+
+.theme-text-color {
+    color: var(--body-font-color);
+}
+
+.bg-off-white {
+    background-color: var(--off-white);
+}
+
+.bg-primary-color {
+    background-color: var(--primary-color);
+}
+
+.bg-light {
+    background-color: var(--bg-light) !important;
+}
+
+.theme-border {
+    border: 1px solid var(--border-color);
+}
+
+.border-bottom {
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.border-top {
+    border-top: 1px solid var(--border-color) !important;
+}
+
+.orange-color {
+    color: var(--orange-color);
+}
+
+.green-color {
+    color: var(--green-color);
+}
+
+.red-color,
+.theme-link-red {
+    color: var(--red-color);
+}
+
+.red-color:hover,
+.theme-link-red:hover {
+    color: var(--red-color-hover) !important;
+}
+
+button.red-color:hover,
+a.red-color:hover,
+.theme-link-red:hover {
+    color: var(--red-color-hover);
+}
+
+.bg-orange {
+    background-color: var(--orange-color);
+}
+
+.bg-off-white {
+    background-color: var(--off-white);
+}
+
+.bg-green {
+    background-color: var(--green-color);
+}
+
+.bg-red {
+    background-color: var(--red-color);
+}
+
+.bg-red-transparent {
+    background-color: rgba(255, 67, 67, 0.1);
+}
+
+.bg-green-transparent {
+    background-color: rgba(82, 255, 67, 0.1);
+}
+
+.bg-blue-transparent {
+    background-color: var(--primary-color-transparent);
+}
+
+.bg-purple-transparent {
+    background-color: #F0EBFF;
+}
+
+.bg-orange-transparent {
+    background-color: #FFF0E1;
+}
+
+.sidebar-badge-light {
+    background-color: #EEEEEE;
+    color: var(--body-font-color);
+}
+
+.theme-link {
+    color: var(--primary-color);
+}
+
+.theme-link:hover {
+    color: var(--primary-hover-color) !important;
+}
+
+.theme-secondary-link {
+    color: var(--secondary-color);
+}
+
+.theme-secondary-link:hover {
+    color: var(--secondary-hover-color) !important;
+}
+
+/*--------------------------------
+    2.3 Theme padding, margin
+-----------------------------------*/
+.section-t-space {
+    padding-top: 140px;
+}
+
+.section-b-space {
+    padding-bottom: 140px;
+}
+
+.section-t-115-space {
+    padding-top: 115px;
+}
+
+.section-b-115-space {
+    padding-bottom: 115px;
+}
+
+.section-t-80-space {
+    padding-top: 80px;
+}
+
+.section-b-80-space {
+    padding-bottom: 80px;
+}
+
+.section-t-60-space {
+    padding-top: 60px;
+}
+
+.section-b-60-space {
+    padding-bottom: 60px;
+}
+
+.p-30 {
+    padding: 30px;
+}
+
+.pl-30 {
+    padding-left: 30px;
+}
+
+.pr-30 {
+    padding-right: 30px;
+}
+
+.pt-30 {
+    padding-top: 30px;
+}
+
+.pb-30 {
+    padding-bottom: 30px;
+}
+
+.pb-30 {
+    padding-bottom: 30px;
+}
+
+.pb-15 {
+    padding-bottom: 15px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.pb-20 {
+    padding-bottom: 20px;
+}
+
+.p-25 {
+    padding: 25px;
+}
+
+.pb-25 {
+    padding-bottom: 25px;
+}
+
+.pt-20 {
+    padding-top: 20px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+.mb-25 {
+    margin-bottom: 25px;
+}
+
+.me-25 {
+    margin-right: 25px;
+}
+
+.ms-25 {
+    margin-left: 25px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mr-30 {
+    margin-right: 30px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+.radius-95 {
+    border-radius: 95px;
+}
+
+.radius-3 {
+    border-radius: 3px;
+}
+
+.radius-4 {
+    border-radius: 4px;
+}
+
+.radius-5 {
+    border-radius: 5px;
+}
+
+.radius-8 {
+    border-radius: 8px;
+}
+
+.radius-10 {
+    border-radius: 10px;
+}
+
+.radius-20 {
+    border-radius: 20px;
+}
+
+.radius-50 {
+    border-radius: 50%;
+}
+
+.radius-t-r-0 {
+    border-top-right-radius: 0 !important;
+}
+
+.radius-t-l-0 {
+    border-top-left-radius: 0 !important;
+}
+
+.radius-b-r-0 {
+    border-bottom-right-radius: 0 !important;
+}
+
+.radius-b-l-0 {
+    border-bottom-left-radius: 0 !important;
+}
+
+/*--------------------------------
+    2.3 Theme Font Family, Font Size
+-----------------------------------*/
+.font-normal {
+    font-weight: 400;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-semi-bold {
+    font-weight: 600;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-24 {
+    font-size: 24px;
+    line-height: 31px;
+}
+
+.font-20 {
+    font-size: 20px;
+    line-height: 31px;
+}
+
+.font-18 {
+    font-size: 18px;
+    line-height: 150%;
+}
+
+.font-17 {
+    font-size: 17px;
+}
+
+.font-16 {
+    font-size: 16px;
+}
+
+.font-15 {
+    font-size: 15px;
+    line-height: 23px;
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.font-13 {
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.font-12 {
+    font-size: 12px;
+    line-height: 13px;
+}
+
+.font-11 {
+    font-size: 11px;
+    line-height: 12px;
+}
+
+/*--------------------------------
+   2.4 Template Default CSS
+-----------------------------------*/
+section {
+    position: relative;
+    z-index: 9;
+}
+
+.section-title {
+    text-align: center;
+    width: 63%;
+    margin: -11px auto 60px;
+}
+
+.section-title .section-sub-heading {
+    margin-top: 20px;
+}
+
+.section-small-title {
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.h-36 {
+    height: 36px;
+}
+
+.w-36 {
+    width: 36px;
+}
+
+/* Table CSS */
+.table td {
+    color: var(--body-font-color);
+}
+
+table {
+    border-radius: 4px;
+}
+
+table th {
+    font-weight: 500;
+    color: var(--heading-color) !important;
+}
+
+table th,
+table td {
+    font-size: 14px;
+    max-width: 220px;
+}
+
+.table th,
+.table td {
+    /* min-width: 100px; */
+}
+
+.table>thead,
+tr {
+    vertical-align: middle;
+}
+
+thead {
+    background-color: var(--off-white);
+}
+
+.table>thead>tr>th {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table>:not(caption)>*>* {
+    padding: 1rem 1.5rem;
+}
+
+tr:first-child td,
+tr:first-child th {
+    border-top-left-radius: 4px;
+}
+
+tr:last-child td,
+tr:last-child th {
+    border-top-right-radius: 4px;
+}
+
+.tbl-action-btn {
+    font-size: 16px;
+    color: var(--body-font-color);
+}
+
+.tbl-action-btn:hover {
+    color: var(--primary-color);
+}
+
+/* DataTables Default CSS Start */
+.disabled>.page-link,
+.page-link.disabled,
+.page-link {
+    background-color: transparent;
+    border-color: transparent;
+    color: #abb1b7;
+}
+
+.page-link {
+    font-size: 14px;
+    padding: .5px 8.7px;
+    border-radius: 4px;
+    color: var(--body-font-color);
+    font-weight: 500;
+    display: inline;
+}
+
+.page-link:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--primary-color) !important;
+}
+
+.active>.page-link,
+.page-link.active {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.active>.page-link:hover,
+.page-link:hover.active {
+    color: var(--white-color) !important;
+    background-color: var(--primary-hover-color);
+    border-color: var(--primary-hover-color);
+}
+
+.activate-select .sorting_1 {
+    background-color: #f8f9fa
+}
+
+div.dataTables_wrapper div.dataTables_length label,
+div.dataTables_wrapper div.dataTables_filter label {
+    margin-bottom: 25px;
+}
+
+.table.dataTable.dtr-inline.collapsed>tbody>tr>td,
+table.dataTable.dtr-inline.collapsed>tbody>tr>td {
+    position: relative
+}
+
+.table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control,
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control {
+    padding-left: 30px
+}
+
+.table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
+    top: 64%;
+    left: 5px;
+    height: 14px;
+    width: 14px;
+    margin-top: -14px;
+    display: block;
+    position: absolute;
+    color: var(--white-color);
+    border: 2px solid var(--white-color);
+    border-radius: 14px;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    text-align: center;
+    text-indent: 0 !important;
+    line-height: 12px;
+    content: "+";
+    background-color: var(--primary-color);
+    padding: 2px 0px 0px 0px;
+}
+
+/* DataTables Additional CSS */
+.dataTables_wrapper.container-fluid {
+    padding: 0
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: right
+}
+
+@media (max-width:767px) {
+    div.dataTables_wrapper div.dataTables_filter {
+        text-align: center
+    }
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: .5em;
+    margin-right: 0
+}
+
+.datatable td:focus {
+    outline: 0
+}
+
+div.table-responsive>div.dataTables_wrapper>div.row>div[class^=col-]:first-child {
+    padding-left: 0
+}
+
+div.table-responsive>div.dataTables_wrapper>div.row>div[class^=col-]:last-child {
+    padding-right: 0
+}
+
+table.dataTable {
+    border-collapse: collapse !important;
+    margin-bottom: 15px !important;
+    margin-top: 0 !important
+}
+
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:before {
+    left: auto;
+    right: .5rem;
+    content: "\f0360";
+    font-family: "Material Design Icons";
+    font-size: 1rem;
+    top: 9px
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc_disabled:after {
+    left: auto;
+    right: .5em;
+    content: "\f035d";
+    font-family: "Material Design Icons";
+    top: 15px;
+    font-size: 1rem
+}
+
+table.dataTable thead tr td.sorting,
+table.dataTable thead tr td.sorting_asc,
+table.dataTable thead tr td.sorting_desc,
+table.dataTable thead tr th.sorting,
+table.dataTable thead tr th.sorting_asc,
+table.dataTable thead tr th.sorting_desc {
+    padding: 1rem 1.5rem;
+}
+
+table.dataTable tbody>tr.selected,
+table.dataTable tbody>tr>.selected {
+    background-color: rgba(4, 162, 179, .2)
+}
+
+table.dataTable tbody>tr.selected td,
+table.dataTable tbody>tr>.selected td {
+    border-color: rgba(4, 162, 179, .2);
+    color: #04a2b3
+}
+
+table.dataTable tbody td:focus {
+    outline: 0 !important
+}
+
+table.dataTable tbody td.focus,
+table.dataTable tbody th.focus {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: -1px;
+    background-color: rgba(4, 162, 179, .15)
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role=row]>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr[role=row]>th:first-child:before {
+    -webkit-box-shadow: 0 5px 12px rgba(0, 0, 0, .1);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, .1);
+    background-color: #66d203;
+    bottom: auto
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+    background-color: #e66060
+}
+
+div.dt-button-info {
+    background-color: #04a2b3;
+    border: none;
+    color: var(--primary-color);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 3px;
+    text-align: center;
+    z-index: 21
+}
+
+div.dt-button-info h2 {
+    border-bottom: none;
+    background-color: rgba(255, 255, 255, .2);
+    color: var(--primary-color)
+}
+
+@media (max-width:767.98px) {
+
+    li.paginate_button.next,
+    li.paginate_button.previous {
+        display: inline-block;
+        font-size: 1.5rem
+    }
+
+    li.paginate_button {
+        display: none
+    }
+
+    .dataTables_paginate ul {
+        text-align: center;
+        display: block;
+        margin: 1rem 0 0 !important
+    }
+
+    div.dt-buttons {
+        display: inline-table;
+        margin-bottom: 1rem
+    }
+}
+
+/* DataTables Default CSS End */
+
+/* Theme Link Hover Effect Start */
+.link-hover-effect {
+    position: relative;
+    text-decoration: none;
+}
+
+.link-hover-effect::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.link-hover-effect:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+/* Theme Link Hover Effect End */
+
+/* Pulse Effect */
+.pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 1px 1px var(--red-color);
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(255, 61, 61, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 0 7px rgba(255, 61, 61, 0);
+    }
+}
+
+/* Pulse Effect */
+
+.bg-img-property {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover;
+    -o-object-fit: cover;
+}
+
+/* Avatar CSS */
+.avatar-md {
+    height: 3.8rem;
+    width: 3.8rem;
+}
+
+.avatar-xl {
+    height: 5.5rem;
+    width: 5.5rem;
+}
+
+/* Avatar CSS */
+
+/* Common Modal CSS Start */
+.modal-content {
+    padding: 25px;
+}
+
+.modal.fade .modal-content {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.modal.fade.show .modal-content {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-backdrop {
+    background-color: rgba(22, 14, 77, 0.7);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal-backdrop.show {
+    opacity: 1;
+}
+
+.modal.fade .modal-dialog {
+    transition: -webkit-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
+    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.modal.show .modal-dialog {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.modal .btn-close {
+    color: var(--body-font-color) !important;
+    background-image: none;
+    font-size: 18px;
+    position: relative;
+    top: -5px;
+}
+
+.modal-content {
+    border-radius: 4px;
+    background-color: var(--white-color);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 20px;
+}
+
+.modal-body {
+    padding: 25px 0;
+}
+
+.modal-footer {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 25px;
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 740px;
+    }
+
+    .big-modal .modal-dialog {
+        max-width: 790px;
+    }
+}
+
+/* Common Modal CSS End */
+/*------------------------------------------
+    2.  Typography End
+-------------------------------------------*/
+
+/*--------------------------------------------
+    3. Button Style
+---------------------------------------------*/
+.section-btn {
+    margin-top: 42px;
+}
+
+.btn {
+    padding: 0;
+}
+
+.btn.focus,
+.btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+button {
+    background-color: transparent;
+}
+
+button:focus {
+    outline: 0;
+}
+
+/*-----Theme Button Style-----*/
+.theme-btn,
+.theme-btn-purple,
+.theme-btn-green,
+.theme-btn-red,
+.edit-btn,
+.theme-btn-back {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    z-index: 99;
+    padding: 14px 25px !important;
+    line-height: 20px;
+    justify-content: center;
+    border-radius: 4px;
+    font-weight: 500 !important;
+    color: var(--white-color);
+    border: 1px solid transparent;
+}
+
+.theme-btn:hover,
+.theme-btn-purple:hover,
+.theme-btn-green:hover,
+.theme-btn-red:hover {
+    color: var(--white-color) !important;
+}
+
+.theme-btn {
+    background-color: var(--button-primary-color);
+}
+
+.theme-btn:hover {
+    background-color: var(--button-hover-color) !important;
+}
+
+.theme-btn-purple {
+    background-color: var(--secondary-color);
+}
+
+.theme-btn-purple:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+.theme-btn-green {
+    background-color: var(--green-color);
+}
+
+.theme-btn-green:hover {
+    background-color: var(--green-color-hover);
+}
+
+.theme-btn-red {
+    background-color: var(--red-color);
+}
+
+.theme-btn-red:hover {
+    background-color: var(--red-color-hover);
+}
+
+.edit-btn {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color) !important;
+}
+
+.edit-btn:hover {
+    border: 1px solid var(--primary-hover-color) !important;
+    color: var(--primary-hover-color) !important;
+}
+
+.theme-btn-back {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    color: var(--heading-color);
+}
+
+.theme-btn-back:hover {
+    background-color: var(--off-white);
+}
+
+.status-btn {
+    padding: 7px 15px !important;
+    /* min-width: 100px; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.table .status-btn {
+    min-width: 100px;
+}
+
+.status-btn-purple {
+    background-color: #F0EBFF;
+    color: var(--secondary-color);
+}
+
+.status-btn-green {
+    background-color: rgba(82, 255, 67, 0.1);
+    color: var(--green-color);
+}
+
+.status-btn-red {
+    background-color: rgba(255, 67, 67, 0.1);
+    color: var(--red-color);
+}
+
+.status-btn-blue {
+    background-color: var(--primary-color-transparent);
+    color: var(--primary-color);
+}
+
+.status-btn-orange {
+    background-color: #FFF0E1;
+    color: var(--orange-color);
+}
+
+/*--------------------------------------------
+    3. Button Style
+---------------------------------------------*/
+
+/*-------------------------------------------
+    4. Preloader Area Start
+-------------------------------------------*/
+#preloader {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999999999999999;
+}
+
+#preloaderInner {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+/*-------------------------------------------
+    4. Preloader Area End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    5. Navbar Area / Template Main Layout CSS Start
+-------------------------------------------*/
+
+/* --- Top Menu Bar/ Top Navbar CSS Start --- */
+
+#page-topbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    background-color: var(--bg-light);
+}
+
+.navbar-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 80px;
+    padding: 0 calc(24px / 2) 0 0;
+
+    padding-right: 40px;
+}
+
+.navbar-header .dropdown .show.header-item {
+    background-color: var(--off-white)
+}
+
+.navbar-brand-box {
+    padding: 0 1.5rem;
+    width: 240px
+}
+
+.logo {
+    line-height: 70px;
+}
+.navbar-brand-box .logo img {
+    max-height: 45px !important;
+    max-width: 160px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+.logo .logo-sm {
+    display: none
+}
+
+.logo-light {
+    display: none
+}
+
+.logo-light {
+    display: none
+}
+
+.app-search {
+    padding: calc(39px / 2) 0;
+}
+
+.app-search .form-control {
+    border: none;
+    height: 40px;
+    padding-left: 40px;
+    padding-right: 20px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 4px;
+    border: 1px solid #DADEE7;
+    background-color: transparent;
+    min-width: 400px;
+}
+
+.app-search span {
+    position: absolute;
+    z-index: 10;
+    font-size: 16px;
+    line-height: 38px;
+    left: 13px;
+    top: 0;
+}
+
+/* Mobile Search Btn Start */
+.mobile-search-btn button {
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+}
+
+/* Mobile Search Btn End */
+
+@media (max-width:991px) {
+    .navbar-brand-box {
+        width: auto
+    }
+
+    .logo span.logo-lg {
+        display: none
+    }
+
+    .logo span.logo-sm {
+        display: inline-block
+    }
+}
+
+.page-content {
+    padding: calc(80px + 0px) calc(24px / 2) 0 calc(24px / 2);
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+.page-content-wrapper {
+    min-height: calc(100vh - 100px);
+}
+
+.header-item {
+    height: 80px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    color: var(--heading-color);
+    border: 0;
+    border-radius: 0;
+    padding: .47rem .55rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.dropdown-item {
+    color: var(--body-font-color);
+}
+
+.header-profile-user {
+    background-color: #f1f5f7;
+}
+
+.user-dropdown .dropdown-item i {
+    display: inline-block
+}
+
+/* Notification & Message Menu Dropdown Start */
+.noti-icon i {
+    font-size: 16px;
+    color: #ABB1BF;
+}
+
+.noti-icon .noti-dot {
+    position: absolute;
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    background-color: var(--red-color);
+    border-radius: 50%;
+    top: 30px;
+    right: 7px;
+}
+
+.notification-item .d-flex {
+    padding: .75rem 1rem
+}
+
+.notification-item .d-flex:hover {
+    background-color: #f8f9fa;
+}
+
+.avatar-xs {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.avatar-title {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: 1px solid var(--white-color);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-weight: 500;
+    height: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Notification & Message Menu Dropdown End */
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: var(--heading-color) !important;
+    background-color: #f8f9fa;
+}
+
+.dropdown-divider {
+    border-top: 1px solid var(--border-color);
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu {
+    -webkit-box-shadow: 0 5px 12px rgb(0 0 0 / 10%);
+    box-shadow: 0 5px 12px rgb(0 0 0 / 10%);
+    -webkit-animation-name: DropDownSlide;
+    animation-name: DropDownSlide;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    border: 1px solid transparent;
+    font-size: 14px;
+}
+
+.dropdown-menu.show {
+    top: 100% !important
+}
+
+.dropdown-menu-end[style] {
+    left: auto !important;
+    right: 0 !important
+}
+
+.dropdown-menu[data-popper-placement^=left],
+.dropdown-menu[data-popper-placement^=right],
+.dropdown-menu[data-popper-placement^=top] {
+    top: auto !important;
+    -webkit-animation: none !important;
+    animation: none !important
+}
+
+@-webkit-keyframes DropDownSlide {
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    0% {
+        -webkit-transform: translateY(10px);
+        transform: translateY(10px)
+    }
+}
+
+@keyframes DropDownSlide {
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    0% {
+        -webkit-transform: translateY(10px);
+        transform: translateY(10px)
+    }
+}
+
+
+@media (min-width: 600px) {
+    .dropdown-menu-lg {
+        width: 320px;
+    }
+}
+
+.dropdown-toggle {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.dropdown-toggle i,
+.dropdown-toggle .iconify {
+    font-size: 18px;
+}
+
+@media (max-width:600px) {
+    .navbar-header .dropdown {
+        position: static
+    }
+
+    .navbar-header .dropdown .dropdown-menu {
+        left: 10px !important;
+        right: 10px !important
+    }
+}
+
+@media (max-width:380px) {
+    .navbar-brand-box {
+        display: none
+    }
+}
+
+/* --- Top Menu Bar/ Top Navbar CSS End --- */
+
+/* --- Page Title Bar CSS Start --- */
+.page-title-box {
+    padding-bottom: 20px;
+}
+
+.page-title-box .breadcrumb {
+    background-color: transparent;
+    padding: 0
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding-right: .5rem;
+    color: #74788d;
+    content: var(--bs-breadcrumb-divider, "\f0142");
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    font-family: "Material Design Icons";
+}
+
+.breadcrumb-item.active {
+    color: var(--heading-color);
+}
+
+/* --- Page Title Bar CSS End --- */
+
+/* --- LeftSide Menu CSS Start --- */
+.metismenu {
+    margin: 0
+}
+
+.metismenu li {
+    display: block;
+    width: 100%
+}
+
+.metismenu .mm-collapse {
+    display: none
+}
+
+.metismenu .mm-collapse:not(.mm-show) {
+    display: none
+}
+
+.metismenu .mm-collapse.mm-show {
+    display: block
+}
+
+.metismenu .mm-collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition-timing-function: ease;
+    transition-timing-function: ease;
+    -webkit-transition-duration: .35s;
+    transition-duration: .35s;
+    -webkit-transition-property: height, visibility;
+    transition-property: height, visibility
+}
+
+.vertical-menu {
+    width: 240px;
+    z-index: 1001;
+    background: var(--bg-light);
+    bottom: 0;
+    margin-top: 0;
+    position: fixed;
+    top: 100px;
+}
+
+.navbar-brand-box {
+    background-color: var(--bg-light);
+    transition: ease all .2s;
+}
+
+.navbar-brand-box .logo-light {
+    display: block
+}
+
+.main-content {
+    margin-left: 240px;
+    overflow: hidden
+}
+
+.main-content .content {
+    padding: 0 15px 10px 15px;
+    margin-top: 70px
+}
+
+#sidebar-menu {
+    padding: 10px 0 30px 0
+}
+
+#sidebar-menu .mm-active>.has-arrow:after {
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg)
+}
+
+#sidebar-menu .has-arrow:after {
+    content: "\f0140";
+    font-family: "Material Design Icons";
+    display: block;
+    float: right;
+    -webkit-transition: -webkit-transform .2s;
+    transition: -webkit-transform .2s;
+    transition: transform .2s;
+    transition: transform .2s, -webkit-transform .2s;
+    font-size: 1rem
+}
+
+#sidebar-menu ul li a {
+    display: block;
+    padding: .750rem 1.5rem;
+    color: var(--body-font-color);
+    position: relative;
+    font-size: 14px;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+    font-weight: 500
+}
+
+#sidebar-menu ul li a i {
+    display: inline-flex;
+    min-width: 1.9rem;
+    height: 1.9rem;
+    font-size: 1.1rem;
+    line-height: 1.40625rem;
+    vertical-align: middle;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+#sidebar-menu ul li a:hover {
+    color: var(--primary-color) !important
+}
+
+#sidebar-menu ul li a:hover i {
+    color: var(--primary-color) !important
+}
+
+#sidebar-menu ul li .badge {
+    margin-top: 4px;
+    font-size: 13px;
+}
+
+#sidebar-menu ul li ul.sub-menu {
+    padding: 0
+}
+
+#sidebar-menu ul li ul.sub-menu li a {
+    padding: .4rem 1.5rem .4rem 3.2rem;
+    font-size: 13px;
+}
+
+#sidebar-menu ul li ul.sub-menu li a::before {
+    content: "";
+    height: 6px;
+    width: 6px;
+    background-color: var(--body-font-color);
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+#sidebar-menu ul li ul.sub-menu li:hover a::before {
+    background-color: var(--primary-color);
+}
+
+#sidebar-menu ul li ul.sub-menu li ul.sub-menu {
+    padding: 0
+}
+
+#sidebar-menu ul li ul.sub-menu li ul.sub-menu li a {
+    padding: .4rem 1.5rem .4rem 4.2rem;
+    font-size: 13.5px
+}
+
+.mm-active {
+    color: var(--white-color) !important
+}
+
+.mm-active>a {
+    color: var(--heading-color) !important
+}
+
+.mm-active>a i {
+    color: var(--heading-color) !important
+}
+
+.mm-active>i {
+    color: var(--heading-color) !important
+}
+
+.mm-active .active {
+    color: var(--primary-color) !important
+}
+
+.mm-active .active i {
+    color: var(--primary-color) !important;
+    background-color: var(--primary-color-transparent);
+}
+
+.mm-active .active::before {
+    background-color: var(--primary-color) !important;
+}
+
+@media (max-width:992px) {
+    .vertical-menu {
+        display: none
+    }
+
+    .main-content {
+        margin-left: 0 !important
+    }
+
+    body.sidebar-enable .vertical-menu {
+        display: block
+    }
+}
+
+.vertical-collpsed .main-content {
+    margin-left: 70px
+}
+
+.vertical-collpsed .navbar-brand-box {
+    /* width: 70px!important */
+}
+
+.vertical-collpsed .logo span.logo-lg {
+    display: none
+}
+
+.vertical-collpsed .logo span.logo-sm {
+    display: block
+}
+
+.vertical-collpsed .vertical-menu {
+    position: absolute;
+    width: 80px !important;
+    z-index: 5
+}
+
+.vertical-collpsed .vertical-menu .simplebar-content-wrapper,
+.vertical-collpsed .vertical-menu .simplebar-mask {
+    overflow: visible !important
+}
+
+.vertical-collpsed .vertical-menu .simplebar-scrollbar {
+    display: none !important
+}
+
+.vertical-collpsed .vertical-menu .simplebar-offset {
+    bottom: 0 !important
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu .badge,
+.vertical-collpsed .vertical-menu #sidebar-menu .collapse.in,
+.vertical-collpsed .vertical-menu #sidebar-menu .menu-title {
+    display: none !important
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu .nav.collapse {
+    height: inherit !important
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu .has-arrow:after {
+    display: none
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li {
+    position: relative;
+    white-space: nowrap
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a {
+    min-height: 55px;
+    -webkit-transition: none;
+    transition: none;
+    padding: .750rem 1.5rem;
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a:active,
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a:focus,
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a:hover {
+    color: var(--primary-color)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a i {
+    font-size: 1.1rem;
+    line-height: 1.40625rem;
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a span {
+    display: none;
+    padding-left: 25px
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>a {
+    position: relative;
+    width: calc(190px + 70px);
+    color: var(--body-font-color);
+    background-color: var(--bg-light);
+    -webkit-transition: none;
+    transition: none
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>a i {
+    color: var(--primary-color)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>a span {
+    display: inline
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul {
+    display: block;
+    left: 70px;
+    position: absolute;
+    width: 190px;
+    height: auto !important;
+    -webkit-box-shadow: 3px 5px 12px -4px rgba(18, 19, 21, .1);
+    box-shadow: 3px 5px 12px -4px rgba(18, 19, 21, .1)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul ul {
+    -webkit-box-shadow: 3px 5px 12px -4px rgba(18, 19, 21, .1);
+    box-shadow: 3px 5px 12px -4px rgba(18, 19, 21, .1)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul a {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 8px 20px;
+    position: relative;
+    width: 190px;
+    z-index: 6;
+    color: var(--body-font-color)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul a {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 0 20px 11px;
+    position: relative;
+    width: 190px;
+    z-index: 6;
+    color: var(--body-font-color);
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul a:hover {
+    color: var(--primary-color)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul ul {
+    padding: 0px 0 11px;
+    z-index: 9999;
+    display: none;
+    background-color: var(--bg-light);
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul ul li:hover>ul {
+    display: block;
+    left: 190px;
+    height: auto !important;
+    margin-top: -36px;
+    position: absolute;
+    width: 190px
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul ul li>a span.pull-right {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul ul li.active a {
+    color: #f8f9fa
+}
+
+/* Arrow CSS */
+.arrow-down {
+    display: inline-block
+}
+
+.arrow-down:after {
+    border-color: initial;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+    content: "";
+    height: .4em;
+    display: inline-block;
+    right: 5px;
+    top: 50%;
+    margin-left: 10px;
+    -webkit-transform: rotate(-45deg) translateY(-50%);
+    transform: rotate(-45deg) translateY(-50%);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    width: .4em
+}
+
+/* Data Simple Bar */
+[data-simplebar] {
+    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start
+}
+
+.simplebar-wrapper {
+    overflow: hidden;
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    max-height: 300px;
+}
+
+.simplebar-mask {
+    direction: inherit;
+    position: absolute;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: auto !important;
+    height: auto !important;
+    z-index: 0
+}
+
+.simplebar-offset {
+    direction: inherit !important;
+    -webkit-box-sizing: inherit !important;
+    box-sizing: inherit !important;
+    resize: none !important;
+    position: absolute;
+    top: 0;
+    left: 0 !important;
+    bottom: 0;
+    right: 0 !important;
+    padding: 0;
+    margin: 0;
+    -webkit-overflow-scrolling: touch
+}
+
+.simplebar-content-wrapper {
+    direction: inherit;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    position: relative;
+    display: block;
+    height: 100%;
+    width: auto;
+    visibility: visible;
+    overflow: auto;
+    max-width: 100%;
+    max-height: 100%;
+    scrollbar-width: none;
+    padding: 0 !important
+}
+
+.simplebar-content-wrapper::-webkit-scrollbar,
+.simplebar-hide-scrollbar::-webkit-scrollbar {
+    display: none
+}
+
+.simplebar-content:after,
+.simplebar-content:before {
+    content: " ";
+    display: table
+}
+
+.simplebar-placeholder {
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    pointer-events: none
+}
+
+.simplebar-height-auto-observer-wrapper {
+    -webkit-box-sizing: inherit !important;
+    box-sizing: inherit !important;
+    height: 100%;
+    width: 100%;
+    max-width: 1px;
+    position: relative;
+    float: left;
+    max-height: 1px;
+    overflow: hidden;
+    z-index: -1;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+    -webkit-box-flex: inherit;
+    -ms-flex-positive: inherit;
+    flex-grow: inherit;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0
+}
+
+.simplebar-height-auto-observer {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+    display: block;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1000%;
+    width: 1000%;
+    min-height: 1px;
+    min-width: 1px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1
+}
+
+.simplebar-track {
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden
+}
+
+[data-simplebar].simplebar-dragging .simplebar-content {
+    pointer-events: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-select: none
+}
+
+[data-simplebar].simplebar-dragging .simplebar-track {
+    pointer-events: all
+}
+
+.simplebar-scrollbar {
+    position: absolute;
+    right: 2px;
+    width: 6px;
+    min-height: 10px
+}
+
+.simplebar-scrollbar:before {
+    position: absolute;
+    content: "";
+    background: #a2adb7;
+    border-radius: 7px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear
+}
+
+.simplebar-scrollbar.simplebar-visible:before {
+    opacity: .5;
+    -webkit-transition: opacity 0s linear;
+    transition: opacity 0s linear
+}
+
+.simplebar-track.simplebar-vertical {
+    top: 0;
+    width: 11px
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+    top: 2px;
+    bottom: 2px
+}
+
+.simplebar-track.simplebar-horizontal {
+    left: 0;
+    height: 11px
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before {
+    height: 100%;
+    left: 2px;
+    right: 2px
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar {
+    right: auto;
+    left: 0;
+    top: 2px;
+    height: 7px;
+    min-height: 0;
+    min-width: 10px;
+    width: auto
+}
+
+[data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical {
+    right: auto;
+    left: 0
+}
+
+.hs-dummy-scrollbar-size {
+    direction: rtl;
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    height: 500px;
+    width: 500px;
+    overflow-y: hidden;
+    overflow-x: scroll
+}
+
+.simplebar-hide-scrollbar {
+    position: fixed;
+    left: 0;
+    visibility: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none
+}
+
+.custom-scroll {
+    height: 100%
+}
+
+/* --- LeftSide Menu CSS End --- */
+
+/*-------------------------------------------
+    5. Navbar Area / Template Main Layout CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    6. Dashboard Page CSS Start
+-------------------------------------------*/
+
+/* 6.1 dashboard-feature-item */
+.dashboard-feature-item-icon-wrap {
+    box-shadow: 0px 4px 12px rgba(247, 247, 247, 0.6);
+    width: 35px;
+    height: 35px;
+}
+
+/* 6.1 dashboard-feature-item */
+
+/* 5.2 dashboard chart */
+.net-revenue-right .icon-box {
+    height: 16px;
+    width: 16px;
+    padding: 2px;
+    margin-bottom: 1px;
+}
+
+/* 6.2 dashboard chart */
+
+/*-------------------------------------------
+    6. Dashboard Page CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    7. Sign Up Page Start
+-------------------------------------------*/
+.sign-up-page {
+    overflow-x: hidden;
+}
+
+.sign-up-left-content {
+    background-color: var(--primary-color);
+    padding: 30px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.sign-up-left-content::before {
+    content: "";
+    position: absolute;
+    width: 709px;
+    height: 1068px;
+    right: 86px;
+    top: 65px;
+    background: linear-gradient(166.46deg, rgba(255, 255, 255, 0.05) 15.3%, rgba(255, 255, 255, 0) 84.41%);
+    transform: rotate(61deg);
+}
+
+.sign-up-left-content,
+.sign-up-right-content {
+    min-height: 100vh;
+    height: 100%;
+}
+
+.sign-up-right-content {
+    align-items: center;
+    display: flex;
+}
+
+.sign-up-right-content form {
+    width: 479px;
+    margin: 0 auto;
+}
+
+.sign-up-left-content p {
+    color: var(--border-color);
+}
+
+/*Show/Hide Password*/
+.sign-up-right-content .pass-icon {
+    font-size: 13px;
+    float: right;
+    top: 18px;
+    position: absolute;
+    right: 10px;
+}
+
+/* Sign In Floating img Start */
+.sign-in-floating-1 {
+    top: 30px;
+    left: 30px;
+}
+
+.sign-in-floating-2 {
+    bottom: 30px;
+    right: 30px;
+}
+
+/* Sign In Floating img End */
+
+/*-------------------------------------------
+    7. Sign Up Page End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    8. Empty Properties Page Start
+-------------------------------------------*/
+.empty-properties-box {
+    padding: 25% 0;
+}
+
+/*-------------------------------------------
+    8. Empty Properties Page End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    9. All Property Page Start
+-------------------------------------------*/
+
+/* Page Inner Search Start */
+.page-inner-search {
+    width: 270px;
+    max-width: 100%;
+}
+
+.page-inner-search .form-control {
+    height: 48px;
+    height: 50px;
+    padding-left: 40px;
+    padding-right: 20px;
+}
+
+.page-inner-search span {
+    position: absolute;
+    z-index: 10;
+    font-size: 16px;
+    line-height: 50px;
+    left: 13px;
+    top: 0;
+}
+
+/* Page Inner Search End */
+
+/* Property Item Start */
+.property-item-img img,
+.information-details-img img {
+    min-height: 240px;
+    height: 240px;
+}
+
+.property-info-item {
+    padding: 0 4px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    flex: auto;
+}
+
+.property-item-info .property-info-item:nth-of-type(2n + 1) {
+    min-width: 80px;
+}
+
+.property-item-info .property-info-item:nth-of-type(2n + 2) {
+    min-width: 100px;
+}
+
+.property-item-info .property-info-item:nth-of-type(2n + 3) {
+    min-width: 120px;
+}
+
+.property-item-title a {
+    display: inline-block;
+}
+
+.property-item-dropdown {
+    top: 0;
+    right: -3px;
+}
+
+/* Property Item End */
+
+/* Property item img Hover Effect Start */
+.property-item-img-wrap {
+    background: var(--primary-color);
+}
+
+.property-item-img {
+    transition: opacity 0.35s, transform 0.35s;
+    transform: scale3d(1.05, 1.05, 1);
+}
+
+.property-item-img-wrap::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    content: "";
+    transition: transform 0.6s;
+    transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -100%, 0);
+}
+
+.property-item-img-wrap:hover .property-item-img {
+    opacity: 0.6;
+    transform: scale3d(1, 1, 1);
+}
+
+.property-item-img-wrap:hover::before {
+    transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 105%, 0);
+}
+
+/* Property item img Hover Effect End */
+
+/*-------------------------------------------
+    9. All Property Page End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    10. Property Details Page Start
+-------------------------------------------*/
+.property-details-img img {
+    height: 490px;
+}
+
+/* Property Details Gallery */
+.vbox-container img {
+    border-radius: 4px;
+    min-height: 400px;
+}
+
+/* Controls nav Start */
+.gallery-slider-carousel.owl-carousel .owl-nav .owl-next,
+.gallery-slider-carousel.owl-carousel .owl-nav .owl-prev {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    box-shadow: 0px 8px 61px rgba(89, 145, 255, 0.19);
+    background-color: var(--white-color);
+    color: var(--body-font-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 7px;
+    position: absolute;
+    border: 1px solid var(--border-color);
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.gallery-slider-carousel.owl-theme .owl-nav {
+    width: 100%;
+    margin-top: 0;
+}
+
+.gallery-slider-carousel.owl-carousel .owl-nav .owl-prev {
+    left: 0;
+}
+
+.gallery-slider-carousel.owl-carousel .owl-nav .owl-next {
+    right: 0;
+}
+
+/* Controls nav End */
+/* Property Details Gallery */
+
+/*-------------------------------------------
+    10. Property Details Page End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    11. Add Property Page Start
+-------------------------------------------*/
+#msform fieldset:not(:first-of-type) {
+    display: none
+}
+
+#msform .action-button-previous {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    color: var(--heading-color);
+    margin-right: 15px;
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+    background-color: var(--off-white) !important;
+    color: var(--heading-color) !important;
+}
+
+.card {
+    z-index: 0;
+    border: none;
+    position: relative
+}
+
+.stepper-progressbar-wrap {
+    position: relative;
+}
+
+#progressbar {
+    display: inline-flex;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 15px;
+}
+
+#progressbar {
+    scrollbar-width: thin;
+    scrollbar-color: #a2adb7 #fff;
+}
+
+#progressbar::-webkit-scrollbar {
+    width: 4px;
+    height: 6px;
+}
+
+#progressbar::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+#progressbar::-webkit-scrollbar-thumb {
+    background-color: #a2adb7;
+}
+
+#progressbar::-webkit-scrollbar-track,
+#progressbar::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+}
+
+#progressbar .active {
+    color: var(--primary-color)
+}
+
+#progressbar li {
+    list-style-type: none;
+    min-width: 20%;
+    position: relative;
+    color: var(--body-font-color);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-stepper-nav-icon {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+    z-index: 9;
+    position: relative;
+}
+
+.form-stepper-nav-icon i {
+    color: var(--body-font-color);
+}
+
+#progressbar li.active .form-stepper-nav-icon i {
+    color: var(--primary-color);
+}
+
+#progressbar li:after {
+    content: '';
+    width: 22%;
+    height: 0;
+    background: transparent;
+    position: absolute;
+    top: 25px;
+    border-bottom: 1.5px dashed #A5ABBA;
+    right: -12%;
+}
+@media screen and (max-width:575px) {
+    #progressbar li:after {
+        display: none;
+    }
+}
+#progressbar li.active:before,
+#progressbar li.active:after {
+    border-bottom: 1.5px dashed var(--primary-color);
+}
+
+#progressbar li:last-child::after {
+    border-bottom: none;
+}
+
+#msform textarea {
+    height: 220px;
+}
+
+/* Multi Field Wrapper */
+.add-field.theme-link {
+    text-align: left;
+}
+
+/* Multi Field Wrapper */
+
+/* Select Property Tab Start */
+.select-property-nav-tabs .nav-item.show .nav-link,
+.select-property-nav-tabs .nav-link.active,
+.select-property-nav-tabs .nav-link:focus,
+.select-property-nav-tabs .nav-link:hover {
+    border-color: transparent;
+}
+
+.select-property-nav-tabs .nav-link {
+    color: var(--heading-color);
+}
+
+.select-property-nav-tabs .nav-item.show .nav-link,
+.select-property-nav-tabs .nav-link.active {
+    color: var(--primary-color);
+}
+
+.select-property-nav-text .select-property-nav-text-box {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    height: 24px;
+    width: 24px;
+    display: inline-flex;
+    border-radius: 4px;
+}
+
+.nav-tabs .nav-item.show .nav-link .select-property-nav-text-box::after,
+.nav-tabs .nav-link.active .select-property-nav-text-box::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 6px;
+    height: 10px;
+    border: solid var(--primary-color);
+    border-width: 0 1px 1px 0;
+    transform: rotate(45deg);
+}
+
+/* Select Property Tab End */
+
+/* Custom Date Picker Start */
+
+/* Hide Calendar Icon In Chrome */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+    color: var(--border-color);
+}
+
+.ui-datepicker {
+    width: auto;
+}
+
+.custom-datepicker-inner i {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    font-size: 18px;
+    color: var(--body-font-color);
+}
+
+/* Custom Datepicker Calendar Start */
+.ui-widget-header .ui-icon {
+    background-image: none;
+}
+
+.ui-datepicker-div label {
+    font-size: 0.75rem;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #B0BEC5;
+    border: 1px solid #ECEFF1;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.ui-datepicker-div input {
+    font-family: 'Roboto', sans-serif;
+    display: block;
+    border: none;
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+    line-height: 1.5rem;
+    padding: 0;
+    font-size: 1rem;
+    color: #607D8B;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.ui-datepicker-div input:focus {
+    outline: none;
+}
+
+.ui-datepicker-div #ui-datepicker-div {
+    display: none;
+    background-color: var(--white-color);
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+    margin-top: 0.25rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.ui-datepicker-div table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.ui-datepicker-div .ui-datepicker-calendar thead th {
+    padding: 0.25rem 0;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #78909C;
+}
+
+.ui-datepicker-div .ui-datepicker-calendar tbody td {
+    width: 2.5rem;
+    text-align: center;
+    padding: 0;
+}
+
+.ui-datepicker-div .ui-datepicker-calendar tbody td a {
+    display: block;
+    border-radius: 0.25rem;
+    line-height: 2rem;
+    transition: 0.3s all;
+    color: #546E7A;
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+.ui-datepicker-div .ui-datepicker-calendar tbody td a:hover {
+    background-color: #E0F2F1;
+}
+
+.ui-datepicker-div .ui-datepicker-calendar tbody td a.ui-state-active {
+    background-color: #009688;
+    color: var(--white-color);
+}
+
+.ui-datepicker-div .ui-datepicker-header a.ui-corner-all {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+    border-radius: 0.25rem;
+    transition: 0.3s all;
+}
+
+.ui-datepicker-div .ui-datepicker-header a.ui-corner-all:hover {
+    background-color: #ECEFF1;
+}
+
+.ui-datepicker-div .ui-datepicker-header a.ui-datepicker-prev {
+    left: 0;
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==");
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    background-position: 50%;
+    transform: rotate(180deg);
+}
+
+.ui-datepicker-div .ui-datepicker-header a.ui-datepicker-next {
+    right: 0;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==');
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position: 50%;
+}
+
+.ui-datepicker-div .ui-datepicker-header a>span {
+    display: none;
+}
+
+.ui-datepicker-div .ui-datepicker-title {
+    text-align: center;
+    line-height: 2rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding-bottom: 0.25rem;
+}
+
+.ui-datepicker-div .ui-datepicker-week-col {
+    color: #78909C;
+    font-weight: 400;
+    font-size: 0.75rem;
+}
+
+.ui-datepicker-calendar tbody tr {
+    display: flex !important;
+}
+
+.ui-datepicker-calendar thead tr {
+    display: flex !important;
+}
+
+.ui-datepicker-calendar thead tr th {
+    width: 37px !important;
+    min-width: 37px !important;
+    font-weight: 400;
+}
+
+.ui-datepicker-calendar tbody tr td,
+.ui-datepicker-next.ui-corner-all {
+    width: 37px !important;
+}
+
+#ui-datepicker-div .ui-widget-header {
+    background: transparent;
+    border: none;
+}
+
+#ui-datepicker-div {
+    background-color: var(--white-color);
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+}
+
+#ui-datepicker-div .ui-state-default,
+#ui-datepicker-div .ui-widget-content .ui-state-default,
+#ui-datepicker-div .ui-widget-header .ui-state-default,
+#ui-datepicker-div .ui-button {
+    border: 1px solid transparent !important;
+    text-align: center !important;
+    border-radius: 5px !important;
+}
+
+#ui-datepicker-div .ui-datepicker-header a.ui-datepicker-prev,
+#ui-datepicker-div .ui-datepicker-header a.ui-datepicker-next {
+    border: 1px solid transparent;
+}
+
+#ui-datepicker-div .ui-datepicker-header a.ui-datepicker-next {
+    right: 0;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==');
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    background-position: 50%;
+}
+
+#ui-datepicker-div .ui-datepicker-header a.ui-datepicker-prev {
+    left: 0;
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==");
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    background-position: 50%;
+    transform: rotate(180deg);
+}
+
+#ui-datepicker-div .ui-icon.ui-icon-circle-triangle-e {
+    height: 37px;
+    width: 37px;
+}
+
+#ui-datepicker-div .ui-datepicker .ui-datepicker-title {
+    font-weight: 400;
+}
+
+/* Custom Datepicker Calendar End */
+
+/* Unit Block Item Box Start */
+.unit-block-item-box {
+    border: 1px solid var(--border-color) !important;
+}
+
+.unit-block-item-box .accordion-button {
+    background-color: rgba(54, 134, 252, 0.03) !important;
+}
+
+.unit-block-item-box .accordion-button:focus {
+    border-color: var(--border-color);
+    box-shadow: none;
+}
+
+.unit-block-item-box .accordion-button:not(.collapsed) {
+    color: var(--primary-color);
+    box-shadow: none;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.unit-block-item-box .accordion-button::after {
+    background-image: none;
+    content: "\f0140";
+    font-family: "Material Design Icons";
+    font-size: 20px;
+}
+
+.unit-block-item-box .accordion-body {
+    padding-bottom: 0;
+}
+
+/* Unit Block Item Box End */
+
+/* Google Map Start */
+.show-map-here {
+    border-radius: 4px;
+}
+
+.show-map-here iframe {
+    height: 253px !important;
+    width: 100% !important;
+    border: 0;
+}
+
+/* Google Map End */
+
+/* Show Uploaded Image after save Start */
+.show-uploaded-img {
+    min-height: 120px;
+}
+
+.show-uploaded-img img {
+    min-height: 120px;
+    width: auto;
+}
+
+/* Show Uploaded Image after save End */
+
+/* Dropzone Start */
+.dropzone {
+    min-height: 120px;
+    border: 2px dashed #ced4da;
+    background: #fff;
+    border-radius: 4px;
+    border: 2px dashed var(--border-color);
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px;
+}
+
+.dropzone-img-wrap {
+    margin-right: 5px;
+}
+
+.dropzone .dz-message {
+    width: 100%;
+    margin: 0 0;
+}
+
+.dropzone-remove-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.dropzone-remove-icon button {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.dropzone-upload-sign-icon.mb-2 {
+    width: 32px;
+    height: 32px;
+    background-color: var(--bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+/* Dropzone End */
+
+/*-------------------------------------------
+    11. Add Property Page End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    12. Tenants Page Start
+-------------------------------------------*/
+
+/* Tenants Item Start */
+.tenant-img {
+    height: 60px;
+    width: 60px;
+}
+
+.tenants-item-info {
+    padding: 0 14px;
+}
+
+.tenants-item-info-box {
+    padding: 20px 0;
+}
+
+.tenants-info-right {
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+}
+
+/* Tenants Item End */
+
+/*-------------------------------------------
+    12. Tenants Page End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    13. Add Tenants Page Start
+-------------------------------------------*/
+
+/* Tenants add Home Details  */
+.tenants-property-item-list-view .property-item-img img {
+    width: 340px;
+}
+
+.tenants-property-item-list-view .property-item-address,
+.tenants-property-item-list-view .property-item-title {
+    width: 75%;
+}
+
+.tenants-property-item-list-view .property-item-info {
+    width: 400px;
+}
+
+.tenants-property-item-list-view .property-info-item-right {
+    justify-content: flex-end;
+}
+
+.tenants-property-item-list-view .property-info-item {
+    width: 100%;
+}
+
+.custom-input-group input {
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+}
+
+.input-group-text-edit {
+    font-size: 23px;
+}
+
+/* Tenants add Home Details  */
+
+/* Tenants File Upload Dropzone */
+.file-uplode-dropzone.dropzone {
+    min-height: 200px;
+}
+
+.dropzone-documents-additional-info img {
+    height: 100px;
+    min-width: 120px;
+}
+
+/* Tenants File Upload Dropzone */
+
+/*-------------------------------------------
+    13. Add Tenants Page End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    14. Dashboard Inner Dashboard Layout Start
+-------------------------------------------*/
+/* Account Settings Leftside Start */
+.account-settings-menu-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 10px 0;
+}
+
+.account-settings-menu-item i,
+.account-settings-menu-item .iconify {
+    font-size: 20px;
+    margin-right: 12px;
+}
+
+.remove-tenants-item .account-settings-menu-item i,
+.remove-tenants-item .account-settings-menu-item .iconify {
+    margin-right: 0;
+}
+
+.account-settings-menu-item.active {
+    color: var(--primary-color);
+}
+
+.upload-new-picture .form-control {
+    padding: 10px 15px;
+}
+
+/* Account Settings Leftside End */
+
+/* Account Settings Rightside Start */
+.account-settings-leftside {
+    min-height: 100vh;
+    height: 100%;
+}
+
+.account-settings-rightside {
+    min-height: 100vh;
+    height: 100%;
+}
+
+.account-settings-info-item {
+    padding: 10px 0;
+}
+
+/* Account Settings Rightside End */
+/*-------------------------------------------
+    14. Dashboard Inner Dashboard Layout End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    15. Tenants Details Page Start
+-------------------------------------------*/
+
+/* Tenants Details Layout Start */
+.tenants-details-leftsidebar-wrap {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Tenants Details Layout End */
+
+/* User Profile Image change/ Image Upload */
+.user-profile-img {
+    position: relative
+}
+
+.user-profile-img .profile-photo-edit,
+.maintainer-user-profile-img .maintainer-profile-photo-edit,
+.language-icon-img .language-icon-edit,
+.default-user-profile-img .default-profile-photo-edit,
+.app-logo-user-profile-img .app-logo-profile-photo-edit,
+.app-favicon-user-profile-img .app-favicon-profile-photo-edit,
+.app-preloader-user-profile-img .app-preloader-profile-photo-edit,
+.signin-user-profile-img .signin-profile-photo-edit {
+    cursor: pointer
+}
+
+.profile-user {
+    position: relative;
+    display: inline-block
+}
+
+.profile-user .profile-photo-edit,
+.profile-user .language-icon-edit,
+.profile-user .maintainer-profile-photo-edit,
+.profile-user .language-icon-edit,
+.profile-user .default-profile-photo-edit,
+.profile-user .app-logo-profile-photo-edit,
+.profile-user .app-favicon-profile-photo-edit,
+.profile-user .app-preloader-profile-photo-edit,
+.profile-user .signin-profile-photo-edit {
+    position: absolute;
+    right: 0;
+    left: auto;
+    bottom: -5px;
+    cursor: pointer
+}
+
+.profile-user .user-profile-image,
+.profile-user .maintainer-user-profile-image,
+.profile-user .language-icon-image,
+.profile-user .default-user-profile-image,
+.profile-user .app-logo-user-profile-image,
+.profile-user .app-logo-white-user-profile-image,
+.profile-user .app-favicon-user-profile-image,
+.profile-user .app-preloader-user-profile-image,
+.profile-user .signin-user-profile-image {
+    -o-object-fit: cover;
+    object-fit: cover
+}
+
+.profile-user .profile-img-file-input,
+.profile-user .maintainer-profile-img-file-input,
+.profile-user .language-icon-img-file-input,
+.profile-user .language-icon-img-file-input-edit,
+.profile-user .default-profile-img-file-input,
+.profile-user .app-logo-profile-img-file-input,
+.profile-user .app-logo-white-profile-img-file-input,
+.profile-user .app-favicon-profile-img-file-input,
+.profile-user .app-preloader-profile-img-file-input,
+.profile-user .signin-profile-img-file-input {
+    display: none
+}
+
+/* User Profile Image change */
+
+/* Single Tenants Home Details Start */
+.tenants-details-home-details-property-item .property-item-content {
+    display: flex;
+    width: 100%;
+}
+
+.tenants-details-home-details-property-item .property-item-img-wrap::before {
+    height: 130%;
+}
+
+.tenants-details-home-details-property-item .property-item-img img {
+    height: 450px;
+}
+
+.tenants-details-property-info-left {
+    width: 50%;
+}
+
+.tenants-details-property-info-right {
+    width: 50%;
+    text-align: right;
+}
+
+/* Single Tenants Home Details End */
+
+/*-------------------------------------------
+    15. Tenants Details Page End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    16. Billing Center Page Start
+-------------------------------------------*/
+.billing-center-nav-tabs .nav-link {
+    border: none;
+    border-radius: 4px;
+    color: var(--body-font-color);
+}
+
+.billing-center-nav-tabs {
+    border-bottom: 0;
+}
+
+.billing-center-nav-tabs .nav-item.show .nav-link,
+.billing-center-nav-tabs .nav-link.active {
+    background-color: var(--primary-color-transparent);
+    color: var(--primary-color);
+}
+
+.billing-center-nav-tabs .nav-link:focus,
+.billing-center-nav-tabs .nav-link:hover {
+    color: var(--primary-hover-color);
+}
+
+.tbl-user-image {
+    -o-object-fit: cover;
+    object-fit: cover
+}
+
+/*-------------------------------------------
+    16. Billing Center Page End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    17. Documents Page Start
+-------------------------------------------*/
+.document-item-box {
+    height: 178px;
+    width: 194px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.document-item-box img {
+    height: 45px;
+}
+
+/*-------------------------------------------
+    17. Documents Page End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    18. Invoice Preview CSS Start
+-------------------------------------------*/
+@media (min-width: 576px) {
+    #invoicePreviewModal .modal-dialog {
+        max-width: 1024px;
+    }
+}
+
+/* Generate Invoice CSS Start */
+.invoice-heading-part {
+    display: flex;
+    justify-content: space-between;
+}
+
+.invoice-heading-left img {
+    margin-bottom: 13px;
+}
+
+.invoice-address-part {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #e5e4e4;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.invoice-address-part .invoice-generate-title {
+    margin-bottom: 12px;
+}
+
+.invoice-address h6 {
+    margin-top: 8px;
+}
+
+.invoice-address h5,
+.invoice-address h6 {
+    color: #737C91;
+}
+
+.invoice-preview-wrap .invoice-table-part thead {
+    border-top: 1px solid #e5e4e4;
+    background-color: #fff;
+}
+
+.invoice-preview-wrap .invoice-table-part .show-total-box {
+    border-bottom: 1px solid #e5e4e4;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.invoice-tbl-last-field {
+    text-align: right;
+    padding-right: 1.5rem;
+}
+
+.invoice-tbl-last-field>span {
+    margin-left: 15px;
+}
+
+.invoice-heading-color {
+    color: #160E4D;
+}
+
+.invoice-generate-title {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.invoice-table-part {
+    padding-top: 20px;
+}
+
+.invoice-preview-wrap thead {
+    background-color: #FAFAFA;
+}
+
+.invoice-table-part table {
+    background-color: #fff;
+}
+
+.transaction-table-part table {
+    background-color: #FAFAFA;
+    border: 1px solid #EAEAEA;
+    border-radius: 4px
+}
+
+.invoice-preview-wrap table td,
+.invoice-preview-wrap table th {
+    padding: 1rem 1.5rem;
+}
+
+.invoice-preview-wrap .table>thead>tr>th {
+    border-bottom: 1px solid #e5e4e4;
+}
+
+.invoice-heading-right-status-btn {
+    background: rgba(54, 134, 252, 0.1);
+    border-radius: 4px;
+    display: inline-flex;
+    padding: 10px 18px;
+    color: #3686FC;
+}
+
+/* Generate Invoice CSS End */
+
+/*-------------------------------------------
+    18. Invoice Preview CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    19. Uploaded Documents Common CSS Start
+-------------------------------------------*/
+.show-uploaded-documents-img img {
+    height: 24px;
+    width: 24px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+/*-------------------------------------------
+    19. Uploaded Documents Common CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    20. Tickets Page CSS Start
+-------------------------------------------*/
+.ticket-item-content-box.attachment-ticket-item-content-box {
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.tickets-attachment-item {
+    width: 75px;
+    height: 75px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.tickets-attachment-gallery .col-auto {
+    padding: 2px 5px;
+}
+
+.tickets-attachment-gallery {
+    padding: 0 5px;
+}
+
+.tickets-attachment-item img {
+    height: 75px;
+    width: 75px;
+}
+
+.vbox-overlay {
+    background: rgba(22, 14, 77, 0.7);
+}
+
+/* 20.1 Ticket Details Page Start */
+.ticket-replies-item {
+    background-color: rgba(242, 246, 249, 0.8);
+}
+
+.ticket-details-write-reply-box textarea {
+    min-height: 160px !important;
+}
+
+/* 20.1 Ticket Details Page End */
+
+/*-------------------------------------------
+    20. Tickets Page CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    21. Default Settings Page CSS Start
+-------------------------------------------*/
+@media screen and (max-width:991px){
+	.account-settings-menu{
+		column-gap: 15px;
+	}
+}
+
+.account-settings-menu li,
+.account-settings-menu-item,
+.account-settings-menu li ul.account-sub-menu li a,
+.account-settings-menu li ul.account-sub-menu li a::before {
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+
+.account-settings-menu li .toggle-account-menu {
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 10px;
+    text-align: right;
+    z-index: 9;
+}
+
+.account-settings-menu li:hover .toggle-account-menu {
+    color: var(--primary-color);
+}
+
+.account-settings-menu li.menu-has-children {
+    position: relative;
+}
+
+.account-settings-menu li.menu-has-children .account-sub-menu {
+    padding: 0;
+    display: none;
+}
+
+.account-settings-menu li.menu-has-children .account-sub-menu li a {
+    display: block;
+    position: relative;
+    height: auto;
+    background: transparent;
+    padding: 5px 0;
+    text-transform: capitalize;
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+
+.account-settings-menu li.menu-has-children.has-open .account-sub-menu {
+    display: block;
+    margin-left: 20px;
+}
+
+.account-settings-menu li ul.account-sub-menu li a::before {
+    content: "";
+    height: 6px;
+    width: 6px;
+    background-color: var(--body-font-color);
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 5px;
+    top: -2px;
+    position: relative;
+}
+
+.account-settings-menu li ul.account-sub-menu li a:hover:before {
+    background-color: var(--primary-color);
+}
+
+/*-------------------------------------------
+    21. Default Settings Page CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    22. Color Settings Page CSS Start
+-------------------------------------------*/
+.color-settings-fields-wrap .sp-original-input-container {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    height: 50px;
+    align-items: center;
+    width: 100%;
+}
+
+.color-settings-fields-wrap .sp-original-input-container .sp-add-on {
+    height: 30px;
+    width: 30px !important;
+    border-radius: 4px !important;
+    margin: 0 10px;
+    flex-shrink: 0;
+}
+
+.color-settings-fields-wrap .sp-original-input-container input {
+    height: 100%;
+    width: 100%;
+}
+
+/*-------------------------------------------
+    22. Color Settings Page CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    23. Tenant Portal Dashboard Page CSS Start
+-------------------------------------------*/
+
+/* Tenant Portal Notice Table */
+.tenant-portal-notice-tbl td:hover {
+    background-color: var(--white-color);
+}
+
+.tenant-portal-notice-tbl td {
+    padding: 0;
+}
+
+.tenant-portal-notice-tbl td .tenant-portal-notice-tbl-item {
+    padding: 1rem 1.5rem;
+    width: 100%;
+    display: block;
+}
+
+/* Tenant Portal Notice Table */
+
+/*-------------------------------------------
+    23. Tenant Portal Dashboard Page CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    24. Tenant Portal Invoice Details Page CSS Start
+-------------------------------------------*/
+
+/* Select Payment Method */
+.invoice-payment-nav-tabs {
+    border-bottom: 0;
+}
+
+.invoice-payment-img img {
+    height: 70px;
+}
+
+.invoice-payment-nav-tabs .nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.invoice-payment-nav-tabs .nav-item.show .nav-link,
+.invoice-payment-nav-tabs .nav-link.active {
+    border: 1px solid var(--primary-color);
+}
+
+/* Select Payment Method */
+
+/* Select Payment Tab Radio Box */
+.invoice-payment-nav-tabs .nav-item.show .nav-link .custom-radiobox [type="radio"]+label:after,
+.invoice-payment-nav-tabs .nav-link.active .custom-radiobox [type="radio"]+label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/* Select Payment Tab Radio Box */
+
+/*-------------------------------------------
+    24. Tenant Portal Invoice Details Page CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    25. Tenant Portal Documents Page CSS Start
+-------------------------------------------*/
+.tenant-nid-icon.text-white.rounded-circle {
+    height: 46px;
+    width: 46px;
+    background-color: var(--heading-color);
+}
+
+.upload-nid-wrap {
+    background: linear-gradient(90deg, #ECF4FF 0%, #E3EFFF 63.02%, #D8C9FF 84.44%, #BAFFCD 100%);
+}
+
+/*-------------------------------------------
+    25. Tenant Portal Documents Page CSS End
+-------------------------------------------*/
+
+/*-------------------------------------------
+    26. Maintainer Portal Chat Page CSS Start
+-------------------------------------------*/
+/* Messenger User Left side */
+
+/* Messenger user top part */
+.message-user-top-part {
+    padding: 20px;
+}
+
+.message-user-top-part-btns .nav-link {
+    background-color: transparent;
+    color: var(--body-font-color);
+    border: none;
+    border-radius: 4px;
+}
+
+.message-user-top-part-btns .nav-item.show .nav-link,
+.message-user-top-part-btns .nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.search-message-box input {
+    height: 32px;
+    border: 1px solid #E9E8E8;
+    color: #767588;
+    border-left: 0;
+}
+
+.search-message-box .form-control:focus {
+    border-color: #E9E8E8;
+    outline: 0;
+    box-shadow: none;
+}
+
+/* Messenger user bottom part */
+.message-user-sidebar {
+    height: 719px;
+}
+
+.message-user-list-part {
+    height: calc(100% - 94px);
+}
+
+.message-user-list-wrap {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.message-user-list-part-title h6 {
+    padding: 0 30px;
+}
+
+.message-user-item {
+    padding: 12px 20px;
+    margin-bottom: 2px;
+}
+
+.message-user-item.active,
+.message-user-item:hover {
+    background-color: #F3F6F8;
+}
+
+.message-user-item .user-img-wrap,
+.message-user-item-left .user-img-wrap,
+.chat-item .user-img-wrap {
+    height: 42px;
+    width: 42px;
+}
+
+.message-user-item .user-img-wrap img,
+.message-user-item-left .user-img-wrap img,
+.chat-item .user-img-wrap img {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+}
+
+.message-user-item-left p {
+    line-height: 16px;
+}
+
+.online-offline-show {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--white-color);
+    right: 0;
+    bottom: 4px;
+    z-index: 9;
+}
+
+.online-offline-show.online {
+    background-color: var(--green-color);
+}
+
+.online-offline-show.offline {
+    background-color: var(--yellow-color);
+}
+
+.message-user-notification-box {
+    background-color: rgba(255, 67, 67, 0.1);
+    color: var(--red-color);
+    min-height: 18px;
+    min-width: 18px;
+    border-radius: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    float: right;
+    font-size: 10px;
+    padding: 0 4px;
+}
+
+/* Message Page Chat Right side css */
+.message-chat-right-part {
+    height: 719px;
+}
+
+.message-chat-right-part .dropdown-toggle i,
+.message-chat-right-part .dropdown-toggle .iconify {
+    font-size: 22px;
+}
+
+/* Message Chat Top Part Start */
+.message-chat-top-part {
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--white-color);
+    min-height: 88px;
+    padding: 20px 20px;
+    position: relative;
+    z-index: 9;
+}
+
+.in-chat-mode-online-offline .yes-online {
+    background-color: var(--green-color);
+    color: var(--white-color);
+}
+
+.in-chat-mode-online-offline .online-offline-btn {
+    border-radius: 71px;
+    padding: 3px 8px;
+}
+
+.message-chat-top-action-btn {
+    color: var(--body-font-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-chat-top-right .dropdown-toggle {
+    display: inline-flex !important;
+}
+
+.message-chat-top-right .dropdown {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-chat-top-right .dropdown-toggle::after {
+    display: none;
+}
+
+.message-chat-top-right .dropdown-menu {
+    min-width: 6rem;
+}
+
+.message-chat-top-right .dropdown-menu .dropdown-item {
+    display: inline-flex;
+    align-items: center;
+}
+
+.message-chat-top-right .dropdown-menu .dropdown-item .iconify {
+    margin-right: 6px;
+}
+
+.message-chat-top-right .dropdown-menu li:nth-child(1) .dropdown-item .iconify {
+    color: #FF4444;
+}
+
+.message-chat-top-right .dropdown-menu li:nth-child(2) .dropdown-item .iconify {
+    color: var(--yellow-color);
+}
+
+.message-chat-top-right .dropdown-menu li:nth-child(3) .dropdown-item .iconify {
+    color: var(--theme-color);
+}
+
+/* Message Chat Top Part End */
+
+/* Message Chat Bottom Part Start */
+.message-chat-bottom-part {
+    bottom: 0;
+    width: 100%;
+    padding: 5px 20px 20px;
+    background-color: var(--white-color);
+}
+
+.message-chat-bottom-left {
+    width: calc(100% - 71px);
+}
+
+.message-chat-bottom-left .input-group {
+    background-color: #F4F4F8;
+    border-radius: 4px;
+    color: var(--body-font-color);
+    padding: 10px;
+}
+
+.emogi-collection-btn {
+    color: var(--body-font-color);
+    height: 36px;
+    width: 36px;
+    border-radius: 4px !important;
+    font-size: 21px;
+    padding: 0;
+    justify-content: center;
+}
+
+.chat-text-input {
+    height: 36px;
+    padding: 5px 14px;
+}
+
+.message-chat-bottom-right {
+    width: 56px;
+}
+
+.message-chat-bottom-action-btn {
+    height: 56px;
+    width: 56px;
+    border-radius: 4px;
+    color: var(--body-font-color);
+    background-color: #F4F4F8;
+    font-size: 20px;
+}
+
+/* Message Chat Bottom Part End */
+
+/* Message Chat Main Part Start */
+
+/* Custom Scrollbar start */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #E6E3EB #fff;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #E6E3EB;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track,
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+}
+
+/* Custom Scrollbar end */
+
+.message-chat-main-part {
+    padding: 0 20px 0;
+    position: absolute;
+    width: 100%;
+    max-height: 541px;
+    overflow-y: auto;
+}
+
+/* Conversation Start Date CSS */
+.conversation-start-date {
+    margin: 40px 0 20px;
+}
+
+.conversation-start-date:before {
+    content: "";
+    background-color: var(--border-color);
+    width: 100%;
+    height: 1px;
+    left: 0;
+    position: absolute;
+}
+
+.conversation-start-date span {
+    top: -9px;
+    padding: 0 12px;
+}
+
+/* Chat Item css */
+.chat-item {
+    max-width: 680px;
+}
+
+/* Chat Item Dropdown css start */
+.chat-item .dropdown {
+    right: -25px;
+    float: right;
+    color: var(--body-font-color);
+}
+
+.chat-item .dropdown .dropdown-toggle {
+    color: var(--body-font-color);
+}
+
+.chat-item .dropdown-menu {
+    min-width: 6rem;
+    border: 1px solid #EEEDED;
+    border-radius: 8px;
+}
+
+.chat-item .dropdown-toggle::after {
+    display: none;
+}
+
+/* Chat Item Dropdown css end */
+.chat-item.chat-item-right {
+    float: right;
+}
+
+.chat-item.chat-item-right .chat-text-box p {
+    background-color: #E9F6FF;
+    border-radius: 4px 4px 0px 4px;
+}
+
+.chat-text-box {
+    margin-right: 20px;
+}
+
+.chat-text-box p {
+    background-color: #F0F0F0;
+    background: #F2F6F9;
+    border-radius: 4px 4px 4px 0px;
+    color: var(--heading-color);
+    margin-bottom: 15px;
+    padding: 18px 20px;
+}
+
+/* Message Chat Main Part End */
+
+/* Chat Sidebar Toggle CSS */
+.chat-sidebar-toggle-btn {
+    height: 38px;
+    width: 38px;
+    display: none;
+}
+
+.chat-sidebar-offcanvas {
+    z-index: 1;
+}
+
+.chat-sidebar-offcanvas .offcanvas-header {
+    display: none;
+}
+
+.chat-sidebar-offcanvas {
+    transform: translateX(0%) !important;
+    visibility: visible;
+    position: relative;
+    border-right-color: var(--border-color) !important;
+}
+
+.chat-sidebar-offcanvas .offcanvas-body {
+    overflow-y: hidden;
+    background-color: var(--white-color);
+}
+
+/* Chat Sidebar Toggle CSS */
+
+/*-------------------------------------------
+    26. Maintainer Portal Chat Page CSS End
+-------------------------------------------*/
+/*-------------------------------------------
+    9. Pricing Plan CSS Start
+-------------------------------------------*/
+.choose-plan-area-title,
+.payment-method-area-title {
+    margin-bottom: 25px;
+    margin-top: -5px;
+}
+
+.price-card-item {
+    border: 0.776515px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15.5303px;
+    background-color: var(--bg-primary);
+}
+
+.price-title span {
+    color: #727B8F;
+}
+
+hr {
+    border: 1.6px solid rgba(0, 0, 0, 0.1);
+}
+
+.pricing-features {
+    margin: 18px 0 11px;
+}
+
+.price-check-icon {
+    width: 17px;
+    height: 17px;
+}
+
+/* Payment Subscription toggle Start */
+.payment-subscription-switch .form-check-input {
+    width: 4.55em;
+    height: 2.25em;
+}
+
+/* Payment Subscription toggle End */
+
+/*-------------------------------------------
+    9. Pricing Plan CSS End
+-------------------------------------------*/
+@media (min-width: 576px) {
+    .big-modal .modal-dialog {
+        max-width: 1212px;
+    }
+}
+
+.theme-btn-outline {
+    border: 1px solid var(--secondary-color);
+    background-color: transparent;
+    color: var(--button-primary-color) !important;
+    border-radius: 111.818px;
+    padding: 14px 41px !important;
+}
+
+.current-plan-button {
+    background-color: var(--secondary-color);
+    color: var(--white-color) !important;
+}
+
+.theme-btn-outline:hover,
+.theme-btn-outline.active {
+    background-color: var(--secondary-hover-color);
+    color: var(--white-color) !important;
+}
+
+/*-------------------------------------------
+    10. Payment Method CSS Start
+-------------------------------------------*/
+@media (min-width: 576px) {
+
+    #paymentMethodModal.big-modal .modal-dialog {
+        max-width: 1250px;
+    }
+}
+
+@media (min-width: 1400px) {
+    #paymentMethodModal .col-xxl-3 {
+        /* width: 187px; */
+        width: 20%;
+    }
+}
+
+.payment-method-item {
+    background-color: var(--bg-primary);
+    padding: 20px 20px;
+}
+
+.payment-method-item-title {
+    border-radius: 60px;
+    padding: 8px 20px;
+    min-height: 30px;
+}
+
+.payment-method-img {
+    margin-top: 30px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-method-item .theme-btn-outline {
+    padding: 9px 20px !important;
+}
+
+/*-------------------------------------------
+    10. Payment Method CSS End
+-------------------------------------------*/
+
+/* Dashboard Topic Nav Area */
+
+.dashboard-topic-content {
+    height: 69vh;
+    overflow-x: auto;
+    overflow-x: hidden;
+}
+
+/* Dashboard Topic Content Area */
+.topic-content-item {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0px 4px 250px rgba(0, 0, 0, 0.06); */
+}
+
+.topic-content-item:hover {
+    border: 1px solid var(--primary-color);
+}
+
+.topic-content-item:hover h4 {
+    color: var(--primary-color);
+}
+
+.topic-content-item-icon {
+    height: 52px;
+    width: 52px;
+    font-size: 20px;
+    background-color: var(--bg-icon);
+}
+
+/* Dashboard Topic Content Area */
+
+.pointer-auto {
+    cursor: pointer;
+}
+
+.dropdown-menu li.selected {
+    background: aliceblue;
+    margin-bottom: 2px;
+}
+
+.my-custom-select-box>.bootstrap-select>.dropdown-toggle {
+    outline: none !important;
+    background: no-repeat;
+    border: none;
+}
+
+.my-custom-select-box .bootstrap-select .dropdown-toggle:focus,
+.my-custom-select-box .bootstrap-select>select.mobile-device:focus+.dropdown-toggle {
+    outline: none !important;
+}
+
+.exclamation-area {
+    background: #ffc107;
+    padding: 7px 20px;
+    border-radius: 50px;
+}
+
+.exclamation-btu {
+    display: none;
+
+}
+
+.exclamation {
+    position: relative;
+}
+
+.close.topBannerClose.ms-2 {
+    position: absolute;
+    right: 6px;
+    top: 25%;
+}
+
+.upload-count-plus {
+    background-color: var(--primary-color);
+}
+
+@media (min-width: 68px) and (max-width: 768.98px) {
+    .exclamation-btu {
+        display: block;
+
+    }
+
+    .exclamation-area {
+        display: none;
+        width: 100%;
+    }
+
+    .close.topBannerClose {
+        display: none;
+    }
+
+    .exclamation {
+        width: 100%;
+        justify-content: end;
+    }
+
+    .clickOption.exclamation {
+        position: absolute;
+        top: 10px;
+        z-index: 9;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    line-height: 2.95rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+    padding-left: 14px;
+    padding-top: 3px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .tenantReportDataTable-search #tenantReportDataTable_filter {
+        text-align: left;
+    }
+}
+.bg-button-primary-color{
+    background-color: #3686FC !important;
+}
+.text-button-primary-color{
+    color: #3686fc !important;
+}
+.payNowMaxWidth{
+    max-width: 630px;
+}
+
+/* New css */
+/* Gap */
+.g-1 {
+	 gap: 1px !important;
+}
+ .g-2 {
+	 gap: 2px !important;
+}
+ .g-3 {
+	 gap: 3px !important;
+}
+ .g-4 {
+	 gap: 4px !important;
+}
+ .g-5 {
+	 gap: 5px !important;
+}
+ .g-6 {
+	 gap: 6px !important;
+}
+ .g-7 {
+	 gap: 7px !important;
+}
+ .g-8 {
+	 gap: 8px !important;
+}
+ .g-9 {
+	 gap: 9px !important;
+}
+ .g-10 {
+	 gap: 10px !important;
+}
+ .g-11 {
+	 gap: 11px !important;
+}
+ .g-12 {
+	 gap: 12px !important;
+}
+ .g-13 {
+	 gap: 13px !important;
+}
+ .g-14 {
+	 gap: 14px !important;
+}
+ .g-15 {
+	 gap: 15px !important;
+}
+ .g-16 {
+	 gap: 16px !important;
+}
+ .g-17 {
+	 gap: 17px !important;
+}
+ .g-18 {
+	 gap: 18px !important;
+}
+ .g-19 {
+	 gap: 19px !important;
+}
+ .g-20 {
+	 gap: 20px !important;
+}
+ .g-21 {
+	 gap: 21px !important;
+}
+ .g-22 {
+	 gap: 22px !important;
+}
+ .g-23 {
+	 gap: 23px !important;
+}
+ .g-24 {
+	 gap: 24px !important;
+}
+ .g-25 {
+	 gap: 25px !important;
+}
+ .g-26 {
+	 gap: 26px !important;
+}
+ .g-27 {
+	 gap: 27px !important;
+}
+ .g-28 {
+	 gap: 28px !important;
+}
+ .g-29 {
+	 gap: 29px !important;
+}
+ .g-30 {
+	 gap: 30px !important;
+}
+/* Row Gap */
+.rg-1 {
+	 row-gap: 1px !important;
+}
+ .rg-2 {
+	 row-gap: 2px !important;
+}
+ .rg-3 {
+	 row-gap: 3px !important;
+}
+ .rg-4 {
+	 row-gap: 4px !important;
+}
+ .rg-5 {
+	 row-gap: 5px !important;
+}
+ .rg-6 {
+	 row-gap: 6px !important;
+}
+ .rg-7 {
+	 row-gap: 7px !important;
+}
+ .rg-8 {
+	 row-gap: 8px !important;
+}
+ .rg-9 {
+	 row-gap: 9px !important;
+}
+ .rg-10 {
+	 row-gap: 10px !important;
+}
+ .rg-11 {
+	 row-gap: 11px !important;
+}
+ .rg-12 {
+	 row-gap: 12px !important;
+}
+ .rg-13 {
+	 row-gap: 13px !important;
+}
+ .rg-14 {
+	 row-gap: 14px !important;
+}
+ .rg-15 {
+	 row-gap: 15px !important;
+}
+ .rg-16 {
+	 row-gap: 16px !important;
+}
+ .rg-17 {
+	 row-gap: 17px !important;
+}
+ .rg-18 {
+	 row-gap: 18px !important;
+}
+ .rg-19 {
+	 row-gap: 19px !important;
+}
+ .rg-20 {
+	 row-gap: 20px !important;
+}
+ .rg-21 {
+	 row-gap: 21px !important;
+}
+ .rg-22 {
+	 row-gap: 22px !important;
+}
+ .rg-23 {
+	 row-gap: 23px !important;
+}
+ .rg-24 {
+	 row-gap: 24px !important;
+}
+ .rg-25 {
+	 row-gap: 25px !important;
+}
+ .rg-26 {
+	 row-gap: 26px !important;
+}
+ .rg-27 {
+	 row-gap: 27px !important;
+}
+ .rg-28 {
+	 row-gap: 28px !important;
+}
+ .rg-29 {
+	 row-gap: 29px !important;
+}
+ .rg-30 {
+	 row-gap: 30px !important;
+}
+
+.content-chat {
+    display: flex;
+    gap: 30px;
+}
+@media screen and (max-width: 991px) {
+    .content-chat {
+        gap: 10px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .content-chat {
+        flex-direction: column;
+    }
+}
+.content-chat .content-chat-user {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 20px;
+    max-width: 350px;
+    width: 100%;
+    padding: 25px 0 10px;
+}
+@media screen and (max-width: 991px) {
+    .content-chat .content-chat-user {
+        max-width: 300px;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 767px) {
+    .content-chat .content-chat-user {
+        padding: 10px 0;
+        max-width: 100%;
+    }
+}
+.content-chat .content-chat-user .head-chat {
+    padding: 0 24px 12px;
+}
+@media screen and (max-width: 767px) {
+    .content-chat .content-chat-user .head-chat {
+        display: none;
+    }
+}
+.content-chat .content-chat-user .head-chat .title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    color: #160e4d;
+}
+.content-chat .content-chat-user .search-two {
+    margin: 0 24px 10px;
+    max-width: 100%;
+}
+@media screen and (max-width: 767px) {
+    .content-chat .content-chat-user .search-two {
+        display: none;
+    }
+}
+.content-chat .content-chat-user .list-search-user-chat {
+    max-height: 620px;
+    overflow-y: auto;
+    scrollbar-gutter: stable both-edges;
+    scrollbar-width: thin;
+}
+.content-chat .content-chat-user .list-search-user-chat::-webkit-scrollbar {
+    width: 6px;
+}
+.content-chat .content-chat-user .list-search-user-chat::-webkit-scrollbar-track {
+    background: #efefef;
+    border-radius: 50px;
+}
+.content-chat .content-chat-user .list-search-user-chat::-webkit-scrollbar-thumb {
+    background: #dadada;
+    border-radius: 50px;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat {
+    display: flex;
+    gap: 14px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat:hover, .content-chat .content-chat-user .list-search-user-chat .user-chat.active {
+    background-color: #0063e6;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-img {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-img .online {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    background-color: #fbbf37;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-img .offline {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    background-color: #737c91;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-text-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    gap: 5px;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-text-time .time {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17px;
+    color: #737c91;
+    padding-bottom: 6px;
+    transition: all 0.3s;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat:hover .user-chat-text-time .time,
+.content-chat .content-chat-user .list-search-user-chat .user-chat.active .user-chat-text-time .time {
+    color: rgba(255,255,255,0.7);
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-text-time .notify {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #3686fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13px;
+    color: #fff;
+    margin-left: auto !important;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-text .name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #160e4d;
+    transition: all 0.3s;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat:hover .user-chat-text .name,
+.content-chat .content-chat-user .list-search-user-chat .user-chat.active .user-chat-text .name {
+    color: #fff;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-text small {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    color: #737c91;
+    transition: all 0.3s;
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat:hover .user-chat-text small,
+.content-chat .content-chat-user .list-search-user-chat .user-chat.active .user-chat-text small {
+    color: rgba(255,255,255,0.7);
+}
+.content-chat .content-chat-user .list-search-user-chat .user-chat .user-chat-time {
+    flex-shrink: 0;
+}
+.content-chat .content-chat-message-user-wrap {
+    max-width: 100%;
+    width: 100%;
+    border: 1px solid #eaeaea;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user {
+    display: none;
+    background-color: #fff;
+    border-bottom: none;
+    overflow: hidden;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user.active {
+    display: block;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .head-chat-message-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 30px 30px 21px;
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+}
+@media screen and (max-width: 767px) {
+    .content-chat .content-chat-message-user-wrap .content-chat-message-user .head-chat-message-user {
+        padding: 15px;
+    }
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .head-chat-message-user .message-user-img {
+    position: relative;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .head-chat-message-user .message-user-img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .head-chat-message-user .message-user-img .online {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    background-color: #fbbf37;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .head-chat-message-user .message-user-img .offline {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    background-color: #737c91;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .head-chat-message-user .message-user-text .title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #160e4d;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .head-chat-message-user .message-user-text .status {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    color: #737c91;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-sizing: border-box;
+    padding: 15px 30px;
+    height: 580px;
+    overflow-y: auto;
+    scrollbar-gutter: stable both-edges;
+    scrollbar-width: thin;
+    background-color: #fff;
+}
+@media screen and (max-width: 767px) {
+    .content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user {
+        padding: 15px;
+    }
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user::-webkit-scrollbar {
+    width: 6px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user::-webkit-scrollbar-track {
+    background: #efefef;
+    border-radius: 50px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user::-webkit-scrollbar-thumb {
+    background: #dadada;
+    border-radius: 50px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-left .message-user-left-text {
+    position: relative;
+    max-width: calc(toRem(508) + 12px + 35px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+@media screen and (max-width: 575px) {
+    .content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-left .message-user-left-text {
+        gap: 5px;
+    }
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-left .message-user-left-text .text {
+    padding: 6px 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #eaeaea;
+    border-radius: 15px;
+    color: #160e4d;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-left .message-user-left-text .text > p {
+    padding-bottom: 8px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-left .message-user-left-text .text .time-read {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-left .message-user-left-text .text .time-read .time {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #160e4d;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-left .message-user-left-text .share-icon {
+    opacity: 0;
+    visibility: hidden;
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-left .message-user-left-text .share-icon img {
+    max-width: 15px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-left .message-user-left-text:hover .share-icon {
+    opacity: 1;
+    visibility: visible;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-right {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 4px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-right .share-icon {
+    opacity: 0;
+    visibility: hidden;
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-right .share-icon img {
+    max-width: 15px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-right .message-user-right-text {
+    position: relative;
+    max-width: calc(toRem(508) + toRem(12) + toRem(35));
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 12px;
+}
+@media screen and (max-width: 575px) {
+    .content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-right .message-user-right-text {
+        gap: 5px;
+    }
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-right .message-user-right-text .text {
+    padding: 6px 12px;
+    background-color: #cdffc5;
+    border: 1px solid #cdffc5;
+    border-radius: 15px;
+    color: #160e4d;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-right .message-user-right-text .text > p {
+    padding-bottom: 8px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-right .message-user-right-text .text .time-read {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-right .message-user-right-text .text .time-read .time {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #160e4d;
+}
+.content-chat .content-chat-message-user-wrap .content-chat-message-user .body-chat-message-user .message-user-right .message-user-right-text:hover .share-icon {
+    opacity: 1;
+    visibility: visible;
+}
+.content-chat .content-chat-message-user-wrap .footer-chat-message-user {
+    background-color: #fff;
+    border-top: 1px solid #eaeaea;
+    padding: 15px 30px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+@media screen and (max-width: 767px) {
+    .content-chat .content-chat-message-user-wrap .footer-chat-message-user .footer-inputs {
+        position: relative;
+        gap: 0;
+        height: 50px;
+        background-color: #f4f4ef;
+        border-radius: 50px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .content-chat .content-chat-message-user-wrap .footer-chat-message-user {
+        padding: 15px 15px 30px;
+    }
+}
+.content-chat .content-chat-message-user-wrap .footer-chat-message-user .message-user-send {
+    flex: 1 1 auto;
+    position: relative;
+    width: 100%;
+}
+@media screen and (max-width: 767px) {
+    .content-chat .content-chat-message-user-wrap .footer-chat-message-user .message-user-send {
+        order: 1;
+    }
+}
+.content-chat .content-chat-message-user-wrap .footer-chat-message-user .message-user-send input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 13px 20px;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-color: #eaeaea;
+}
+@media screen and (max-width: 767px) {
+    .content-chat .content-chat-message-user-wrap .footer-chat-message-user .message-user-send input {
+        padding: 13px 45px;
+    }
+}
+.content-chat .content-chat-message-user-wrap .footer-chat-message-user button {
+    flex: 0 0 auto;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-chat .content-chat-message-user-wrap .footer-chat-message-user button.emoji-btn, .content-chat .content-chat-message-user-wrap .footer-chat-message-user button.send-btn {
+    flex: 0 0 auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: #eaeaea;
+    cursor: pointer;
+}
+.content-chat .content-chat-message-user-wrap .footer-chat-message-user button.emoji-btn:hover, .content-chat .content-chat-message-user-wrap .footer-chat-message-user button.send-btn:hover {
+    background-color: #eaeaea;
+}
+@media screen and (max-width: 767px) {
+    .content-chat .content-chat-message-user-wrap .footer-chat-message-user button.emoji-btn, .content-chat .content-chat-message-user-wrap .footer-chat-message-user button.send-btn {
+        z-index: 1;
+        order: 2;
+        width: 31px;
+        height: 31px;
+        background-color: #3686fc;
+        position: absolute;
+        top: 50%;
+        right: 13px;
+        transform: translateY(-50%);
+    }
+    .content-chat .content-chat-message-user-wrap .footer-chat-message-user button.emoji-btn img, .content-chat .content-chat-message-user-wrap .footer-chat-message-user button.send-btn img {
+        max-width: 13px;
+    }
+}
+

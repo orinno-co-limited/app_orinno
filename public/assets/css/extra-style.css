@@ -1,0 +1,49 @@
+/* Put Extra style Here Start */
+
+/* Select2 Style Start */
+.select2-container--default .select2-selection--single {
+    border: 1px solid var(--border-color)!important;
+    height: 50px!important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 22px!important;
+    height: 50px!important;
+    padding: 13px 27px 13px 20px!important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 50px!important;
+    width: 32px!important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    display: none;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid var(--border-color)!important;
+}
+.select2-container--default .select2-results_option--highlighted.select2-results_option--selectable {
+    background-color: var(--primary-color)!important;
+}
+.select2-dropdown {
+    border: 1px solid var(--border-color)!important;
+    box-shadow: 0 5px 12px rgb(0 0 0 / 10%)!important;
+}
+/* Select2 Style End */
+
+/* Maintainer Ticket Details Start */
+.dropify-wrapper {
+    border: 1px solid var(--border-color)!important;
+}
+/* Maintainer Ticket Details End */
+
+/* Auth/Login Logo Size Start */
+.sign-up-top-logo img {
+    max-height: 60px;
+    width: auto;
+}
+/* Auth/Login Logo Size End */
+
+/* Put Extra style Here End */

@@ -1,0 +1,485 @@
+/*-------------------------------------------
+    27. Responsive Design CSS
+-------------------------------------------*/
+
+/*=====================================
+    Extra Large Screen
+========================================*/
+
+@media only screen and (min-width: 1920px) {
+}
+
+/*=====================================
+  For Large Screen
+========================================*/
+
+/*------Max 1200px Width Screen------*/
+
+@media only screen and (max-width: 1736px) {
+
+    /* Tenants Details Home Details Page */
+    .tenants-details-property-info-left {
+        width: 100%;
+    }
+    .tenants-details-property-info-right {
+        width: 40%;
+    }
+    /* Tenants Details Home Details Page */
+
+}
+
+/*--------Max 1680px Width Screen---------*/
+@media only screen and (max-width: 1680px) {
+}
+
+/*--------Max 1475px Width Screen---------*/
+@media only screen and (max-width: 1475px) {
+}
+
+/*--------Max 1366px Width Screen---------*/
+
+@media only screen and (max-width: 1399px){
+
+   /* Tenants Page */
+   .tenants-top-bar-right .row {
+        justify-content: flex-start!important;
+        /* margin-top: 15px; */
+    }
+    .tenants-top-bar-right .page-inner-search {
+        width: 100%;
+    }
+   /* Tenants Page */
+
+   /* Tenants Details Home Details Page */
+   .tenants-details-home-details-property-item .property-item-content {
+        flex-direction: column;
+    }
+    .tenants-details-property-info-right {
+        text-align: left;
+        margin-top: 15px;
+    }
+    .tenants-details-property-info-right {
+        width: 100%;
+    }
+   /* Tenants Details Home Details Page */
+
+}
+@media only screen and (min-width: 1200px) and (max-width: 1366px) {
+}
+
+/*Default for Max 1366px Width Devices*/
+@media only screen and (max-width: 1366px) {
+}
+
+/*--------Max 1200px Width Screen---------*/
+
+@media only screen and (max-width: 1200px) {
+
+    /* Add Tenants Page */
+    .tenants-property-item-list-view .property-item-address, .tenants-property-item-list-view .property-item-title {
+        width: 100%;
+    }
+    /* Add Tenants Page */
+
+}
+
+/*=====================================
+  For Medium Screen
+========================================*/
+
+@media only screen and (max-width: 1199.98px){
+
+    h1 {
+        font-size: 34px;
+        line-height: 42px;
+    }
+    h2 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    /*Sign In*/
+    .sign-up-left-content, .sign-up-right-content {
+        padding: 30px;
+    }
+    /*Sign In*/
+
+    /* Add Property Stepper */
+    #progressbar li {
+        min-width: 30%;
+    }
+    /* Add Property Stepper */
+
+    /* Dashboard Inner Dashboard Layout Start */
+    .account-settings-leftside, .account-settings-rightside {
+        min-height: auto;
+        height: auto;
+    }
+    /* Dashboard Inner Dashboard Layout End */
+
+    /* Add Tenants Page */
+    .tenants-property-item-list-view .property-item-img img {
+        width: 210px;
+        min-height: 200px;
+        height: 200px;
+    }
+    .tenants-property-item-list-view .property-item-info {
+        width: 375px;
+    }
+    /* Add Tenants Page */
+
+    /* Ticket Details Page */
+    .ticket-details-area-wrap {
+        flex-direction: column-reverse;
+    }
+    /* Ticket Details Page */
+
+
+    /* Chat Page Start */
+    .chat-sidebar-toggle-btn {
+        display: block;
+    }
+    .message-chat-right-part {
+        height: 600px;
+        max-height: 100vh;
+        overflow-y: hidden;
+    }
+    .message-chat-main-part {
+        max-height: 400px;
+    }
+    .message-user-list-wrap {
+        max-height: 400px;
+    }
+    .chat-sidebar-offcanvas {
+        height: 600px;
+        max-height: 100vh;
+        position: absolute;
+        width: auto;
+        visibility: hidden;
+        z-index: 9999;
+        transform: translateX(-115%)!important;
+    }
+    .offcanvas.show:not(.hiding), .offcanvas.showing {
+        transform: none!important;
+    }
+    .chat-sidebar-offcanvas .offcanvas-header {
+        display: flex;
+        justify-content: flex-end;
+        padding: var(--bs-offcanvas-padding-y) var(--bs-offcanvas-padding-x) 0 0;
+    }
+    .chat-sidebar-wrap .offcanvas-backdrop {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .chat-sidebar-offcanvas .offcanvas-body {
+        overflow-y: visible;
+        padding: 0;
+    }
+    /* Chat Page End */
+
+}
+
+@media only screen and (min-width: 992px){
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+}
+
+/*======================================
+      Tablet layout
+=========================================*/
+
+@media only screen and (max-width: 992.98px) {
+    /* Dashboard Layout */
+    .page-content {
+        padding-right: 0;
+    }
+    .direction-rtl .page-content {
+        padding-left: 0;
+    }
+    /* Dashboard Layout */
+
+}
+
+@media only screen and (min-width: 991px) {
+}
+
+@media only screen and (min-width: 768.98px) and (max-width: 991.98px) {
+}
+
+@media only screen and (max-width: 991.98px) {
+
+    .section-t-space {
+        padding-top: 50px;
+    }
+    .section-b-space, .section-b-85-space {
+        padding-bottom: 50px;
+    }
+    .section-b-85-space {
+        padding-bottom: 15px;
+    }
+    .section-b-90-space {
+        padding-bottom: 50px;
+    }
+    .section-t-90-space {
+        padding-top: 50px;
+    }
+    .section-p-t-b-100 {
+        padding: 50px 0 50px;
+    }
+
+    /* Sign Up page */
+    .sign-up-right-content form {
+        width: 100%;
+    }
+    .sign-up-left-content p {
+        width: 100%!important;
+    }
+}
+
+@media only screen and (min-width: 768.98px) and (max-width: 1199.98px) {
+    /* Tenants Details Home Details Page */
+    .tenants-details-property-info-left {
+        width: 70%;
+    }
+    /* Tenants Details Home Details Page */
+}
+
+@media only screen and (max-width: 768.98px) {
+
+}
+
+/*=======================================
+      For Small Devices
+=========================================*/
+@media only screen and (max-width: 767.98px) {
+
+    /*Sign In*/
+    .sign-up-page .sign-up-page-wrap-row {
+        flex-direction: column-reverse;
+    }
+    .sign-up-left-content, .sign-up-right-content {
+        min-height: auto;
+        height: auto;
+    }
+    .sign-up-bottom-img img {
+        width: 250px;
+    }
+
+    /* All Property Page */
+    .page-inner-search {
+        width: 100%;
+    }
+    /* All Property Page */
+
+    /* Property details Page */
+    .property-details-right {
+        text-align: start!important;
+        margin-top: 15px;
+    }
+    /* Property details Page */
+
+    /* Add Property Stepper */
+    #progressbar li {
+        min-width: 40%;
+    }
+    /* Add Property Stepper */
+
+    /* Tenants Page */
+    .tenants-info-right {
+        text-align: left!important;
+        margin-top: 6px;
+    }
+    /* Tenants Page */
+
+    /* Add Tenants Page */
+    .tenants-property-item-list-view {
+        flex-direction: column;
+        align-items: flex-start!important;
+    }
+    .tenants-property-item-list-view .property-item-img-wrap {
+        width: 100%;
+    }
+    .tenants-property-item-list-view .property-item-img img {
+        width: 100%;
+        height: 250px;
+    }
+    .tenants-property-item-list-view .property-item-content {
+        margin-left: 0!important;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+    .tenants-property-item-list-view .property-item-info {
+        width: auto;
+    }
+    /* Add Tenants Page */
+
+}
+
+/*========================================
+    For large mobile
+=========================================*/
+@media only screen and (max-width: 766.98px){
+    /* Property Details */
+    .owl-theme .owl-nav {
+        top: 40%;
+    }
+    /* Property Details */
+
+}
+@media only screen and (min-width: 480px) and (max-width: 766px){
+}
+
+@media only screen and (min-width: 576px) and (max-width: 700px) {
+}
+
+@media only screen and (max-width:575.98px) {
+
+    .section-title {
+        width: 100%;
+    }
+    /* Add Property Stepper */
+    #progressbar li {
+        min-width: 50%;
+    }
+    /* Add Property Stepper */
+
+    /* Property Details */
+    .property-details-img img {
+        height: 240px;
+    }
+    /* Property Details */
+
+    /* Add Tenants Page */
+    .tenants-property-item-list-view .property-info-item-right {
+        justify-content: flex-start;
+    }
+    /* Add Tenants Page */
+
+    /* Tenants Details Home Details Page */
+    .tenants-details-home-details-property-item .property-item-img img {
+        height: 230px;
+    }
+    /* Tenants Details Home Details Page */
+
+    /* Chat Page */
+    .message-user-item .user-img-wrap img, .message-user-item-left .user-img-wrap img, .chat-item .user-img-wrap img {
+        height: 36px;
+        width: 36px;
+    }
+    .message-chat-right-part .font-15 {
+        font-size: 13px;
+        line-height: 18px;
+    }
+    .conversation-start-date {
+        font-size: 12px;
+    }
+    .message-chat-right-part .font-13 {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .chat-text-box p {
+        font-size: 12px;
+    }
+    .online-offline-show {
+        right: 3px;
+    }
+    .chat-sidebar-toggle-btn {
+        height: 36px;
+        width: 36px;
+    }
+    /* Chat Page */
+
+}
+
+@media only screen and (max-width:480px) {
+    /* Add Property Stepper */
+       #progressbar li {
+        min-width: 100%;
+    }
+    .select-property-nav-tabs .nav-link {
+        margin-right: 5px!important;
+    }
+    /* Add Property Stepper */
+}
+
+@media only screen and (max-width:450px) {
+
+    /* Google Map */
+    .show-map-here iframe {
+        height: 160px!important;
+    }
+    /* Google Map */
+
+    /* Custom Calendar */
+    .ui-datepicker {
+        max-width: 216px;
+    }
+    .ui-datepicker-calendar tbody tr td, .ui-datepicker-next.ui-corner-all {
+        width: 29.7px!important;
+        font-size: 12px;
+    }
+    .ui-datepicker-calendar thead tr th {
+        width: 29.7px!important;
+        min-width: 29.7px!important;
+        font-size: 12px;
+    }
+    /* Custom Calendar */
+
+    /* Add Tenants Page */
+    .show-uploaded-documents {
+        flex-direction: column;
+        align-items: flex-start!important;
+    }
+    .show-uploaded-documents-img {
+        margin-bottom: 10px;
+    }
+    .show-uploaded-documents-content {
+        flex-direction: column;
+        align-items: flex-start!important;
+    }
+    /* Add Tenants Page */
+
+    /* Tenant Portal Start */
+    /* Tenant invoice details page */
+    .invoice-payment-img img {
+        height: 16px;
+        margin-left: 3px;
+    }
+    /* Tenant invoice details page */
+
+    /* Tenant Portal Start */
+
+}
+
+/*=========================================
+      For very little mobile
+=========================================*/
+@media only screen and (max-width:340px) {
+
+    /* Profile Photo with Delete btn Start */
+    .upload-profile-photo-with-delete-btn {
+        flex-direction: column;
+        display: flex;
+        align-items: flex-start;
+    }
+    .upload-profile-photo-with-delete-btn .theme-btn-red {
+        margin-left: 0!important;
+        margin-top: 10px!important;
+    }
+    /* Profile Photo with Delete btn End */
+
+    /* Chat Page */
+    .chat-item.chat-item-right {
+        float: none;
+    }
+    /* Chat Page */
+}
+
+@media only screen and (min-width:300px) and (max-width:479px) {
+}
+/*-------------------------------------------
+    24. Responsive Design End
+-------------------------------------------*/

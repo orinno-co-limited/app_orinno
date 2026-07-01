@@ -1,0 +1,113 @@
+/* Form */
+.zForm-label {
+  margin-bottom: toRem(8);
+  font-size: toRem(18);
+  font-weight: $fw_medium;
+  line-height: toRem(28);
+  color: $heading-color;
+}
+.zForm-control {
+  display: block;
+  width: 100%;
+  padding: toRem(12) toRem(16);
+  font-size: toRem(16);
+  font-weight: $fw_regular;
+  line-height: toRem(26);
+  color: $black;
+  background-color: $white;
+  background-clip: padding-box;
+  border: toRem(1) solid $stroke;
+  border-radius: toRem(58);
+  appearance: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:focus,
+  &:hover {
+    border: toRem(1) solid $primary-color;
+    // color: $para-text !important;
+    background-color: $white !important;
+    box-shadow: 0 0 0 rgb(0 0 0 / 0);
+  }
+  &::placeholder {
+    font-size: toRem(16);
+    font-weight: $fw_regular;
+    line-height: toRem(26);
+    color: $para-text;
+  }
+}
+textarea {
+  &.zForm-control {
+    resize: none;
+    min-height: toRem(179);
+    border-radius: toRem(8);
+  }
+}
+.formSubmit-btn {
+  padding: toRem(16) toRem(30);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  @include fontFamily(16, $fw_semiBold, 16, $white);
+  background: linear-gradient(90deg, #394491 3.25%, #04aded 95.73%);
+  border: none;
+  border-radius: toRem(50);
+  transition: all 0.3s;
+}
+/* Checkbox */
+.zForm-wrap {
+  &-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: toRem(12);
+    input {
+      &.form-check-input {
+        // margin-top: 0;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        border: 1px solid $para-text;
+        border-radius: toRem(2);
+        background-color: $white;
+        &:checked {
+          background-color: $black;
+          border-color: $black;
+        }
+      }
+    }
+    label {
+      @include fontFamily(14, $fw_regular, 24, $black);
+      a {
+        color: $black;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+// Switch
+.zCheck {
+  &.form-switch {
+    min-height: 24px;
+    input.form-check-input {
+      width: 48px;
+      height: 24px;
+      margin-top: 0;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      border: 1px solid $black;
+      border-radius: 100px;
+      background-color: $black;
+      background-image: url(../images/icon/switch-circle.svg);
+      background-size: 20px;
+      background-position-x: 2px;
+      &:checked {
+        background-color: $black;
+        border-color: $black;
+        background-image: url(../images/icon/switch-circle-checked.svg);
+        // background-size: 12px;
+        background-position-x: 24px;
+      }
+    }
+  }
+  label {
+    font-size: toRem(14);
+    font-weight: $fw_regular;
+    line-height: toRem(24);
+    color: $black;
+  }
+}

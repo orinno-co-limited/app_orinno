@@ -1,0 +1,53 @@
+/* Minimum width */
+.min-w-auto {
+  min-width: auto !important;
+}
+$min-w-array: 0;
+@each $min in $min-w-array {
+  .min-w-#{$min} {
+    min-width: toRem($min);
+  }
+}
+/* Maximum width */
+$max-w-array: 0;
+@each $max in $max-w-array {
+  .max-w-#{$max} {
+    max-width: toRem($max);
+  }
+}
+$max-sm-w-array: 0;
+@each $max-sm in $max-sm-w-array {
+  .max-sm-w-#{$max-sm} {
+    @media screen and (min-width: 576px) {
+      max-width: toRem($max-sm);
+    }
+  }
+}
+/* Width */
+$w-array: 30;
+@each $w in $w-array {
+  .w-#{$w} {
+    width: toRem($w) !important;
+  }
+}
+/* Minimum Height */
+$min-h-array: 0;
+@each $min in $min-h-array {
+  .min-h-#{$min} {
+    min-height: toRem($min) !important;
+  }
+}
+/* Maximum Height */
+$max-h-array: 0;
+@each $max in $max-h-array {
+  .max-h-#{$max} {
+    max-height: toRem($max);
+  }
+}
+/* Height */
+$h-array: 30;
+@each $h in $h-array {
+  .h-#{$h} {
+    height: toRem($h) !important;
+  }
+}

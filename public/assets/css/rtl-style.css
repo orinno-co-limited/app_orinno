@@ -1,0 +1,244 @@
+/* --------------------------------------------------
+LTR Support Styles Start
+-------------------------------------------------- */
+.direction-ltr {
+    direction: ltr;
+}
+/* --------------------------------------------------
+LTR Support Styles End
+-------------------------------------------------- */
+
+/* --------------------------------------------------
+RTL Support Styles Start
+-------------------------------------------------- */
+.direction-rtl {
+    direction: rtl;
+}
+
+/* ----RTL Template Default Style Start----- */
+.direction-rtl .ms-1 {
+    margin-left: 0!important;
+    margin-right: .25rem;
+}
+.direction-rtl .me-3 {
+    margin-right: 0!important;
+    margin-left: 1rem;
+}
+.direction-rtl .me-1 {
+    margin-right: 0!important;
+    margin-left: .25rem;
+}
+.direction-rtl .ms-2 {
+    margin-left: 0!important;
+    margin-right: .5rem;
+}
+.direction-rtl .ms-3 {
+    margin-left: 1rem!important;
+    margin-right: 1rem;
+}
+.direction-rtl .me-4 {
+    margin-right: 0!important;
+    margin-left: 1.5rem;
+}
+.direction-rtl .me-2 {
+    margin-right: 0!important;
+    margin-left: .5rem;
+}
+.direction-rtl .ms-auto {
+    margin-left: 0!important;
+    margin-right: auto!important;
+}
+
+
+.direction-rtl .dropdown-item {
+    text-align: right;
+}
+
+.direction-rtl .text-start {
+    text-align: right!important;
+}
+.direction-rtl .text-end {
+    text-align: left!important;
+}
+@media (min-width: 768px) {
+    .direction-rtl .text-md-end {
+        text-align: left!important;
+    }
+}
+
+.direction-rtl .theme-link .ri-arrow-right-line, .edit-btn .ri-arrow-right-line {
+    transform: rotate(0.5turn);
+}
+.direction-rtl .form-select {
+    padding: 13px 20px 13px 32px;
+}
+
+/* ----RTL Template Default Style End----- */
+
+/* ----Header Menu Start----- */
+.direction-rtl .navbar-header {
+    padding-right: 0;
+    padding-left: 40px;
+}
+.direction-rtl #vertical-menu-btn i {
+    transform: rotate(0.5turn);
+}
+.direction-rtl .noti-icon .noti-dot {
+    right: auto;
+    left: 7px;
+}
+.direction-rtl .notification-item .d-flex {
+    text-align: right;
+}
+/* ----Header Menu End----- */
+
+/* -----Sidebar Menu Start----- */
+.direction-rtl .main-content {
+    margin-left: 0;
+    margin-right: 240px;
+}
+.direction-rtl.vertical-collpsed .main-content {
+    margin-right: 70px!important;
+}
+.direction-rtl .page-content {
+    padding-left: 20px;
+    padding-right: 0;
+}
+@media (max-width: 992px) {
+    .direction-rtl .main-content {
+        margin-right: 0!important;
+    }
+}
+
+.direction-rtl #sidebar-menu .has-arrow:after {
+    float: left;
+}
+.direction-rtl #sidebar-menu ul li ul.sub-menu li a {
+    padding: .4rem 3.2rem .4rem 1.5rem;
+}
+.direction-rtl #sidebar-menu ul li ul.sub-menu li a::before {
+    margin-right: 0;
+    margin-left: 5px;
+}
+/* ----Sidebar Menu End----- */
+
+/* ----Add Property Start----- */
+.direction-rtl #progressbar li:after {
+    right: auto;
+    left: -12%;
+}
+.direction-rtl .nav-tabs .nav-item.show .nav-link .select-property-nav-text-box::after, .direction-rtl .nav-tabs .nav-link.active .select-property-nav-text-box::after {
+    left: auto;
+    right: 10px;
+    border-width: 0 0 1px 1px;
+    transform: rotate(-45deg);
+}
+.direction-rtl .custom-datepicker-inner i {
+    right: auto;
+    left: 15px;
+}
+.direction-rtl #msform .action-button-previous {
+    margin-right: 0;
+    margin-left: 15px;
+}
+.direction-rtl .custom-checkbox label:before {
+    margin-right: 0;
+    margin-left: 7px;
+}
+.direction-rtl .breadcrumb-item+.breadcrumb-item::before {
+    float: right;
+    transform: rotate(0.5turn);
+    top: -2px;
+    position: relative;
+    padding-left: .5rem;
+}
+.direction-rtl .form-select {
+    background-position: left .75rem center;
+}
+.direction-rtl .property-item-dropdown {
+    right: auto;
+    left: -3px;
+}
+.direction-rtl .page-inner-search .form-control {
+    padding-right: 40px;
+    padding-left: 20px;
+}
+.direction-rtl .page-inner-search span {
+    left: auto;
+    right: 13px;
+}
+.direction-rtl .custom-checkbox input:checked + label:after {
+    left: auto;
+    right: 6px;
+    border-width: 0 0 1px 1px;
+    transform: rotate(-45deg);
+}
+/* ----Add Property End----- */
+
+/* ----Tenants Property Start----- */
+.direction-rtl .account-settings-menu-item i, .direction-rtl .account-settings-menu-item .iconify {
+    margin-right: 0;
+    margin-left: 12px;
+}
+.direction-rtl .remove-tenants-item .account-settings-menu-item i {
+    margin-left: 0;
+}
+
+/* ----Datatable RTL CSS Start---- */
+.direction-rtl div.dataTables_wrapper div.dataTables_filter {
+    text-align: left;
+}
+.direction-rtl div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0!important;
+    margin-right: 0.5em;
+}
+.direction-rtl .paginate_button.next a .iconify, .direction-rtl .paginate_button.next a i, .direction-rtl .paginate_button.next a i.mdi::before,
+.direction-rtl .paginate_button.next.disabled a .iconify, .direction-rtl .paginate_button.next.disabled a i, .direction-rtl .paginate_button.next.disabled a i.mdi::before {
+    transform: rotate(-180deg);
+}
+.direction-rtl .paginate_button.previous a .iconify, .direction-rtl .paginate_button.previous a i, .direction-rtl .paginate_button.previous a i.mdi::before,
+.direction-rtl .paginate_button.previous.disabled a .iconify, .direction-rtl .paginate_button.previous.disabled a i, .direction-rtl .paginate_button.previous.disabled a i.mdi::before {
+    transform: rotate(180deg);
+}
+.direction-rtl .dataTables_wrapper .btn-group>.btn-group:not(:last-child)>.btn, .direction-rtl .dataTables_wrapper .btn-group>.btn.dropdown-toggle-split:first-child, .direction-rtl .dataTables_wrapper .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.direction-rtl .dataTables_wrapper .btn-group>.btn-group:not(:first-child)>.btn, .direction-rtl .dataTables_wrapper .btn-group>.btn:nth-child(n+3), .direction-rtl .dataTables_wrapper .btn-group>:not(.btn-check)+.btn {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.direction-rtl .dataTables_wrapper .dt-buttons.btn-group.flex-wrap {
+    margin-bottom: 25px;
+}
+/* ----Datatable RTL CSS End---- */
+
+/* ----Modal RTL CSS Start---- */
+.direction-rtl .modal-header .btn-close {
+    margin: calc(-.5 * var(--bs-modal-header-padding-y)) auto calc(-.5 * var(--bs-modal-header-padding-y)) calc(-.5 * var(--bs-modal-header-padding-x));
+}
+/* ----Modal RTL CSS End---- */
+
+/* ----Tenants Property End----- */
+
+/* Auth Page RTL Start */
+.direction-rtl .custom-checkbox label:before {
+    margin-right: 0;
+    margin-left: 7px;
+}
+.direction-rtl .sign-up-right-content .pass-icon {
+    float: left;
+    right: auto;
+    left: 10px;
+}
+/* Auth Page RTL End */
+
+/* --------------------------------------------------
+RTL Support Styles End
+-------------------------------------------------- */
+
+

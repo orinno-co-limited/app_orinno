@@ -1,0 +1,58 @@
+.hover {
+  &-color {
+    &-white {
+      transition: all 0.3s;
+      &:hover {
+        color: $white !important;
+      }
+    }
+    &-primary {
+      transition: all 0.3s;
+      &:hover {
+        color: $black !important;
+      }
+    }
+  }
+  &-bg {
+    &-transparent {
+      transition: all 0.3s;
+      &:hover {
+        background-color: transparent !important;
+      }
+    }
+    &-primary {
+      transition: all 0.3s;
+      &:hover {
+        background-color: $black !important;
+      }
+    }
+  }
+  &-border {
+    &-primary {
+      transition: all 0.3s;
+      &:hover {
+        border-color: $black !important;
+      }
+    }
+  }
+}
+.linkDefault-hover {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0%;
+    height: 1px;
+    background-color: $black;
+    transition: all 0.5s ease 0s;
+  }
+  &:hover {
+    &::before {
+      width: 100%;
+      left: 0;
+      right: auto;
+    }
+  }
+}

@@ -1,0 +1,113 @@
+.footer {
+    &-section {
+        background-color: $secondary-color;
+    }
+    &-logo {
+        display: inline-block;
+        max-height: toRem(45);
+        margin-bottom: toRem(19);
+    }
+    &-info {
+        @include fontFamily(17, $fw_regular, 27, $white-80);
+        padding-bottom: toRem(23);
+        max-width: toRem(342);
+    }
+    &-top {
+        padding: toRem(120) 0 toRem(96);
+        @media screen and (max-width: 991px) {
+            padding: toRem(50) 0;
+        }
+        @media screen and (max-width: 575px) {
+            padding: toRem(30) 0;
+        }
+    }
+    &-menu {
+        &-title {
+            @include fontFamily(25, $fw_medium, 30, $white);
+            padding-bottom: toRem(41);
+        }
+        li {
+            padding-bottom: toRem(19);
+            &:last-child {
+                padding-bottom: 0;
+            }
+            .link {
+                position: relative;
+                display: inline-block;
+                @include fontFamily(17, $fw_regular, 27, $white-80);
+                transition: all 0.3s;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 0%;
+                    height: 1px;
+                    background-color: $primary-color;
+                    transition: all 0.5s ease 0s;
+                }
+                &:hover {
+                    color: $primary-color;
+                    &::before {
+                        width: 100%;
+                        left: 0;
+                        right: auto;
+                    }
+                }
+            }
+        }
+    }
+    &-bottom {
+        border-top: toRem(1) solid $white-20;
+        padding: toRem(15) 0;
+        .text {
+            @include fontFamily(15, $fw_regular, 27, $white-80);
+            .link {
+                position: relative;
+                color: $white-80;
+                text-decoration: underline;
+                transition: all 0.3s;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 0%;
+                    height: 1px;
+                    background-color: $primary-color;
+                    transition: all 0.5s ease 0s;
+                }
+                &:hover {
+                    color: $primary-color;
+                    &::before {
+                        width: 100%;
+                        left: 0;
+                        right: auto;
+                    }
+                }
+            }
+        }
+    }
+    &-social {
+        display: flex;
+        align-items: center;
+        gap: toRem(12);
+        a {
+            width: toRem(40);
+            height: toRem(40);
+            border: toRem(1) solid $white;
+            border-radius: 50%;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $white;
+            transition: background-color 0.3s ease 0s, border-color 0.3s ease 0s;
+            &:hover {
+                background-color: $primary-color;
+                border-color: $primary-color;
+                color: $white;
+            }
+        }
+    }
+}

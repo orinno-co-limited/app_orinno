@@ -1,0 +1,139 @@
+/*
+Template Name: Zaiproty  Responsive  HTML5 Template
+Description: Zaiproty  Responsive  HTML5 Template
+Author: Mahmudul Hasan Sohel
+Author URI: https://zainiklab.com/
+Version: 1.0
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+// variable
+@import "variable/_variable.scss";
+
+// mixin
+@import "mixin/_mixin.scss";
+
+// body reset content
+@import "reset/predefine";
+
+// Header
+@import "header";
+
+// Footer
+@import "footer";
+
+// Preloader
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  z-index: 9999;
+  img {
+    max-width: 22rem;
+  }
+}
+#preloader-status {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+/* People Observation */
+.section {
+  &-peopleObservation {
+    overflow: hidden;
+    background-color: $black;
+  }
+}
+.peopleObservation-item {
+  height: 100%;
+  padding: toRem(40) toRem(20);
+  background-color: $white;
+  border-radius: toRem(10);
+  text-align: center;
+  .title {
+    @include fontFamily(20, $fw_medium, 30, $black);
+    padding-bottom: toRem(3);
+  }
+  .degi {
+    @include fontFamily(16, $fw_regular, 26, $para-text);
+    padding-bottom: toRem(20) !important;
+  }
+  .img {
+    width: toRem(226);
+    height: toRem(181);
+    margin: 0 auto;
+    border-radius: toRem(10);
+    overflow: hidden;
+    margin-bottom: toRem(35);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .text {
+    max-width: toRem(310);
+    margin: 0 auto !important;
+    @include fontFamilyAlt(20, $fw_medium, 1.5, $black);
+    padding-bottom: toRem(20);
+    @media screen and (max-width: 1199px) {
+      font-size: toRem(18);
+    }
+  }
+}
+.peopleObservationSlider {
+  padding-bottom: toRem(84);
+  @media screen and (max-width: 575px) {
+    padding-bottom: toRem(60);
+  }
+  &.swiper {
+    overflow: visible;
+  }
+  .swiper-pagination {
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s;
+    .swiper-pagination-bullet {
+      width: toRem(8);
+      height: toRem(8);
+      background: #e1dceb;
+      border: toRem(1) solid #e1dceb;
+      outline: toRem(1) solid transparent;
+      border-radius: 50%;
+      margin: 0 !important;
+      opacity: 1;
+      transition: all 0.3s;
+      &-active {
+        width: toRem(24);
+        height: toRem(24);
+        background: $black;
+        border: toRem(6) solid $white;
+        outline: toRem(1) solid $black;
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+/* Accordion */
+.zAccordion {
+  &-reset {
+    .accordion {
+      &-item {
+        border: none;
+        border-radius: 0;
+      }
+      &-body {
+        padding: 0;
+      }
+      &-button {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background-color: transparent !important;
+        padding: 0 !important;
+      }
+    }
+  }
+  &-one {
+    display: flex;
+    flex-direction: column;
+    row-gap: toRem(20);
+    .row {
+      div {
+        .accordion-item {
+          margin-bottom: toRem(20);
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    .accordion {
+      &-item {
+        border: toRem(1) solid $stroke;
+        border-radius: toRem(20);
+        background-color: transparent;
+      }
+      &-body {
+        padding: toRem(0) toRem(30) toRem(22);
+        @include fontFamily(17, $fw_regular, 27, $body-font-color);
+        @media screen and (max-width: 767px) {
+          padding: toRem(0) toRem(28) toRem(32) !important;
+        }
+        @media screen and (max-width: 575px) {
+          padding: toRem(0) toRem(10) toRem(10) !important;
+          font-size: toRem(16);
+        }
+      }
+      &-button {
+        padding: toRem(26) toRem(28) !important;
+        @include fontFamily(24, $fw_medium, 34, $heading-color);
+        column-gap: toRem(4);
+        @media screen and (max-width: 767px) {
+          padding: toRem(20) !important;
+        }
+        @media screen and (max-width: 575px) {
+          padding: toRem(10) !important;
+          font-size: toRem(16);
+        }
+        &.collapsed {
+          &::after {
+            background-image: url(../images/icon/accordion-icon.png);
+          }
+        }
+        &::after {
+          width: toRem(16);
+          height: toRem(16);
+          background-image: url(../images/icon/accordion-icon.png);
+          background-size: toRem(16);
+        }
+      }
+    }
+  }
+}

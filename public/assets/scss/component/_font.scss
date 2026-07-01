@@ -1,0 +1,65 @@
+/* Fnot size */
+$fs-array: 0;
+@each $fs in $fs-array {
+  .fs-#{$fs} {
+    font-size: toRem($fs);
+  }
+}
+@for $fs from 10 through 32 {
+  .fs-#{$fs} {
+    font-size: toRem($fs) !important;
+  }
+}
+$fs-sm-array: 0;
+@each $fs-sm in $fs-sm-array {
+  .fs-sm-#{$fs-sm} {
+    @media screen and (min-width: 576px) {
+      font-size: toRem($fs-sm) !important;
+    }
+  }
+}
+$fs-md-array: 18, 24;
+@each $fs-md in $fs-md-array {
+  .fs-md-#{$fs-md} {
+    @media screen and (min-width: 768px) {
+      font-size: toRem($fs-md) !important;
+    }
+  }
+}
+/* Font weight */
+$fw-array: 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000;
+@each $fw in $fw-array {
+  .fw-#{$fw} {
+    font-weight: #{$fw};
+  }
+}
+/* Line Height */
+$lh-array: 0;
+@each $lh in $lh-array {
+  .lh-#{$lh} {
+    line-height: toRem($lh);
+  }
+}
+@for $lh from 10 through 30 {
+  .lh-#{$lh} {
+    line-height: toRem($lh) !important;
+  }
+}
+$lh-md-array: 34;
+@each $lh-md in $lh-md-array {
+  .lh-md-#{$lh-md} {
+    @media screen and (min-width: 768px) {
+      line-height: toRem($lh-md);
+    }
+  }
+}
+/* Letter Spacing */
+@for $ls from 1 through 10 {
+  .ls-#{$ls} {
+    letter-spacing: toRem($ls) !important;
+  }
+}
+/* text justify */
+.text-justify {
+  text-align: justify;
+}

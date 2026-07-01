@@ -1,0 +1,36 @@
+/* Gap */
+$g-array: 0;
+@each $g in $g-array {
+  .g-#{$g} {
+    gap: #{$g}px;
+  }
+}
+@for $g from 1 through 30 {
+  .g-#{$g} {
+    gap: toRem($g) !important;
+  }
+}
+/* Row Gap */
+$rg-array: 0;
+@each $rg in $rg-array {
+  .rg-#{$rg} {
+    row-gap: #{$rg}px;
+  }
+}
+@for $rg from 1 through 30 {
+  .rg-#{$rg} {
+    row-gap: toRem($rg) !important;
+  }
+}
+/* Column gap */
+$cg-array: 0;
+@each $cg in $cg-array {
+  .cg-#{$cg} {
+    column-gap: #{$cg}px;
+  }
+}
+@for $cg from 1 through 30 {
+  .cg-#{$cg} {
+    column-gap: toRem($cg) !important;
+  }
+}

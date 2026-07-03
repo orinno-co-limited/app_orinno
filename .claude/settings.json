@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo \"test-content-$\\(date +%s\\)\")",
+      "Bash(rm storage/app/public/__symlink_test.txt public/storage/__symlink_test.txt)"
+    ]
+  }
+}

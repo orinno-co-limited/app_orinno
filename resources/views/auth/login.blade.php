@@ -2,6 +2,35 @@
 @push('title')
     {{ __('Login') }} -
 @endpush
+@push('style')
+    <style>
+        .auth-topbar .sign-up-top-logo {
+            display: inline-flex;
+        }
+
+        .auth-signup-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 22px;
+            border: 1px solid var(--border-color-2);
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--heading-color) !important;
+            white-space: nowrap;
+        }
+
+        .auth-signup-pill:hover {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color-transparent);
+            color: var(--primary-color) !important;
+        }
+
+        .auth-subtitle {
+            color: var(--body-font-color);
+        }
+    </style>
+@endpush
 @section('content')
     <div id="headless-wrapper">
         <section class="sign-up-page bg-white">
@@ -11,19 +40,17 @@
                         <div class="sign-up-right-content bg-white">
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
-                                <div class="mb-25 sign-up-top-logo">
-                                    <a href="/">
+                                <div class="mb-30 d-flex align-items-center justify-content-between auth-topbar">
+                                    <a href="/" class="sign-up-top-logo mb-0">
                                         <span class="logo-lg">
                                             <img src="{{ getSettingImage('app_logo') }}">
                                         </span>
                                     </a>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-30">
-                                    <h1 class="mb-0">{{ __('Sign in') }}</h1>
-                                    <a href="{{ route('owner.register.form') }}"
-                                        class="theme-btn theme-button1 theme-button3 font-15 fw-bold"
+                                    <a href="{{ route('owner.register.form') }}" class="auth-signup-pill"
                                         title="{{ __('Sign Up') }}">{{ __('Sign Up') }}</a>
                                 </div>
+                                <h1 class="mb-2">{{ __('Sign in') }}</h1>
+                                <p class="font-16 mb-30 auth-subtitle">{{ __('Welcome back! Please enter your details to continue.') }}</p>
                                 <div class="row mb-25">
                                     <div class="col-md-12">
                                         <label

@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "Bash(echo \"test-content-$\\(date +%s\\)\")",
-      "Bash(rm storage/app/public/__symlink_test.txt public/storage/__symlink_test.txt)"
+      "Bash(rm storage/app/public/__symlink_test.txt public/storage/__symlink_test.txt)",
+      "Bash(powershell -Command \"Get-Item 'c:\\\\xampp\\\\htdocs\\\\app_orinno\\\\public\\\\storage' | Select-Object Name, LinkType, Target\")",
+      "Bash(wmic process *)",
+      "Bash(\"/c/php83/php.exe\" --ini)",
+      "Bash(netstat -ano)",
+      "Bash(\"/c/php83/php.exe\" artisan *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8000/login --max-time 8)",
+      "Read(//c/Users/ADMINI~1/AppData/Local/Temp/claude/c--xampp-htdocs-app-orinno/fc230775-3e46-40ae-87dd-99503cb45756/scratchpad/**)",
+      "Bash(npx playwright *)"
     ]
   }
 }

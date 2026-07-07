@@ -44,7 +44,7 @@ Route::get('/local/{ln}', function ($ln) {
     return redirect()->back();
 })->name('local');
 
-Route::group(['middleware' => ['version.update', 'addon.update', 'isFrontend']], function () {
+Route::group(['middleware' => ['isFrontend']], function () {
     Route::get('/', [CommonController::class, 'index'])->name('frontend');
     Route::get('recurring-generate-invoice', [CommonController::class, 'generateInvoice'])->name('recurring.generate.invoice');
     Route::get('about-us', [CommonController::class, 'aboutUs'])->name('about-us');
@@ -54,17 +54,15 @@ Route::group(['middleware' => ['version.update', 'addon.update', 'isFrontend']],
     Route::get('feature', [CommonController::class, 'feature'])->name('feature');
 });
 
-Route::group(['middleware' => ['auth', 'version.update']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/logout', [LoginController::class, 'logout']);
-    Route::group(['middleware' => ['addon.update']], function () {
-        Route::get('profile', [ProfileController::class, 'myProfile'])->name('profile');
-        Route::post('profile', [ProfileController::class, 'profileUpdate'])->name('profile.update');
-        Route::get('change-password', [ProfileController::class, 'changePassword'])->name('change-password');
-        Route::post('change-password', [ProfileController::class, 'changePasswordUpdate'])->name('change-password.update');
-        Route::post('delete-my-account', [ProfileController::class, 'deleteMyAccount'])->name('delete-my-account');
+    Route::get('profile', [ProfileController::class, 'myProfile'])->name('profile');
+    Route::post('profile', [ProfileController::class, 'profileUpdate'])->name('profile.update');
+    Route::get('change-password', [ProfileController::class, 'changePassword'])->name('change-password');
+    Route::post('change-password', [ProfileController::class, 'changePasswordUpdate'])->name('change-password.update');
+    Route::post('delete-my-account', [ProfileController::class, 'deleteMyAccount'])->name('delete-my-account');
 
-        Route::get('notification-status/{id}', [NotificationController::class, 'status'])->name('notification.status');
-    });
+    Route::get('notification-status/{id}', [NotificationController::class, 'status'])->name('notification.status');
 });
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {

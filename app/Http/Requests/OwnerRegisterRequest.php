@@ -34,6 +34,7 @@ class OwnerRegisterRequest extends FormRequest
             'contact_number' => ['required', 'string', 'unique:users,contact_number'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'terms' => ['required', 'accepted'],
             'g-recaptcha-response' => [new ReCaptcha]
         ];
     }
@@ -41,7 +42,9 @@ class OwnerRegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'g-recaptcha-response' => 'Please check'
+            'g-recaptcha-response' => 'Please check',
+            'terms.required' => 'You must agree to the Terms & Conditions to continue.',
+            'terms.accepted' => 'You must agree to the Terms & Conditions to continue.'
         ];
     }
 

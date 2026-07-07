@@ -146,6 +146,11 @@
                                     </div>
                                 </div>
                             </form>
+                            <p class="font-14 mt-25">
+                                {{ __('By signing in, you agree to our') }}
+                                <a href="{{ route('terms-conditions') }}" target="_blank"
+                                    class="secondary-color font-medium">{{ __('Terms & Conditions') }}</a>.
+                            </p>
                         </div>
                     </div>
                     <div class="col-md-6">

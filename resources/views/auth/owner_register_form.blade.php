@@ -84,6 +84,22 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row mb-25">
+                                    <div class="col-md-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="terms"
+                                                id="terms" value="1" {{ old('terms') ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="terms">
+                                                {{ __('I agree to the') }}
+                                                <a href="{{ route('terms-conditions') }}" target="_blank"
+                                                    class="secondary-color font-medium">{{ __('Terms & Conditions') }}</a>
+                                            </label>
+                                        </div>
+                                        @error('terms')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 @if (getOption('GOOGLE_RECAPTCHA_MAIL_STATUS', 0) == ACTIVE)
                                     <div class="row mb-25">
                                         <div class="col-md-12">

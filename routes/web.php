@@ -27,6 +27,8 @@ Auth::routes(['register' => false]);
 Route::get('owner/register', [\App\Http\Controllers\Auth\OwnerRegisterController::class, 'showForm'])->name('owner.register.form');
 Route::post('owner/register', [\App\Http\Controllers\Auth\OwnerRegisterController::class, 'store'])->name('owner.register.store');
 
+Route::view('terms-and-conditions', 'legal.terms')->name('terms-conditions');
+
 Route::get('/local/{ln}', function ($ln) {
     $language = Language::where('code', $ln)->first();
     if (!$language) {

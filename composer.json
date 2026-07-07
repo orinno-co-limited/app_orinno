@@ -34,8 +34,7 @@
         "stancl/tenancy": "^3.7",
         "stripe/stripe-php": "^9.6",
         "twilio/sdk": "^7.4",
-        "yajra/laravel-datatables-oracle": "~9.0",
-        "zainiklab/zai-installer": "^1.8"
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

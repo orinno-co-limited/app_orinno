@@ -82,36 +82,36 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware(['web', 'common'])
                 ->group(base_path('routes/web.php'));
 
-            Route::middleware(['web', 'tenancy', 'common', 'version.update', 'addon.update'])
+            Route::middleware(['web', 'tenancy', 'common'])
                 ->group(base_path('routes/admin.php'));
 
             if (isAddonInstalled('PROTYSAAS') > 1) {
-                Route::middleware(['web', 'tenancy', 'common', 'version.update', 'addon.update'])
+                Route::middleware(['web', 'tenancy', 'common'])
                     ->group(base_path('routes/saas.php'));
             }
 
             if (isAddonInstalled('PROTYSMS') > 0) {
-                Route::middleware(['web', 'tenancy', 'common', 'version.update', 'addon.update'])
+                Route::middleware(['web', 'tenancy', 'common'])
                     ->group(base_path('routes/bulk-sms-mail.php'));
             }
 
             if (isAddonInstalled('PROTYAGREEMENT') > 0) {
-                Route::middleware(['web', 'tenancy', 'common', 'version.update', 'addon.update'])
+                Route::middleware(['web', 'tenancy', 'common'])
                     ->group(base_path('routes/agreement.php'));
             }
 
             if (isAddonInstalled('PROTYLISTING') > 0) {
-                Route::middleware(['web', 'tenancy', 'common', 'version.update', 'addon.update'])
+                Route::middleware(['web', 'tenancy', 'common'])
                     ->group(base_path('routes/listing.php'));
             }
 
-            Route::middleware(['web', 'tenancy', 'common', 'version.update', 'addon.update'])
+            Route::middleware(['web', 'tenancy', 'common'])
                 ->group(base_path('routes/owner.php'));
 
-            Route::middleware(['web', 'tenancy', 'common', 'version.update', 'addon.update'])
+            Route::middleware(['web', 'tenancy', 'common'])
                 ->group(base_path('routes/tenant.php'));
 
-            Route::middleware(['web', 'tenancy', 'common', 'version.update', 'addon.update'])
+            Route::middleware(['web', 'tenancy', 'common'])
                 ->group(base_path('routes/maintainer.php'));
         });
     }

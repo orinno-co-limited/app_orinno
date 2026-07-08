@@ -200,7 +200,7 @@ class TenantService
             ->leftJoin('properties', 'tenants.property_id', '=', 'properties.id')
             ->leftJoin('property_details', 'properties.id', '=', 'property_details.property_id')
             ->leftJoin('property_units', 'tenants.unit_id', '=', 'property_units.id')
-            ->select(['tenants.*', 'users.first_name', 'users.last_name', 'users.contact_number', 'users.email', 'property_units.unit_name', 'properties.name as property_name', 'property_details.address as property_address', 'tenant_details.previous_address', 'tenant_details.previous_country_id', 'tenant_details.previous_state_id', 'tenant_details.previous_city_id', 'tenant_details.previous_zip_code', 'tenant_details.permanent_address', 'tenant_details.permanent_country_id', 'tenant_details.permanent_state_id', 'tenant_details.permanent_city_id', 'tenant_details.permanent_zip_code'])
+            ->select(['tenants.*', 'users.first_name', 'users.last_name', 'users.contact_number', 'users.email', 'property_units.unit_name', 'properties.name as property_name', 'property_details.address as property_address', 'tenant_details.previous_address', 'tenant_details.previous_country_id', 'tenant_details.previous_state_id', 'tenant_details.previous_city_id', 'tenant_details.permanent_address', 'tenant_details.permanent_country_id', 'tenant_details.permanent_state_id', 'tenant_details.permanent_city_id'])
             ->where('tenants.owner_user_id', $userId)
             ->where('tenants.id', $id)
             ->firstOrFail();
@@ -333,12 +333,10 @@ class TenantService
             $details->permanent_state_id = $request->permanent_state_id;
             $details->permanent_city_id = $request->permanent_city_id;
             $details->permanent_address = $request->permanent_address;
-            $details->permanent_zip_code = $request->permanent_zip_code;
             $details->previous_country_id = $request->previous_country_id;
             $details->previous_state_id = $request->previous_state_id;
             $details->previous_city_id = $request->previous_city_id;
             $details->previous_address = $request->previous_address;
-            $details->previous_zip_code = $request->previous_zip_code;
             $details->save();
 
             /*File Manager Call upload for Thumbnail Image*/

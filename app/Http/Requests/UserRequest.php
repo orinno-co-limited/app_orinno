@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -30,18 +31,21 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        $contactNumberRule = Rule::unique('users', 'contact_number')
+            ->where(fn ($query) => $query->where('role', $this->role));
+
         $rules = [
             'first_name' => 'required|min:2|max:255',
             'last_name' => 'required|min:2|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
             'role' => 'required',
-            'contact_number' => 'required|numeric|unique:users,contact_number',
+            'contact_number' => ['required', 'numeric', $contactNumberRule],
         ];
 
         if ($this->getMethod() == 'PUT') {
             $rules['email'] = 'required|email|unique:users,email,' . $this->id;
-            $rules['contact_number'] = 'bail|numeric|unique:users,contact_number,'.$this->id;
+            $rules['contact_number'] = ['bail', 'numeric', $contactNumberRule->ignore($this->id)];
             $rules['password'] =  'nullable|min:6';
         }
 

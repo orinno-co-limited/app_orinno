@@ -145,11 +145,11 @@
                                                                 </div>
                                                                 <div class="col-md-4 mb-25">
                                                                     <label
-                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('NID Number') }}</label>
-                                                                    <input type="text" class="form-control" name="nid_number"
-                                                                           placeholder="{{ __('NID Number') }}"
-                                                                           value="{{ auth()->user()->nid_number }}">
-                                                                    @error('nid_number')
+                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('NIN Number') }}</label>
+                                                                    <input type="text" class="form-control" name="nin_number"
+                                                                           placeholder="{{ __('NIN Number') }}"
+                                                                           value="{{ auth()->user()->nin_number }}">
+                                                                    @error('nin_number')
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                     @enderror
                                                                 </div>
@@ -266,10 +266,10 @@
                                                                 </div>
                                                                 <div class="col-md-4 mb-25">
                                                                     <label
-                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('State') }}</label>
+                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('District') }}</label>
                                                                     <input type="text" class="form-control"
                                                                         name="previous_state_id"
-                                                                        placeholder="{{ __('State') }}"
+                                                                        placeholder="{{ __('District') }}"
                                                                         value="{{ $details->previous_state_id }}">
                                                                     @error('previous_state_id')
                                                                         <span class="text-danger">{{ $message }}</span>
@@ -283,17 +283,6 @@
                                                                         placeholder="{{ __('City') }}"
                                                                         value="{{ $details->previous_city_id }}">
                                                                     @error('previous_city_id')
-                                                                        <span class="text-danger">{{ $message }}</span>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="col-md-4 mb-25">
-                                                                    <label
-                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('Zip Code') }}</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="previous_zip_code"
-                                                                        placeholder="{{ __('Zip Code') }}"
-                                                                        value="{{ $details->previous_zip_code }}">
-                                                                    @error('previous_zip_code')
                                                                         <span class="text-danger">{{ $message }}</span>
                                                                     @enderror
                                                                 </div>
@@ -333,10 +322,10 @@
                                                                 </div>
                                                                 <div class="col-md-4 mb-25">
                                                                     <label
-                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('State') }}</label>
+                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('District') }}</label>
                                                                     <input type="text" class="form-control"
                                                                         name="permanent_state_id"
-                                                                        placeholder="{{ __('State') }}"
+                                                                        placeholder="{{ __('District') }}"
                                                                         value="{{ $details->permanent_state_id }}">
                                                                     @error('permanent_state_id')
                                                                         <span class="text-danger">{{ $message }}</span>
@@ -350,17 +339,6 @@
                                                                         placeholder="{{ __('City') }}"
                                                                         value="{{ $details->permanent_city_id }}">
                                                                     @error('permanent_city_id')
-                                                                        <span class="text-danger">{{ $message }}</span>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="col-md-4 mb-25">
-                                                                    <label
-                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('Zip Code') }}</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="permanent_zip_code"
-                                                                        placeholder="{{ __('Zip Code') }}"
-                                                                        value="{{ $details->permanent_zip_code }}">
-                                                                    @error('permanent_zip_code')
                                                                         <span class="text-danger">{{ $message }}</span>
                                                                     @enderror
                                                                 </div>

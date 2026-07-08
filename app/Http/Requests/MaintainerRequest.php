@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Traits\ResponseTrait;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class MaintainerRequest extends FormRequest
@@ -32,7 +33,14 @@ class MaintainerRequest extends FormRequest
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|unique:users,email,' . $userId,
-            'contact_number' => 'bail|required|numeric|unique:users,contact_number,' . $userId,
+            'contact_number' => [
+                'bail',
+                'required',
+                'numeric',
+                Rule::unique('users', 'contact_number')
+                    ->where(fn ($query) => $query->where('owner_user_id', getOwnerUserId()))
+                    ->ignore($userId),
+            ],
             'password' => (is_null($userId)) ? 'required|min:6' : 'nullable',
             'property_id' => 'required',
         ];

@@ -126,7 +126,6 @@ class PropertyService
              property_details.country_id,
              property_details.state_id,
              property_details.city_id,
-             property_details.zip_code,
              property_details.address,
              property_details.map_link,users.first_name,
              users.last_name')
@@ -286,7 +285,6 @@ class PropertyService
             $propertyDetail->country_id = $request->country_id;
             $propertyDetail->state_id = $request->state_id;
             $propertyDetail->city_id = $request->city_id;
-            $propertyDetail->zip_code = $request->zip_code;
             $propertyDetail->address = $request->address;
             $propertyDetail->map_link = $request->map_link;
             $propertyDetail->save();

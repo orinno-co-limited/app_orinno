@@ -3851,13 +3851,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /*-------------------------------------------
     25. Tenant Portal Documents Page CSS Start
 -------------------------------------------*/
-.tenant-nid-icon.text-white.rounded-circle {
+.tenant-nin-icon.text-white.rounded-circle {
     height: 46px;
     width: 46px;
     background-color: var(--heading-color);
 }
 
-.upload-nid-wrap {
+.upload-nin-wrap {
     background: linear-gradient(90deg, #ECF4FF 0%, #E3EFFF 63.02%, #D8C9FF 84.44%, #BAFFCD 100%);
 }
 

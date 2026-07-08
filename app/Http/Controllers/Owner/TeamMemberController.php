@@ -41,7 +41,9 @@ class TeamMemberController extends Controller
             ],
             'contact_number' => [
                 'required',
-                Rule::unique('users')->ignore($request->id),
+                Rule::unique('users', 'contact_number')
+                    ->where(fn ($query) => $query->where('owner_user_id', getOwnerUserId()))
+                    ->ignore($request->id),
             ],
         ]);
         return $this->teamMemberServices->store($request);

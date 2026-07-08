@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class OwnerController extends Controller
 {
@@ -44,9 +45,15 @@ class OwnerController extends Controller
     {
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255', 'unique:users,email,' . $request->id],
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $request->id],
             'password' => ['nullable', 'string', 'min:6', 'confirmed'],
+            'contact_number' => [
+                'nullable',
+                Rule::unique('users', 'contact_number')
+                    ->where(fn ($query) => $query->whereIn('role', [USER_ROLE_OWNER, USER_ROLE_ADMIN]))
+                    ->ignore($request->id),
+            ],
         ]);
 
         try {

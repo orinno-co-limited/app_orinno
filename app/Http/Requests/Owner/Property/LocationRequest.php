@@ -27,9 +27,8 @@ class LocationRequest extends FormRequest
 //            'country' => 'required',
 //            'city' => 'required',
 //            'state' => 'required',
-            'zip_code' => 'required',
             'address' => 'required',
-//            'map_link' => 'required|url',
+            'map_link' => 'nullable|url',
         ];
         return $rules;
     }

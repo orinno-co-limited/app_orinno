@@ -34,12 +34,12 @@
                         <!-- Documents Area Start -->
                         <div class="documents-page-area">
                             @foreach ($kycConfigs->where('tenant_id', '!=', null) as $kycConfig)
-                                <div class="upload-nid-wrap radius-4 p-20 mb-25 alert alert-dismissible fade show"
+                                <div class="upload-nin-wrap radius-4 p-20 mb-25 alert alert-dismissible fade show"
                                     role="alert">
                                     <div class="d-flex align-items-center me-3">
                                         <div class="flex-shrink-0">
                                             <div
-                                                class="tenant-nid-icon text-white rounded-circle d-inline-flex align-items-center justify-content-center font-20">
+                                                class="tenant-nin-icon text-white rounded-circle d-inline-flex align-items-center justify-content-center font-20">
                                                 <span class="iconify" data-icon="clarity:notification-line"></span>
                                             </div>
                                         </div>

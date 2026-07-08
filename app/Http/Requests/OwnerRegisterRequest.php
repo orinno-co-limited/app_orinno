@@ -6,6 +6,7 @@ use App\Rules\ReCaptcha;
 use App\Traits\ResponseTrait;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class OwnerRegisterRequest extends FormRequest
@@ -31,7 +32,12 @@ class OwnerRegisterRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'contact_number' => ['required', 'string', 'unique:users,contact_number'],
+            'contact_number' => [
+                'required',
+                'string',
+                Rule::unique('users', 'contact_number')
+                    ->where(fn ($query) => $query->whereIn('role', [USER_ROLE_OWNER, USER_ROLE_ADMIN])),
+            ],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
             'terms' => ['required', 'accepted'],

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TenantRequest extends FormRequest
 {
@@ -32,13 +33,17 @@ class TenantRequest extends FormRequest
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'email' => 'required|unique:users,email,' . $userId,
-                'contact_number' => 'required|unique:users,contact_number,' . $userId,
+                'contact_number' => [
+                    'required',
+                    Rule::unique('users', 'contact_number')
+                        ->where(fn ($query) => $query->where('owner_user_id', getOwnerUserId()))
+                        ->ignore($userId),
+                ],
                 'password' => (is_null($userId)) ? 'required' : 'nullable',
                 'permanent_address' => 'required',
                 'permanent_country_id' => 'required',
                 'permanent_state_id' => 'required',
                 'permanent_city_id' => 'required',
-                'permanent_zip_code' => 'required',
                 'family_member' => 'required|numeric',
                 'age' => 'numeric',
                 'job' => 'required',
@@ -64,7 +69,6 @@ class TenantRequest extends FormRequest
             'permanent_country_id.required' => 'The country field is required.',
             'permanent_state_id.required' => 'The state is required.',
             'permanent_city_id.required' => 'The city is required.',
-            'permanent_zip_code.required' => 'The zip is required.',
         ];
     }
 }

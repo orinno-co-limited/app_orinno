@@ -47,7 +47,7 @@ class ProfileController extends Controller
             $user->last_name = $request->last_name;
             $user->contact_number = $request->contact_number;
             $user->date_of_birth = $request->date_of_birth;
-            $user->nid_number = $request->nid_number;
+            $user->nin_number = $request->nin_number;
             if (auth()->user()->role == USER_ROLE_ADMIN || auth()->user()->role == USER_ROLE_OWNER) {
                 $user->email = $request->email;
             }
@@ -65,13 +65,11 @@ class ProfileController extends Controller
                 $details->permanent_state_id = $request->permanent_state_id;
                 $details->permanent_city_id = $request->permanent_city_id;
                 $details->permanent_address = $request->permanent_address;
-                $details->permanent_zip_code = $request->permanent_zip_code;
 
                 $details->previous_country_id = $request->previous_country_id;
                 $details->previous_state_id = $request->previous_state_id;
                 $details->previous_city_id = $request->previous_city_id;
                 $details->previous_address = $request->previous_address;
-                $details->previous_zip_code = $request->previous_zip_code;
                 $details->save();
             }
             /*File Manager Call upload*/

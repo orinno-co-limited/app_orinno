@@ -187,7 +187,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row location" id="previous">
-                                                                <div class="col-md-3 mb-25">
+                                                                <div class="col-md-4 mb-25">
                                                                     <label
                                                                         class="label-text-title color-heading font-medium mb-2">{{ __('Country') }}</label>
                                                                     <input type="text" name="previous_country_id"
@@ -195,29 +195,21 @@
                                                                         class="form-control"
                                                                         placeholder="{{ __('Country') }}">
                                                                 </div>
-                                                                <div class="col-md-3 mb-25">
+                                                                <div class="col-md-4 mb-25">
                                                                     <label
-                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('State') }}</label>
+                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('District') }}</label>
                                                                     <input type="text" name="previous_state_id"
                                                                         value="{{ $tenant->previous_state_id }}"
                                                                         class="form-control"
-                                                                        placeholder="{{ __('State') }}">
+                                                                        placeholder="{{ __('District') }}">
                                                                 </div>
-                                                                <div class="col-md-3 mb-25">
+                                                                <div class="col-md-4 mb-25">
                                                                     <label
                                                                         class="label-text-title color-heading font-medium mb-2">{{ __('City') }}</label>
                                                                     <input type="text" name="previous_city_id"
                                                                         value="{{ $tenant->previous_city_id }}"
                                                                         class="form-control"
                                                                         placeholder="{{ __('City') }}">
-                                                                </div>
-                                                                <div class="col-md-3 mb-25">
-                                                                    <label
-                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('Zip Code') }}</label>
-                                                                    <input type="text" name="previous_zip_code"
-                                                                        value="{{ $tenant->previous_zip_code }}"
-                                                                        class="form-control"
-                                                                        placeholder="{{ __('Zip Code') }}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -240,7 +232,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row location" id="permanent">
-                                                                <div class="col-md-3 mb-25">
+                                                                <div class="col-md-4 mb-25">
                                                                     <label
                                                                         class="label-text-title color-heading font-medium mb-2">{{ __('Country') }}</label>
                                                                     <input type="text" name="permanent_country_id"
@@ -248,29 +240,21 @@
                                                                         class="form-control"
                                                                         placeholder="{{ __('Country') }}">
                                                                 </div>
-                                                                <div class="col-md-3 mb-25">
+                                                                <div class="col-md-4 mb-25">
                                                                     <label
-                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('State') }}</label>
+                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('District') }}</label>
                                                                     <input type="text" name="permanent_state_id"
                                                                         value="{{ $tenant->permanent_state_id }}"
                                                                         class="form-control"
-                                                                        placeholder="{{ __('State') }}">
+                                                                        placeholder="{{ __('District') }}">
                                                                 </div>
-                                                                <div class="col-md-3 mb-25">
+                                                                <div class="col-md-4 mb-25">
                                                                     <label
                                                                         class="label-text-title color-heading font-medium mb-2">{{ __('City') }}</label>
                                                                     <input type="text" name="permanent_city_id"
                                                                         value="{{ $tenant->permanent_city_id }}"
                                                                         class="form-control"
                                                                         placeholder="{{ __('City') }}">
-                                                                </div>
-                                                                <div class="col-md-3 mb-25">
-                                                                    <label
-                                                                        class="label-text-title color-heading font-medium mb-2">{{ __('Zip Code') }}</label>
-                                                                    <input type="text" name="permanent_zip_code"
-                                                                        value="{{ $tenant->permanent_zip_code }}"
-                                                                        class="form-control"
-                                                                        placeholder="{{ __('Zip Code') }}">
                                                                 </div>
                                                             </div>
                                                         </div>

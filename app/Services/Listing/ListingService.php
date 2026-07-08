@@ -45,8 +45,7 @@ class ListingService
             })
             ->when($request->q, function ($q) use ($request) {
                 $q->where('address', 'LIKE', "%$request->q%")
-                    ->orWhere('name', 'LIKE', "%$request->q%")
-                    ->orWhere('zip_code', $request->q);
+                    ->orWhere('name', 'LIKE', "%$request->q%");
             })
             ->when($request->country, function ($q) use ($request) {
                 $q->where('country', $request->country)
@@ -157,7 +156,6 @@ class ListingService
             $listing->country = $request->country;
             $listing->state = $request->state;
             $listing->city = $request->city;
-            $listing->zip_code = $request->zip_code;
             $listing->latitude = $request->latitude;
             $listing->longitude = $request->longitude;
             $listing->price = $request->price;

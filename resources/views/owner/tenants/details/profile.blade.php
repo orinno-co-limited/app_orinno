@@ -177,19 +177,11 @@
                                                 </div>
                                                 <div class="row account-settings-info-item">
                                                     <div class="col-md-6 col-lg-4 col-xl-4 col-xxl-2">
-                                                        <p class="color-heading">{{ __('State') }}:</p>
+                                                        <p class="color-heading">{{ __('District') }}:</p>
                                                     </div>
                                                     <div class="col-md-6 col-lg-8 col-xl-8 col-xxl-10">
                                                         <p>{{ $tenant->previous_state_id }}
                                                         </p>
-                                                    </div>
-                                                </div>
-                                                <div class="row account-settings-info-item">
-                                                    <div class="col-md-6 col-lg-4 col-xl-4 col-xxl-2">
-                                                        <p class="color-heading">{{ __('Zip Code') }}:</p>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-8 col-xl-8 col-xxl-10">
-                                                        <p>{{ $tenant->previous_zip_code }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row account-settings-info-item">
@@ -233,19 +225,11 @@
                                                 </div>
                                                 <div class="row account-settings-info-item">
                                                     <div class="col-md-6 col-lg-4 col-xl-4 col-xxl-2">
-                                                        <p class="color-heading">{{ __('State') }}:</p>
+                                                        <p class="color-heading">{{ __('District') }}:</p>
                                                     </div>
                                                     <div class="col-md-6 col-lg-8 col-xl-8 col-xxl-10">
                                                         <p>{{ $tenant->permanent_state_id }}
                                                         </p>
-                                                    </div>
-                                                </div>
-                                                <div class="row account-settings-info-item">
-                                                    <div class="col-md-6 col-lg-4 col-xl-4 col-xxl-2">
-                                                        <p class="color-heading">{{ __('Zip Code') }}:</p>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-8 col-xl-8 col-xxl-10">
-                                                        <p>{{ $tenant->permanent_zip_code }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row account-settings-info-item">

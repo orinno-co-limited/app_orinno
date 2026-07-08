@@ -46,4 +46,13 @@
 }
 /* Auth/Login Logo Size End */
 
+/* Iconify FOUC guard Start: hide the icon placeholder span until Iconify
+   has actually inserted the SVG, so a slow/failed icon fetch never shows
+   raw text or an empty box in its place */
+.iconify:empty {
+    display: inline-block;
+    visibility: hidden;
+}
+/* Iconify FOUC guard End */
+
 /* Put Extra style Here End */

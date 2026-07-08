@@ -26,8 +26,6 @@
 <!--Venobox-->
 <script src="{{ asset('assets/libs/venobox/venobox.min.js') }}"></script>
 
-<!--Iconify Icon-->
-<script src="{{ asset('assets/js/iconify.min.js') }}"></script>
 
 <!-- Plugin JavaScript -->
 <script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>

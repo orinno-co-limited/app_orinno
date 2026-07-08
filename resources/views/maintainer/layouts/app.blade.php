@@ -31,6 +31,9 @@
 
     @include('common.layouts.style')
     @stack('style')
+
+    <!--Iconify Icon (loaded early in head so icons convert before body paints)-->
+    <script src="{{ asset('assets/js/iconify.min.js') }}"></script>
 </head>
 
 <body class="{{ selectedLanguage()->rtl == 1 ? 'direction-rtl' : 'direction-ltr' }}">

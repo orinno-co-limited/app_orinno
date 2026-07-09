@@ -36,7 +36,7 @@ class OwnerRegisterRequest extends FormRequest
                 'required',
                 'string',
                 Rule::unique('users', 'contact_number')
-                    ->where(fn ($query) => $query->whereIn('role', [USER_ROLE_OWNER, USER_ROLE_ADMIN])),
+                    ->where(fn ($query) => $query->whereIn('role', [USER_ROLE_OWNER, USER_ROLE_ADMIN])->where('status', '!=', USER_STATUS_DELETED)),
             ],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],

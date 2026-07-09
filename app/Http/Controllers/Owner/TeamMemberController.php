@@ -42,7 +42,7 @@ class TeamMemberController extends Controller
             'contact_number' => [
                 'required',
                 Rule::unique('users', 'contact_number')
-                    ->where(fn ($query) => $query->where('owner_user_id', getOwnerUserId()))
+                    ->where(fn ($query) => $query->where('owner_user_id', getOwnerUserId())->where('status', '!=', USER_STATUS_DELETED))
                     ->ignore($request->id),
             ],
         ]);

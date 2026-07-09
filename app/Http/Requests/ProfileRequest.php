@@ -33,9 +33,9 @@ class ProfileRequest extends FormRequest
 
         $contactNumberRule = Rule::unique('users', 'contact_number')->ignore($authId);
         if (in_array($authUser->role, [USER_ROLE_OWNER, USER_ROLE_ADMIN])) {
-            $contactNumberRule = $contactNumberRule->where(fn ($query) => $query->whereIn('role', [USER_ROLE_OWNER, USER_ROLE_ADMIN]));
+            $contactNumberRule = $contactNumberRule->where(fn ($query) => $query->whereIn('role', [USER_ROLE_OWNER, USER_ROLE_ADMIN])->where('status', '!=', USER_STATUS_DELETED));
         } else {
-            $contactNumberRule = $contactNumberRule->where(fn ($query) => $query->where('owner_user_id', getOwnerUserId()));
+            $contactNumberRule = $contactNumberRule->where(fn ($query) => $query->where('owner_user_id', getOwnerUserId())->where('status', '!=', USER_STATUS_DELETED));
         }
 
         return [

@@ -29,7 +29,7 @@ $(function () {
         },
         markers: {
             size: 0,
-            colors: ["#3461ff", "#12bf24"],
+            colors: ["#3686FC"],
             strokeColors: "#fff",
             strokeWidth: 2,
             hover: {
@@ -39,9 +39,13 @@ $(function () {
         plotOptions: {
             bar: {
                 horizontal: !1,
-                columnWidth: "40%",
-                endingShape: "rounded"
+                columnWidth: "45%",
+                borderRadius: 6,
+                borderRadiusApplication: "end"
             }
+        },
+        fill: {
+            type: "solid"
         },
         legend: {
             show: false,
@@ -53,20 +57,32 @@ $(function () {
             enabled: !1
         },
         grid: {
-            show: false,
-            borderColor: '#eee',
+            show: true,
+            borderColor: '#F1F1F5',
             strokeDashArray: 4,
+            yaxis: {
+                lines: {
+                    show: true
+                }
+            }
         },
         stroke: {
             show: !0,
-            curve: "smooth"
+            curve: "smooth",
+            width: 0
         },
         colors: ["#3686FC"],
         xaxis: {
-            categories: MONTHS
+            categories: MONTHS,
+            axisBorder: {
+                show: false
+            },
+            axisTicks: {
+                show: false
+            }
         },
         tooltip: {
-            theme: 'dark',
+            theme: 'light',
             y: {
                 formatter: function (val) {
                     return currencyPrice(val)

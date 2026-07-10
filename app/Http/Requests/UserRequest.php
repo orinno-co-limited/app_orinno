@@ -32,7 +32,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $contactNumberRule = Rule::unique('users', 'contact_number')
-            ->where(fn ($query) => $query->where('role', $this->role));
+            ->where(fn ($query) => $query->where('role', $this->role)->where('status', '!=', USER_STATUS_DELETED));
 
         $rules = [
             'first_name' => 'required|min:2|max:255',

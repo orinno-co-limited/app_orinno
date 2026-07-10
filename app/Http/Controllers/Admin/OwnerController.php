@@ -51,7 +51,7 @@ class OwnerController extends Controller
             'contact_number' => [
                 'nullable',
                 Rule::unique('users', 'contact_number')
-                    ->where(fn ($query) => $query->whereIn('role', [USER_ROLE_OWNER, USER_ROLE_ADMIN]))
+                    ->where(fn ($query) => $query->whereIn('role', [USER_ROLE_OWNER, USER_ROLE_ADMIN])->where('status', '!=', USER_STATUS_DELETED))
                     ->ignore($request->id),
             ],
         ]);

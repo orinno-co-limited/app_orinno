@@ -18,10 +18,10 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-blue bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify orange-color" data-icon="bxs:home-circle"></span>
+                                    <span class="iconify" data-icon="bxs:home-circle"></span>
                                 </div>
                                 <p class="mt-2">{{ __('Total Property') }}</p>
                                 <h2 class="mt-1">{{ count($properties) }}</h2>
@@ -29,30 +29,30 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-orange bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify orange-color" data-icon="fluent:folder-open-16-filled"></span>
+                                    <span class="iconify" data-icon="mdi:ticket-outline"></span>
                                 </div>
                                 <p class="mt-2">{{ __('Open Ticket') }}</p>
                                 <h2 class="mt-1">{{ $totalOpenTickets }}</h2>
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-green bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify primary-color" data-icon="dashicons:tickets-alt"></span>
+                                    <span class="iconify" data-icon="mdi:check-circle"></span>
                                 </div>
                                 <p class="mt-2">{{ __('Resolved Ticket') }}</p>
                                 <h2 class="mt-1">{{ $totalResolvedTickets }}</h2>
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-red bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify red-color" data-icon="gridicons:cross-circle"></span>
+                                    <span class="iconify" data-icon="gridicons:cross-circle"></span>
                                 </div>
                                 <p class="mt-2">{{ __('Close Ticket') }}</p>
                                 <h2 class="mt-1">{{ $totalCloseTickets }}</h2>

@@ -38,7 +38,7 @@ class MaintainerRequest extends FormRequest
                 'required',
                 'numeric',
                 Rule::unique('users', 'contact_number')
-                    ->where(fn ($query) => $query->where('owner_user_id', getOwnerUserId()))
+                    ->where(fn ($query) => $query->where('owner_user_id', getOwnerUserId())->where('status', '!=', USER_STATUS_DELETED))
                     ->ignore($userId),
             ],
             'password' => (is_null($userId)) ? 'required|min:6' : 'nullable',

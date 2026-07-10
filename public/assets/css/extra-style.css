@@ -66,13 +66,16 @@
    ========================================================================== */
 
 :root {
-    --card-shadow: 0 1px 3px rgba(22, 14, 77, 0.05);
+    --card-shadow: 0 2px 8px rgba(22, 14, 77, 0.09);
 }
 
-/* Stat cards: neutral white card, color lives only in the icon badge */
+/* Stat cards: neutral white card, color lives only in the icon badge.
+   A visible border is used (not just a shadow) since the page background
+   (#F8F8F8) and card background (#fff) are too close in value for a faint
+   shadow alone to read as a separate surface. */
 .dashboard-feature-item {
     background-color: var(--bg-white) !important;
-    border: none !important;
+    border: 1px solid var(--border-color) !important;
     border-radius: 12px !important;
     box-shadow: var(--card-shadow);
 }
@@ -113,6 +116,7 @@
 
 /* Page content wrapper: soften against the light-gray page canvas */
 .page-content-wrapper {
+    border: 1px solid var(--border-color);
     box-shadow: var(--card-shadow);
 }
 

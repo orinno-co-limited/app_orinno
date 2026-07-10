@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\MonitoringController;
 use App\Http\Controllers\Admin\OwnerController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\VersionUpdateController;
@@ -20,6 +21,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
         Route::get('delete/{id}', [OwnerController::class, 'delete'])->name('delete');
         Route::post('store', [OwnerController::class, 'store'])->name('store')->middleware('isDemo');
         Route::post('update', [OwnerController::class, 'update'])->name('update')->middleware('isDemo');
+    });
+
+    Route::group(['prefix' => 'monitoring', 'as' => 'monitoring.'], function () {
+        Route::get('/', [MonitoringController::class, 'index'])->name('index');
+        Route::get('landlord-tenants', [MonitoringController::class, 'landlordTenants'])->name('landlord-tenants');
+        Route::get('all-tenants', [MonitoringController::class, 'allTenants'])->name('all-tenants');
     });
 
     Route::group(['prefix' => 'language', 'as' => 'language.'], function () {

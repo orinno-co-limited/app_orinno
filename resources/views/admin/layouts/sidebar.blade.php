@@ -67,6 +67,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('admin.monitoring.index') }}">
+                        <i class="ri-bar-chart-2-line"></i>
+                        <span>{{ __('Monitoring') }}</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('admin.setting.general-setting') }}">
                         <i class="ri-settings-3-line"></i>
                         <span>{{ __('Settings') }}</span>
@@ -82,21 +88,6 @@
                                 href="{{ route('profile') }}">{{ __('My Profile') }}</a></li>
                         <li><a href="{{ route('change-password') }}">{{ __('Change Password') }}</a></li>
                     </ul>
-                </li>
-                <li class="{{ @$subNavVersionUpdateActiveClass }}">
-                    <a href="{{ route('admin.file-version-update') }}"
-                        class="{{ @$subNavVersionUpdateActiveClass ? 'active' : '' }}">
-                        <i class="ri-refresh-line"></i>
-                        <span>{{ __('Version Update') }}</span>
-                    </a>
-                </li>
-                <li class="font-semi-bold mt-20 text-center text-info">
-                    <span>
-                        <span>
-                            {{ __('Current Version') }} :
-                        </span>
-                        {{ getOption('current_version', 'v1.0') }}
-                    </span>
                 </li>
             </ul>
         </div>

@@ -18,30 +18,30 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-lg-4 col-xl-4">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-blue bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify orange-color" data-icon="bxs:home-circle"></span>
+                                    <span class="iconify" data-icon="bxs:home-circle"></span>
                                 </div>
                                 <p class="mt-2">{{ $unit->unit_name }}</p>
                                 <h2 class="mt-1">{{ $property->name }}</h2>
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-4">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-orange bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify orange-color" data-icon="bxs:home-circle"></span>
+                                    <span class="iconify" data-icon="mdi:cash-multiple"></span>
                                 </div>
                                 <p class="mt-2">{{ __('Current Rent') }}</p>
                                 <h2 class="mt-1">{{ currencyPrice($tenant->general_rent) }}</h2>
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-4">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-red bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify red-color" data-icon="dashicons:tickets-alt"></span>
+                                    <span class="iconify" data-icon="dashicons:tickets-alt"></span>
                                 </div>
                                 <p class="mt-2">{{ __('Total Tickets') }}</p>
                                 <h2 class="mt-1">{{ $totalTickets }}</h2>

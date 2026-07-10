@@ -25,10 +25,10 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-blue bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify orange-color" data-icon="bxs:home-circle"></span>
+                                    <span class="iconify" data-icon="bxs:home-circle"></span>
                                 </div>
                                 <p class="mt-2">{{ __('Total Property') }}</p>
                                 <h2 class="mt-1">{{ $totalProperties }}</h2>
@@ -36,10 +36,10 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-purple bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify primary-color" data-icon="material-symbols:garage-home"></span>
+                                    <span class="iconify" data-icon="mdi:home-group"></span>
                                 </div>
                                 <p class="mt-2">{{ __('Total Units') }}</p>
                                 <h2 class="mt-1">{{ $totalUnits }}</h2>
@@ -47,10 +47,10 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-orange bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify orange-color" data-icon="bi:bar-chart-line-fill"></span>
+                                    <span class="iconify" data-icon="mdi:account-multiple"></span>
                                 </div>
                                 <p class="mt-2">{{ __('Total Tenants') }}</p>
                                 <h2 class="mt-1">{{ $totalTenants }}</h2>
@@ -58,10 +58,10 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item stat-green bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify green-color" data-icon="bi:bar-chart-line-fill"></span>
+                                    <span class="iconify" data-icon="mdi:account-wrench"></span>
                                 </div>
                                 <p class="mt-2">{{ __('Total Maintainers') }}</p>
                                 <h2 class="mt-1">{{ $totalMaintainers }}</h2>

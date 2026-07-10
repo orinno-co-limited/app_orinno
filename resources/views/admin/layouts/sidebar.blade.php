@@ -91,12 +91,12 @@
                     </a>
                 </li>
                 <li class="font-semi-bold mt-20 text-center text-info">
-                    <a href="">
+                    <span>
                         <span>
                             {{ __('Current Version') }} :
                         </span>
                         {{ getOption('current_version', 'v1.0') }}
-                    </a>
+                    </span>
                 </li>
             </ul>
         </div>

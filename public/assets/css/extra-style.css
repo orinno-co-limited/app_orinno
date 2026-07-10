@@ -55,4 +55,189 @@
 }
 /* Iconify FOUC guard End */
 
+/* ==========================================================================
+   Modern Dashboard Reskin Start
+   Restyles the existing dashboard-feature-item / icon-wrap / sidebar / table
+   markup shared by owner, admin, tenant, and maintainer dashboards. Pure CSS
+   on top of the existing classes so it cascades to all four roles without
+   touching their Blade structure. Cards stay neutral white; the
+   .stat-blue/-purple/-green/-orange/-red modifier classes only color the
+   circular icon badge, keeping the overall palette restrained.
+   ========================================================================== */
+
+:root {
+    --card-shadow: 0 1px 3px rgba(22, 14, 77, 0.05);
+}
+
+/* Stat cards: neutral white card, color lives only in the icon badge */
+.dashboard-feature-item {
+    background-color: var(--bg-white) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: var(--card-shadow);
+}
+
+.dashboard-feature-item p {
+    color: var(--body-font-color);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-bottom: 6px;
+}
+
+.dashboard-feature-item h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+/* Icon badge: solid circle, white glyph, one color per card */
+.dashboard-feature-item-icon-wrap {
+    width: 46px;
+    height: 46px;
+    border-radius: 50% !important;
+    box-shadow: none !important;
+}
+
+.dashboard-feature-item-icon-wrap .iconify {
+    color: #fff !important;
+    font-size: 20px;
+}
+
+.stat-blue .dashboard-feature-item-icon-wrap { background-color: var(--primary-color) !important; }
+.stat-purple .dashboard-feature-item-icon-wrap { background-color: var(--secondary-color) !important; }
+.stat-green .dashboard-feature-item-icon-wrap { background-color: var(--green-color) !important; }
+.stat-orange .dashboard-feature-item-icon-wrap { background-color: var(--orange-color) !important; }
+.stat-red .dashboard-feature-item-icon-wrap { background-color: var(--red-color) !important; }
+
+/* Page content wrapper: soften against the light-gray page canvas */
+.page-content-wrapper {
+    box-shadow: var(--card-shadow);
+}
+
+/* Data tables inside dashboard cards: lighter rows, breathing room, hover highlight */
+.dashboard-properties-table table.table,
+.bg-off-white > table.table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.dashboard-properties-table table.table th,
+.bg-off-white > table.table th {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--body-font-color);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-properties-table table.table td,
+.bg-off-white > table.table td {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-properties-table table.table tbody tr:hover,
+.bg-off-white > table.table tbody tr:hover {
+    background-color: var(--bg-light);
+}
+
+/* Status chips: fully rounded pill look */
+.status-btn {
+    border-radius: 999px !important;
+    font-weight: 600;
+    font-size: 12.5px;
+}
+
+/* Sidebar reskin: white nav on a light canvas, rounded inset rows, accented active state */
+.vertical-menu {
+    background: var(--bg-white);
+    border-right: 1px solid var(--border-color);
+}
+
+.navbar-brand-box {
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+}
+
+#sidebar-menu {
+    padding-top: 16px;
+}
+
+#sidebar-menu ul li a {
+    border-radius: 8px;
+    margin: 2px 12px;
+    width: calc(100% - 24px);
+}
+
+#sidebar-menu ul li a:hover {
+    background-color: var(--bg-light);
+}
+
+/* Active state, scoped strictly to the real nav list so it can never bleed
+   onto unrelated elements elsewhere on the page that happen to reuse the
+   mm-active/active class names. Minimal: a thin left indicator + bold text,
+   no filled background. */
+#sidebar-menu .mm-active > a {
+    box-shadow: inset 3px 0 0 var(--primary-color);
+    font-weight: 600;
+}
+
+#sidebar-menu .mm-active .active {
+    box-shadow: inset 3px 0 0 var(--primary-color);
+    font-weight: 600;
+}
+
+/* Top header bar: white, cleanly separated, uniform icon-button treatment
+   across owner/admin/tenant/maintainer (they all share these class names). */
+#page-topbar {
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* The vendor's own CSS sets .navbar-header height to 80px but positions
+   .vertical-menu at top:100px and .main-content .content at margin-top:70px
+   — the mismatch leaves a visible gap under the header (and clips content
+   10px under it). Align both to the real header height. */
+.vertical-menu {
+    top: 80px;
+}
+
+.main-content .content {
+    margin-top: 80px;
+}
+
+.header-item.noti-icon,
+.user-dropdown .header-item {
+    border-radius: 8px;
+}
+
+.header-item.noti-icon:hover,
+.user-dropdown .header-item:hover {
+    background-color: var(--bg-light);
+}
+
+.header-item.noti-icon i {
+    font-size: 20px;
+    color: var(--body-font-color);
+}
+
+/* Initials avatar fallback shown when a user has no uploaded profile photo,
+   instead of the vendor's default placeholder graphic (which reads as a
+   broken image at small sizes). */
+.header-avatar-initials {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Modern Dashboard Reskin End */
+
 /* Put Extra style Here End */

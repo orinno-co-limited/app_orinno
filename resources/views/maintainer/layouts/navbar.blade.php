@@ -21,9 +21,8 @@
         <div class="d-flex">
             <div class="dropdown d-inline-block">
                 <button type="button" class="header-item noti-icon" id="page-header-languages-dropdown"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset(selectedLanguage()->icon) }}" alt="{{ selectedLanguage()->name ?? 'English' }}"
-                        title="{{ selectedLanguage()->name ?? 'English' }}" class="rounded-circle avatar-xs fit-image">
+                    data-bs-toggle="dropdown" aria-expanded="false" title="{{ selectedLanguage()->name ?? 'English' }}">
+                    <i class="ri-global-line"></i>
                 </button>
                 <div class="dropdown-menu {{ selectedLanguage()->rtl == 1 ? 'dropdown-menu-start' : 'dropdown-menu-end' }}"
                     aria-labelledby="page-header-languages-dropdown">
@@ -31,9 +30,8 @@
                         @foreach (languages() as $language)
                             <a href="{{ route('local', $language->code) }}" class="dropdown-item"
                                 title="{{ $language->code }}">
-                                <div class="d-flex">
-                                    <img src="{{ $language->icon }}" class="me-3 rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                <div class="d-flex align-items-center">
+                                    <i class="ri-global-line me-3"></i>
                                     <div class="flex-1">{{ $language->name }}</div>
                                 </div>
                             </a>
@@ -92,9 +90,15 @@
             <div class="dropdown d-inline-block user-dropdown">
                 <button type="button" class="header-item" id="page-header-user-dropdown" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle avatar-xs fit-image header-profile-user"
-                        title="{{ auth()->user()->name }}" src="{{ auth()->user()->image }}"
-                        alt="{{ auth()->user()->name }}">
+                    @if (auth()->user()->image && auth()->user()->image != asset('assets/images/no-image.jpg'))
+                        <img class="rounded-circle avatar-xs fit-image header-profile-user"
+                            title="{{ auth()->user()->name }}" src="{{ auth()->user()->image }}"
+                            alt="{{ auth()->user()->name }}">
+                    @else
+                        <span class="header-profile-user header-avatar-initials rounded-circle d-inline-flex align-items-center justify-content-center">
+                            {{ strtoupper(substr(auth()->user()->first_name, 0, 1) . substr(auth()->user()->last_name, 0, 1)) }}
+                        </span>
+                    @endif
                     <span
                         class="d-none d-xl-inline-block ms-1 font-medium">{{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
                     <i class="mdi mdi-chevron-down d-xl-inline-block"></i>

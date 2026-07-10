@@ -16,6 +16,5 @@ yarn-error.log
 /.idea
 /.vscode
 composer.lock
-/resources/lang/*.json
 *.zip
 installed

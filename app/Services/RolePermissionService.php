@@ -43,7 +43,7 @@ class RolePermissionService
 
     public function getInfo($id){
 
-        return Role::findOrFail($id);
+        return Role::where('user_id', getOwnerUserId())->findOrFail($id);
     }
 
     public function store($request)
@@ -51,7 +51,7 @@ class RolePermissionService
         DB::beginTransaction();
         try {
             if ($request->id) {
-                $role = Role::find($request->id);
+                $role = Role::where('user_id', getOwnerUserId())->findOrFail($request->id);
             } else {
                 $role = new Role();
             }
@@ -75,7 +75,7 @@ class RolePermissionService
     public function delete($id)
     {
         try {
-            $role = Role::find($id);
+            $role = Role::where('user_id', getOwnerUserId())->findOrFail($id);
             $role->delete();
 
             return $this->success([], __(DELETED_SUCCESSFULLY));
@@ -89,7 +89,7 @@ class RolePermissionService
     {
         try {
             DB::beginTransaction();
-            $role = Role::where('id', $request->role_id)->first();
+            $role = Role::where('id', $request->role_id)->where('user_id', getOwnerUserId())->firstOrFail();
             $role->syncPermissions($request->permissions);
 
             DB::commit();

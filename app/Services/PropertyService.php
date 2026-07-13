@@ -624,6 +624,7 @@ class PropertyService
     public function getUnitsByPropertyId($id)
     {
         $propertyUnits = PropertyUnit::query()
+            ->join('properties', 'property_units.property_id', '=', 'properties.id')
             ->leftJoin('tenants', ['property_units.id' => 'tenants.unit_id', 'tenants.status' => (DB::raw(TENANT_STATUS_ACTIVE))])
             ->leftJoin('users', function ($q) {
                 $q->on('tenants.user_id', 'users.id')->whereNull('users.deleted_at');
@@ -631,6 +632,7 @@ class PropertyService
             ->leftJoin('file_managers', ['property_units.id' => 'file_managers.origin_id', 'file_managers.origin_type' => (DB::raw("'App\\\Models\\\PropertyUnit'"))])
             ->select('property_units.*', 'tenants.status as tenant_status', 'tenants.user_id', 'users.first_name', 'users.last_name', 'users.email', 'file_managers.file_name', 'file_managers.folder_name')
             ->where('property_units.property_id', $id)
+            ->where('properties.owner_user_id', getOwnerUserId())
             ->groupBy('property_units.id')
             ->get();
         return $this->success($propertyUnits);

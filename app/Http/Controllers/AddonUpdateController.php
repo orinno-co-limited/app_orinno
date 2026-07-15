@@ -135,7 +135,10 @@ class AddonUpdateController extends Controller
                 $this->logger->log('Zip', 'Open successfully');
                 try {
                     $this->logger->log('Zip Extracting', 'Start');
-                    $res = $zip->extractTo($demoPath);
+                    $res = safeExtractZip($zip, $demoPath);
+                    if ($res === false) {
+                        throw new Exception('Update package contains unsafe file paths.');
+                    }
                     $this->logger->log('Zip Extracting', 'END');
                     $this->logger->log('Get update note', 'START');
                     $versionFile = file_get_contents($demoPath . DIRECTORY_SEPARATOR . 'update_note.json');
@@ -168,6 +171,9 @@ class AddonUpdateController extends Controller
                             $this->logger->log('Checking Purchase key', 'Purchase key valid');
                             $this->logger->log('Get Root Path from update note', 'START');
                             $codeRootPath = $updateNote->root_path;
+                            if (hasPathTraversal($codeRootPath)) {
+                                throw new Exception('Update package root path is invalid.');
+                            }
                             $this->logger->log('Get Root Path from update note', 'END');
                             $this->logger->log('Get current version', 'START');
                             // $currentVersion = getCustomerAddonBuildVersion($code);
@@ -195,6 +201,9 @@ class AddonUpdateController extends Controller
 
                                         $allMoveFilePath = (array)($updateNote->code_path);
                                         foreach ($allMoveFilePath as $filePath => $type) {
+                                            if (!isSafeUpdateRelativePath($filePath)) {
+                                                throw new Exception('Update package targets a disallowed path: ' . $filePath);
+                                            }
                                             $this->logger->log('Move file', 'Start ' . $demoPath . DIRECTORY_SEPARATOR . $codeRootPath . DIRECTORY_SEPARATOR . $filePath . ' to ' . base_path($filePath));
                                             if ($type == 'file') {
                                                 File::copy($demoPath . DIRECTORY_SEPARATOR . $codeRootPath . DIRECTORY_SEPARATOR . $filePath, base_path($filePath));
@@ -220,6 +229,11 @@ class AddonUpdateController extends Controller
                                         $data = json_decode($versionResponseData->data->data);
                                         $this->logger->log('Command list', $data);
                                         foreach ($data as $d) {
+                                            if (!isAllowedUpdateArtisanCommand($d)) {
+                                                $this->logger->log('Command run ' . $d, 'BLOCKED');
+                                                $returnResponse['success'] = false;
+                                                throw new Exception('Update package contains a disallowed command.');
+                                            }
                                             $this->logger->log('Command run ' . $d, 'START');
                                             if (!Artisan::call($d)) {
                                                 $this->logger->log('Command run ' . $d, 'FAILED');

@@ -78,8 +78,10 @@ Route::group(['prefix' => 'payment'], function () {
     Route::get('verify-redirect/{type?}', [PaymentController::class, 'verifyRedirect'])->name('payment.verify.redirect');
 });
 
-Route::get('version-update', [VersionUpdateController::class, 'versionUpdate'])->name('version-update');
-Route::post('process-update', [VersionUpdateController::class, 'processUpdate'])->name('process-update');
-Route::get('version-check', [VersionUpdateController::class, 'versionCheck'])->name('versionCheck');
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('version-update', [VersionUpdateController::class, 'versionUpdate'])->name('version-update');
+    Route::post('process-update', [VersionUpdateController::class, 'processUpdate'])->name('process-update');
+    Route::get('version-check', [VersionUpdateController::class, 'versionCheck'])->name('versionCheck');
+});
 
 

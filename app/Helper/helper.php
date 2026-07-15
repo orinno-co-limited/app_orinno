@@ -751,6 +751,48 @@ if (!function_exists('setCustomerCurrentVersion')) {
     }
 }
 
+if (!function_exists('hasPathTraversal')) {
+    function hasPathTraversal($path)
+    {
+        $normalized = str_replace('\\', '/', (string) $path);
+        return $normalized === '' || $normalized[0] === '/' || str_contains($normalized, '..');
+    }
+}
+
+if (!function_exists('isSafeUpdateRelativePath')) {
+    // ponytail: allowlist of dirs a self-update package may overwrite; keeps storage/, .env, bootstrap/cache out of reach
+    function isSafeUpdateRelativePath($relativePath)
+    {
+        $allowedRoots = ['app', 'routes', 'resources', 'config'];
+        if (hasPathTraversal($relativePath)) {
+            return false;
+        }
+        $normalized = str_replace('\\', '/', (string) $relativePath);
+        return in_array(explode('/', $normalized)[0], $allowedRoots, true);
+    }
+}
+
+if (!function_exists('safeExtractZip')) {
+    function safeExtractZip($zip, $destination)
+    {
+        for ($i = 0; $i < $zip->numFiles; $i++) {
+            if (hasPathTraversal($zip->getNameIndex($i))) {
+                return false;
+            }
+        }
+        return $zip->extractTo($destination);
+    }
+}
+
+if (!function_exists('isAllowedUpdateArtisanCommand')) {
+    // ponytail: exact-match allowlist, no args accepted, blocks su1v1-style commands with raw-SQL options
+    function isAllowedUpdateArtisanCommand($command)
+    {
+        $allowed = ['view:clear', 'route:clear', 'config:clear', 'cache:clear', 'storage:link', 'optimize:clear', 'queue:restart'];
+        return in_array(trim((string) $command), $allowed, true);
+    }
+}
+
 if (!function_exists('setOwnerGateway')) {
     function setOwnerGateway($userId)
     {

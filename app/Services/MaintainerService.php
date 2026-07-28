@@ -196,7 +196,7 @@ class MaintainerService
 
     public function getById($id)
     {
-        return Maintainer::findOrFail($id);
+        return Maintainer::where('owner_user_id', getOwnerUserId())->findOrFail($id);
     }
 
     public function getInfo($id)

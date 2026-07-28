@@ -50,7 +50,9 @@ class TeamMemberService
         DB::beginTransaction();
         try {
             if ($request->id) {
-                $user = User::find($request->id);
+                $user = User::where('role', USER_ROLE_TEAM_MEMBER)
+                    ->where('owner_user_id', getOwnerUserId())
+                    ->findOrFail($request->id);
             } else {
                 $user = new User();
             }
@@ -80,8 +82,10 @@ class TeamMemberService
     public function delete($id)
     {
         try {
-            $role = User::find($id);
-            $role->delete();
+            $user = User::where('role', USER_ROLE_TEAM_MEMBER)
+                ->where('owner_user_id', getOwnerUserId())
+                ->findOrFail($id);
+            $user->delete();
 
             return $this->success([], __(DELETED_SUCCESSFULLY));
         } catch (Exception $e) {
@@ -92,7 +96,9 @@ class TeamMemberService
 
     public function getEditInfo($id){
 
-        return User::where('role',USER_ROLE_TEAM_MEMBER)->findOrFail($id);
+        return User::where('role', USER_ROLE_TEAM_MEMBER)
+            ->where('owner_user_id', getOwnerUserId())
+            ->findOrFail($id);
     }
 
 }

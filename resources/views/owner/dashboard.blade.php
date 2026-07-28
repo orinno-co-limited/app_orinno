@@ -71,6 +71,7 @@
                     <!-- dashboard-feature-item row -->
 
                     <!-- Chart row -->
+                    @can('Manage Rent Collected')
                     <div class="row">
                         <div class="col-12 col-lg-12 col-xl-12">
                             <div class="bg-off-white radius-4 mb-25 theme-border p-20 w-100">
@@ -92,6 +93,7 @@
                             </div>
                         </div>
                     </div>
+                    @endcan
                     <!-- Chart row -->
 
                     <div class="row">
@@ -225,10 +227,12 @@
 @endsection
 
 @push('script')
+    @can('Manage Rent Collected')
     <script>
         const MONTHS = @json($months);
         const INVOICEMONTLYAMOUNT = @json($invoiceMonthlyAmount);
     </script>
     <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/index-charts.js') }}"></script>
+    @endcan
 @endpush

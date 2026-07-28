@@ -27,6 +27,7 @@ $('#teamMemberDataTable').DataTable({
     columns: [
         { "data": 'DT_RowIndex', "name": 'DT_RowIndex', orderable: false, searchable: false },
         { "data": "name", "name": "name" },
+        { "data": "role", "name": "role", "searchable": false },
         { "data": "email", "name": "email" },
         { "data": "contact_number", "name": "contact_number" },
         { "data": "status", "name": "status","searchable": false},

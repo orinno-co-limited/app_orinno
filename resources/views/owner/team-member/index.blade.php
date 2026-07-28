@@ -42,6 +42,7 @@
                                             <th>{{ __('SL') }}</th>
                                             <th data-priority="1">{{ __('Name') }}</th>
                                             <th class="d-none">{{ __('Name') }}</th>
+                                            <th>{{ __('Role') }}</th>
                                             <th>{{ __('Email') }}</th>
                                             <th>{{ __('Contact Number') }}</th>
                                             <th>{{ __('Status') }}</th>

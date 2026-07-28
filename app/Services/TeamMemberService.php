@@ -27,6 +27,10 @@ class TeamMemberService
             ->editColumn('name', function ($maintainer) {
                 return $maintainer->first_name . ' ' . $maintainer->last_name;
             })
+            ->addColumn('role', function ($teamMember) {
+                $roleNames = $teamMember->roles->pluck('display_name')->filter();
+                return $roleNames->isNotEmpty() ? $roleNames->implode(', ') : '-';
+            })
             ->addColumn('status', function ($teamMember) {
                 if ($teamMember->status == USER_STATUS_ACTIVE) {
                     return '<div class="status-btn status-btn-green font-13 radius-4">Active</div>';

@@ -89,7 +89,7 @@ class RolePermissionService
     {
         try {
             DB::beginTransaction();
-            $role = Role::where('id', $request->role_id)->where('user_id', getOwnerUserId())->firstOrFail();
+            $role = Role::where('user_id', getOwnerUserId())->where('id', $request->role_id)->firstOrFail();
             $role->syncPermissions($request->permissions);
 
             DB::commit();

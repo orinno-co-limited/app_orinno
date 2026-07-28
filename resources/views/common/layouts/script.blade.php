@@ -94,6 +94,37 @@
         });
     })();
 
+    // Every Swal.fire({ icon: 'warning', ... }) call across the app (delete
+    // confirmations, status-change confirmations, etc.) gets the card-style
+    // theme from dialog-custom.css automatically — this tags the popup with
+    // a type class based on the icon and turns the close button on, instead
+    // of adding those options at every one of the existing call sites.
+    if (typeof Swal !== 'undefined') {
+        (function () {
+            var originalFire = Swal.fire;
+            Swal.fire = function () {
+                var args = Array.prototype.slice.call(arguments);
+                var options = args[0];
+                // Normalize the Swal.fire(title, text, icon) shorthand into
+                // the object form so it gets themed the same way.
+                if (typeof options === 'string') {
+                    options = { title: args[0], text: args[1], icon: args[2] };
+                }
+                if (options && typeof options === 'object' && !Array.isArray(options)) {
+                    var type = options.icon || 'default';
+                    var typeClass = 'swal-type-' + type;
+                    options.showCloseButton = options.showCloseButton !== undefined ? options.showCloseButton : true;
+                    options.buttonsStyling = options.buttonsStyling !== undefined ? options.buttonsStyling : true;
+                    options.customClass = Object.assign({}, options.customClass, {
+                        popup: [options.customClass && options.customClass.popup, typeClass].filter(Boolean).join(' ')
+                    });
+                    return originalFire.call(Swal, options);
+                }
+                return originalFire.apply(Swal, args);
+            };
+        })();
+    }
+
     @if (Session::has('success'))
         toastr.success("{{ session('success') }}");
     @endif

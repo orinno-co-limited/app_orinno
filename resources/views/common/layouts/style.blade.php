@@ -49,6 +49,7 @@
 
 <!-- Sweetalert & Toastr -->
 <link rel="stylesheet" href="{{asset('assets/sweetalert2/sweetalert2.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/css/dialog-custom.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/toastr-custom.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/dropify.css') }}">

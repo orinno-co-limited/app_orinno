@@ -94,6 +94,15 @@ class LoginController extends Controller
         if (isset($user) && $user->role != USER_ROLE_ADMIN && $user->status != USER_STATUS_ACTIVE) {
             Auth::logout();
 
+            // Send them to the existing "Verify Your Account" page (with its
+            // own resend button) instead of just flashing a one-time error,
+            // so account status stays visible and actionable until they
+            // finish verifying, not just at the moment login was blocked.
+            if ($user->verify_token) {
+                return redirect()->route('user.email.verify', $user->verify_token)
+                    ->with('error', __('Please verify your email before logging in.'));
+            }
+
             return redirect("login")->with('error', __('Please verify your email before logging in.'));
         }
 

@@ -5,13 +5,12 @@ use App\Http\Requests\OwnerRegisterRequest;
 use App\Models\Owner;
 use App\Models\Package;
 use App\Models\User;
+use App\Services\SmsMail\MailService;
 use App\Traits\ResponseTrait;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\UserEmailVerification;
 
 class OwnerRegisterController extends Controller
 {
@@ -37,14 +36,7 @@ class OwnerRegisterController extends Controller
             $user->verify_token = str_replace('-', '', Str::uuid()->toString());
             $user->otp = rand(100000, 999999);
             $user->save();
-            
-            $content = [
-                'subject' => 'Verify Your Email Address',
-                'user' => $user,
-                'message' => 'Please click the button below to verify your email address.',
-            ];
-            
-            Mail::to($user->email)->send(new UserEmailVerification($content));
+
             $owner = new Owner();
             $owner->user_id = $user->id;
             $owner->save();
@@ -55,10 +47,24 @@ class OwnerRegisterController extends Controller
             }
             syncMissingGateway();
             DB::commit();
-            return redirect()->route('login')->with('success', 'Registration successful! Check Email for verification.');
+
+            // Routed through MailService (rather than sending directly) so this
+            // shares one place with every other verification/resend email in
+            // the app — the single point a future SMS/WhatsApp notification
+            // dispatcher needs to extend, instead of every call site that
+            // sends a message.
+            MailService::sendUserEmailVerificationMail(
+                [$user->email],
+                'Verify Your Email Address',
+                'Please click the button below to verify your email address.',
+                $user,
+                $user->id
+            );
+
+            return redirect()->route('login')->with('success', __('Registration successful! Check email for verification.'));
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', $e->getMessage())->withInput();
+            return redirect()->back()->with('error', __(SOMETHING_WENT_WRONG))->withInput();
         }
     }
 }

@@ -58,7 +58,7 @@ class RolePermissionController extends Controller
 
     public function permission($id)
     {
-        $data['role'] = Role::findOrFail($id);
+        $data['role'] = Role::where('user_id', getOwnerUserId())->findOrFail($id);
         $data['permissions'] = Permission::all();
         $data['oldPermissions'] = $data['role']->permissions->pluck('name')->toArray();
         return view('owner.role_permission.permission')->with($data);

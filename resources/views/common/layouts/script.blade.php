@@ -59,7 +59,7 @@
     var currencyPlacement = "{{ getCurrencyPlacement() }}";
 
     toastr.options = {
-        "closeButton": false,
+        "closeButton": true,
         "debug": false,
         "newestOnTop": false,
         "progressBar": false,
@@ -75,6 +75,25 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
+
+    // Every toastr.success/error/warning/info call across the app passes a
+    // message only, no title — wrap the four methods once here so each type
+    // gets its heading automatically instead of editing every call site.
+    (function () {
+        var defaultTitles = {
+            success: "{{ __('Success') }}",
+            error: "{{ __('Error') }}",
+            warning: "{{ __('Warning') }}",
+            info: "{{ __('Information') }}"
+        };
+        Object.keys(defaultTitles).forEach(function (type) {
+            var original = toastr[type];
+            toastr[type] = function (message, title, optionsOverride) {
+                return original(message, title || defaultTitles[type], optionsOverride);
+            };
+        });
+    })();
+
     @if (Session::has('success'))
         toastr.success("{{ session('success') }}");
     @endif

@@ -61,6 +61,7 @@
     <link rel="shortcut icon" href="{{ getSettingImage('app_fav_icon') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ getSettingImage('app_fav_icon') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/toastr-custom.css') }}">
     @stack('style')
     <style>
         :root {
@@ -118,7 +119,7 @@
     <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
     <script>
         toastr.options = {
-            "closeButton": false,
+            "closeButton": true,
             "debug": false,
             "newestOnTop": false,
             "progressBar": false,
@@ -134,6 +135,25 @@
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         };
+
+        // Every toastr.success/error/warning/info call across the app passes a
+        // message only, no title — wrap the four methods once here so each type
+        // gets its heading automatically instead of editing every call site.
+        (function () {
+            var defaultTitles = {
+                success: "{{ __('Success') }}",
+                error: "{{ __('Error') }}",
+                warning: "{{ __('Warning') }}",
+                info: "{{ __('Information') }}"
+            };
+            Object.keys(defaultTitles).forEach(function (type) {
+                var original = toastr[type];
+                toastr[type] = function (message, title, optionsOverride) {
+                    return original(message, title || defaultTitles[type], optionsOverride);
+                };
+            });
+        })();
+
         @if (Session::has('success'))
             toastr.success("{{ session('success') }}");
         @endif

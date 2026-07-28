@@ -21,9 +21,9 @@ landlordTenantDataTable = $('#landlordTenantDataTable').DataTable({
         { "data": "name", "name": "users.first_name" },
         { "data": "email", "name": "users.email" },
         { "data": "contact_number", "name": "users.contact_number" },
-        { "data": "property_count" },
-        { "data": "tenant_count" },
-        { "data": "status" }
+        { "data": "property_count", searchable: false },
+        { "data": "tenant_count", searchable: false },
+        { "data": "status", searchable: false }
     ]
 });
 
@@ -50,9 +50,9 @@ allPlatformTenantDataTable = $('#allPlatformTenantDataTable').DataTable({
         { "data": "name", "name": "users.first_name" },
         { "data": "email", "name": "users.email" },
         { "data": "contact_number", "name": "users.contact_number" },
-        { "data": "landlord" },
-        { "data": "property" },
-        { "data": "unit" },
-        { "data": "status" }
+        { "data": "landlord", searchable: false },
+        { "data": "property", searchable: false },
+        { "data": "unit", searchable: false },
+        { "data": "status", searchable: false }
     ]
 });

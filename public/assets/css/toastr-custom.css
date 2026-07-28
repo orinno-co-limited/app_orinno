@@ -1,0 +1,91 @@
+/* Restyles the default toastr notifications to a card layout: a soft-tinted
+   icon circle on the left, bold title + gray message stacked to its right,
+   and a close (x) button in the top-right corner. */
+
+#toast-container > div {
+    position: relative;
+    display: block;
+    width: 360px;
+    max-width: 90vw;
+    padding: 16px 40px 16px 62px;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid #eef1f5;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(16, 35, 63, 0.14);
+    opacity: 1;
+}
+
+#toast-container > div:hover {
+    box-shadow: 0 12px 34px rgba(16, 35, 63, 0.18);
+}
+
+#toast-container .toast-title {
+    margin: 0 0 2px 0;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #10233f;
+}
+
+#toast-container .toast-message {
+    font-size: 13px;
+    line-height: 1.45;
+    color: #667085;
+}
+
+/* Icon circle */
+#toast-container > div::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+}
+
+/* Close (x) button */
+#toast-container .toast-close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    float: none;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+    color: #9aa4b2;
+    text-shadow: none;
+    opacity: 1;
+}
+
+#toast-container .toast-close-button:hover {
+    color: #45566e;
+    opacity: 1;
+}
+
+/* Information */
+#toast-container > .toast-info::before {
+    background-color: #e7f2fb;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e7fb8' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E");
+}
+
+/* Success */
+#toast-container > .toast-success::before {
+    background-color: #e6f8ee;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e9e5b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='8 12.5 10.8 15.3 16 9.3'/%3E%3C/svg%3E");
+}
+
+/* Warning */
+#toast-container > .toast-warning::before {
+    background-color: #fdf1de;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d98324' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'/%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'/%3E%3C/svg%3E");
+}
+
+/* Error */
+#toast-container > .toast-error::before {
+    background-color: #fceceb;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9342c' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
+}

@@ -18,3 +18,4 @@ yarn-error.log
 composer.lock
 *.zip
 installed
+/docs

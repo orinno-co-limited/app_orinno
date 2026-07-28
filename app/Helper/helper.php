@@ -280,6 +280,16 @@ function settingImageStoreUpdate($option_id, $requestFile, $name)
 
 function getErrorMessage($e, $customMsg = null)
 {
+    // Raw database-driver exceptions (duplicate-key violations, constraint
+    // failures, etc.) must never reach the end user as-is — their message
+    // contains the literal SQL query and bound values. Many call sites pass
+    // $e->getMessage() through as the "custom" message below, which used to
+    // bypass the APP_DEBUG check entirely; guard against that here instead
+    // of auditing every call site individually.
+    if ($e instanceof \Illuminate\Database\QueryException || $e instanceof \PDOException) {
+        return env('APP_DEBUG') ? $e->getMessage() . ' ' . $e->getLine() : __(SOMETHING_WENT_WRONG);
+    }
+
     if ($customMsg != null) {
         return $customMsg;
     }

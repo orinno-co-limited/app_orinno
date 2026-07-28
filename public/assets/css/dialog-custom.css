@@ -1,0 +1,129 @@
+/* Restyles SweetAlert2 confirmation/alert dialogs into a card with a
+   tinted header bar (icon + title), a divider, left-aligned body text,
+   and right-aligned action buttons — used for every confirm/delete/
+   status-change dialog and for ajax/table error alerts across the app. */
+
+.swal2-popup {
+    padding: 0 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 16px 40px rgba(16, 35, 63, 0.18) !important;
+    width: 420px !important;
+    overflow: hidden;
+}
+
+/* Header row: icon on the left, title on the right, tinted background */
+.swal2-popup .swal2-header {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100%;
+    margin: 0 !important;
+    padding: 16px 46px 16px 20px;
+    background: #f2f4f7;
+    border-bottom: 1px solid rgba(16, 35, 63, 0.08);
+}
+
+.swal2-popup .swal2-icon {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px;
+    margin: 0 14px 0 0 !important;
+    flex-shrink: 0;
+}
+
+.swal2-popup .swal2-icon .swal2-icon-content {
+    font-size: 1.4rem !important;
+}
+
+.swal2-popup .swal2-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 16.5px !important;
+    font-weight: 700 !important;
+    color: #10233f;
+    text-align: left !important;
+}
+
+/* Body */
+.swal2-popup .swal2-content,
+.swal2-popup .swal2-html-container {
+    margin: 0 !important;
+    padding: 18px 20px !important;
+    text-align: left !important;
+    font-size: 13.5px !important;
+    color: #45566e !important;
+}
+
+/* Close (x) button */
+.swal2-popup .swal2-close {
+    top: 14px !important;
+    right: 14px !important;
+    width: 28px;
+    height: 28px;
+    color: #9aa4b2 !important;
+    font-size: 22px;
+}
+
+.swal2-popup .swal2-close:hover {
+    color: #45566e !important;
+    background: transparent !important;
+}
+
+/* Footer / action buttons */
+.swal2-popup .swal2-actions {
+    width: 100%;
+    margin: 0 !important;
+    padding: 14px 20px;
+    justify-content: flex-end !important;
+    gap: 10px;
+    border-top: 1px solid #eef1f5;
+}
+
+.swal2-popup .swal2-styled {
+    margin: 0 !important;
+    padding: 9px 20px !important;
+    border-radius: 8px !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+}
+
+.swal2-popup .swal2-cancel {
+    background: #ffffff !important;
+    color: #45566e !important;
+    border: 1px solid #d8dee7 !important;
+}
+
+.swal2-popup .swal2-cancel:hover {
+    background: #f7f9fc !important;
+}
+
+.swal2-popup .swal2-confirm {
+    border: none !important;
+}
+
+/* Header tint + confirm-button color per dialog type — the JS layer adds
+   one of these classes to the popup based on the `icon` option so no
+   :has()-style selector support is required. */
+.swal2-popup.swal-type-success .swal2-header { background: #e6f8ee; }
+.swal2-popup.swal-type-success .swal2-title { color: #1c7a5e; }
+.swal2-popup.swal-type-success .swal2-confirm { background: #2e9e5b !important; }
+
+.swal2-popup.swal-type-error .swal2-header { background: #fceceb; }
+.swal2-popup.swal-type-error .swal2-title { color: #b0202f; }
+.swal2-popup.swal-type-error .swal2-confirm { background: #c9342c !important; }
+
+.swal2-popup.swal-type-warning .swal2-header { background: #fdf1de; }
+.swal2-popup.swal-type-warning .swal2-title { color: #a3600f; }
+.swal2-popup.swal-type-warning .swal2-confirm { background: #d98324 !important; }
+
+.swal2-popup.swal-type-info .swal2-header,
+.swal2-popup.swal-type-question .swal2-header { background: #e7f2fb; }
+.swal2-popup.swal-type-info .swal2-title,
+.swal2-popup.swal-type-question .swal2-title { color: #1c5d99; }
+.swal2-popup.swal-type-info .swal2-confirm,
+.swal2-popup.swal-type-question .swal2-confirm { background: #2e7fb8 !important; }
+
+.swal2-popup.swal-type-default .swal2-header { background: #f2f4f7; }
+.swal2-popup.swal-type-default .swal2-title { color: #10233f; }
+.swal2-popup.swal-type-default .swal2-confirm { background: #10233f !important; }

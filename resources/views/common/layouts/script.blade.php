@@ -59,7 +59,7 @@
     var currencyPlacement = "{{ getCurrencyPlacement() }}";
 
     toastr.options = {
-        "closeButton": false,
+        "closeButton": true,
         "debug": false,
         "newestOnTop": false,
         "progressBar": false,
@@ -75,6 +75,56 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
+
+    // Every toastr.success/error/warning/info call across the app passes a
+    // message only, no title — wrap the four methods once here so each type
+    // gets its heading automatically instead of editing every call site.
+    (function () {
+        var defaultTitles = {
+            success: "{{ __('Success') }}",
+            error: "{{ __('Error') }}",
+            warning: "{{ __('Warning') }}",
+            info: "{{ __('Information') }}"
+        };
+        Object.keys(defaultTitles).forEach(function (type) {
+            var original = toastr[type];
+            toastr[type] = function (message, title, optionsOverride) {
+                return original(message, title || defaultTitles[type], optionsOverride);
+            };
+        });
+    })();
+
+    // Every Swal.fire({ icon: 'warning', ... }) call across the app (delete
+    // confirmations, status-change confirmations, etc.) gets the card-style
+    // theme from dialog-custom.css automatically — this tags the popup with
+    // a type class based on the icon and turns the close button on, instead
+    // of adding those options at every one of the existing call sites.
+    if (typeof Swal !== 'undefined') {
+        (function () {
+            var originalFire = Swal.fire;
+            Swal.fire = function () {
+                var args = Array.prototype.slice.call(arguments);
+                var options = args[0];
+                // Normalize the Swal.fire(title, text, icon) shorthand into
+                // the object form so it gets themed the same way.
+                if (typeof options === 'string') {
+                    options = { title: args[0], text: args[1], icon: args[2] };
+                }
+                if (options && typeof options === 'object' && !Array.isArray(options)) {
+                    var type = options.icon || 'default';
+                    var typeClass = 'swal-type-' + type;
+                    options.showCloseButton = options.showCloseButton !== undefined ? options.showCloseButton : true;
+                    options.buttonsStyling = options.buttonsStyling !== undefined ? options.buttonsStyling : true;
+                    options.customClass = Object.assign({}, options.customClass, {
+                        popup: [options.customClass && options.customClass.popup, typeClass].filter(Boolean).join(' ')
+                    });
+                    return originalFire.call(Swal, options);
+                }
+                return originalFire.apply(Swal, args);
+            };
+        })();
+    }
+
     @if (Session::has('success'))
         toastr.success("{{ session('success') }}");
     @endif

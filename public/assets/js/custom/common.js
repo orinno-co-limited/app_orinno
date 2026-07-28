@@ -1,4 +1,20 @@
 
+// DataTables' default behaviour on an ajax/server error is a raw browser
+// alert() containing the underlying exception text (including, for a
+// database error, the SQL query itself) — override it globally so every
+// DataTable on every page shows a themed dialog with a safe message instead.
+if (window.jQuery && $.fn.dataTable) {
+    $.fn.dataTable.ext.errMode = function (settings, helpPage, message) {
+        console.error('DataTables error:', message);
+        if (typeof Swal !== 'undefined') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Something went wrong',
+                text: "This table couldn't be loaded right now. Please try again."
+            });
+        }
+    };
+}
 
 $(document).on('submit', "form.ajax", function (event) {
     event.preventDefault();

@@ -233,7 +233,3 @@ const PACKAGE_TYPE_DEFAULT = 0;
 const PACKAGE_TYPE_PROPERTY = 1;
 const PACKAGE_TYPE_UNIT = 2;
 const PACKAGE_TYPE_TENANT = 3;
-
-const LINK_SAAS_ADDON = "https://codecanyon.net/item/zaiproty-property-management-saas-addon/45346185?s_rank=18";
-const LINK_MAIN_SCRIPT = "https://codecanyon.net/item/zaiproty-property-management-laravel-script/43413718";
-const LISTING_ADDON = "https://codecanyon.net/item/zaiproty-agreementdocument-signing-addon/46668990?s_rank=15";

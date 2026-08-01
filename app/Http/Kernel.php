@@ -8,10 +8,8 @@ use App\Http\Middleware\IsDemo;
 use App\Http\Middleware\IsFrontend;
 use App\Http\Middleware\Maintainer;
 use App\Http\Middleware\Owner;
-use App\Http\Middleware\SaasModuleMiddleware;
 use App\Http\Middleware\TenancyMiddleware;
 use App\Http\Middleware\Tenant;
-use App\Http\Middleware\VersionUpdate;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -79,8 +77,6 @@ class Kernel extends HttpKernel
         'tenancy' => TenancyMiddleware::class,
         'maintainer' => Maintainer::class,
         'common' => CommonMiddleware::class,
-        'version.update' => VersionUpdate::class,
-        'addon.update' => SaasModuleMiddleware::class,
         'isFrontend' => IsFrontend::class,
     ];
 }

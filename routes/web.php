@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserEmailVerifyController;
-use App\Http\Controllers\VersionUpdateController;
 use App\Models\Language;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
@@ -77,11 +76,4 @@ Route::group(['prefix' => 'payment'], function () {
     Route::match(array('GET', 'POST'), 'failed', [PaymentController::class, 'failed'])->name('payment.failed');
     Route::get('verify-redirect/{type?}', [PaymentController::class, 'verifyRedirect'])->name('payment.verify.redirect');
 });
-
-Route::group(['middleware' => ['auth', 'admin']], function () {
-    Route::get('version-update', [VersionUpdateController::class, 'versionUpdate'])->name('version-update');
-    Route::post('process-update', [VersionUpdateController::class, 'processUpdate'])->name('process-update');
-    Route::get('version-check', [VersionUpdateController::class, 'versionCheck'])->name('versionCheck');
-});
-
 

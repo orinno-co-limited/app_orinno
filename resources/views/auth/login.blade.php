@@ -105,48 +105,6 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        @if (env('LOGIN_HELP') == 'active')
-                                            <div class="table-responsive login-info-table mt-3">
-                                                <table class="table table-bordered">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td colspan="2" id="adminCredentialShow" class="login-info">
-                                                                <b>Admin:</b> admin@gmail.com | 123456  <strong></strong>
-                                                                <span class="badge bg-danger "><a href="{{LINK_SAAS_ADDON}}" target="_blank" style="color: white">{{ __('SAAS Addon') }}</a></span>
-
-                                                                {{--                                                            </td>--}}
-{{--                                                        </tr>--}}
-{{--                                                        <tr>--}}
-{{--                                                            <td colspan="2" id="adminCredentialShow" class="login-info">--}}
-                                                                <p class="font-16 pt-2">
-                                                                    <a  href="/" class="secondary-color font-medium">SAAS Landing Page</a>
-                                                                </p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2" id="ownerCredentialShow" class="login-info">
-                                                                <b>Owner:</b> owner@gmail.com | 123456
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2" id="tenantCredentialShow" class="login-info">
-                                                                <b>Tenant:</b> tenant@gmail.com | 123456
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2" id="maintainerCredentialShow"
-                                                                class="login-info">
-                                                                <b>Maintainer:</b> maintainer@gmail.com | 123456
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
                                         <p class="font-14 mt-15 mb-0">
                                             {{ __('By signing in, you agree to our') }}
                                             <a href="{{ route('terms-conditions') }}" target="_blank"

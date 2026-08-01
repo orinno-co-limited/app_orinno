@@ -1,15 +1,4 @@
 <header id="page-topbar">
-    @if (env('LOGIN_HELP') == 'active')
-        <div class="p-1 text-center" id="notice" role="alert" style="background-color: #f8d7da;color: #842029;">
-            <p>
-                This Panel Page is only available for the <strong><a href="{{LINK_SAAS_ADDON}}" target="_blank">SAAS Addon</a></strong>. To access this,
-                you need to purchase the <strong><a href="{{LINK_SAAS_ADDON}}" target="_blank">SAAS Addon</a></strong>.
-                Please note that the Addon will not work without the <strong><a href="{{LINK_MAIN_SCRIPT}}" target="_blank">Main Script</a></strong>.
-                <button type="button" id="topBannerClose" class="close float-end" data-dismiss="alert" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-            </p>
-        </div>
-    @endif
     <div class="navbar-header">
         <div class="d-flex align-items-center">
             <div class="navbar-brand-box">

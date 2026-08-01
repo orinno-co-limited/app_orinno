@@ -1,8 +1,6 @@
 /*
-Template Name: Zaiproty  Responsive  HTML5 Template
-Description: Zaiproty  Responsive  HTML5 Template
-Author: Mahmudul Hasan Sohel
-Author URI: https://zainiklab.com/
+Template Name: Orinno Responsive HTML5 Template
+Description: Orinno Responsive HTML5 Template
 Version: 1.0
 */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
@@ -1556,7 +1554,7 @@ Version: 1.0
 }
 
 /* Shadow */
-.Zaiproty-shadow-one {
+.Orinno-shadow-one {
   box-shadow: 0px 10px 80px 0px rgba(31, 34, 36, 0.031372549);
 }
 
@@ -2733,12 +2731,12 @@ Version: 1.0
 }
 
 /* Pagination */
-.Zaiproty-pagination {
+.Orinno-pagination {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.Zaiproty-pagination .item {
+.Orinno-pagination .item {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -2751,25 +2749,25 @@ Version: 1.0
   color: var(--black);
 }
 @media screen and (max-width: 991px) {
-  .Zaiproty-pagination .item {
+  .Orinno-pagination .item {
     width: 38px;
     height: 38px;
   }
 }
 @media screen and (max-width: 767px) {
-  .Zaiproty-pagination .item {
+  .Orinno-pagination .item {
     width: 30px;
     height: 30px;
   }
 }
-.Zaiproty-pagination .item.active {
+.Orinno-pagination .item.active {
   background-color: var(--black);
   color: var(--white);
 }
-.Zaiproty-pagination .item.previous, .Zaiproty-pagination .item.next {
+.Orinno-pagination .item.previous, .Orinno-pagination .item.next {
   background-color: var(--black);
 }
-.Zaiproty-pagination .item.previous.disabled, .Zaiproty-pagination .item.next.disabled {
+.Orinno-pagination .item.previous.disabled, .Orinno-pagination .item.next.disabled {
   cursor: not-allowed;
 }
 
@@ -3768,17 +3766,17 @@ Version: 1.0
 .blog-listPagiWrap {
   padding-top: 100px;
 }
-.blog-listPagiWrap .zaiProty-pagination {
+.blog-listPagiWrap .orinno-pagination {
   justify-content: center;
 }
 
 /* Pagination */
-.zaiProty-pagination {
+.orinno-pagination {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.zaiProty-pagination .item {
+.orinno-pagination .item {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -3791,25 +3789,25 @@ Version: 1.0
   color: var(--heading-color);
 }
 @media screen and (max-width: 991px) {
-  .zaiProty-pagination .item {
+  .orinno-pagination .item {
     width: 38px;
     height: 38px;
   }
 }
 @media screen and (max-width: 767px) {
-  .zaiProty-pagination .item {
+  .orinno-pagination .item {
     width: 30px;
     height: 30px;
   }
 }
-.zaiProty-pagination .item.active {
+.orinno-pagination .item.active {
   background-color: var(--heading-color);
   color: var(--white);
 }
-.zaiProty-pagination .item.previous, .zaiProty-pagination .item.next {
+.orinno-pagination .item.previous, .orinno-pagination .item.next {
   background-color: var(--grey-rectangle);
 }
-.zaiProty-pagination .item.previous.disabled, .zaiProty-pagination .item.next.disabled {
+.orinno-pagination .item.previous.disabled, .orinno-pagination .item.next.disabled {
   cursor: not-allowed;
 }
 

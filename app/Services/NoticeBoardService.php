@@ -7,6 +7,7 @@ use App\Models\NoticeBoard;
 use App\Models\Property;
 use App\Models\PropertyUnit;
 use App\Models\Tenant;
+use App\Services\Notification\NotificationService;
 use App\Traits\ResponseTrait;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -87,6 +88,7 @@ class NoticeBoardService
                 ->pluck('user_id')
                 ->toArray();
             $noticeboard->userNotices()->sync($tenants);
+            NotificationService::send($tenants, $noticeboard->title, $noticeboard->details, getOwnerUserId());
 
             /*File Manager Call upload*/
             if ($request->hasFile('image')) {

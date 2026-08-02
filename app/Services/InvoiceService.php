@@ -12,6 +12,7 @@ use App\Models\Order;
 use App\Models\Owner;
 use App\Models\Property;
 use App\Models\Tenant;
+use App\Services\Notification\NotificationService;
 use App\Services\SmsMail\MailService;
 use App\Traits\ResponseTrait;
 use Exception;
@@ -456,6 +457,7 @@ class InvoiceService
         try {
             $invoice = Invoice::where('owner_user_id', getOwnerUserId())->findOrFail($request->invoice_id);
             addNotification($request->title, $request->body, null, null, $invoice->tenant->user_id, getOwnerUserId());
+            NotificationService::send([$invoice->tenant->user_id], $request->title, $request->body, getOwnerUserId(), ['whatsapp']);
             $message = __("Notification Sent Successfully");
             if (getOption('send_email_status', 0) == ACTIVE) {
                 $emails = [$invoice->tenant->user->email];
@@ -501,6 +503,7 @@ class InvoiceService
             $mailService = new MailService;
             foreach ($tenants as $tenant) {
                 addNotification($request->title, $request->body, null, null, $tenant->user_id, getOwnerUserId());
+                NotificationService::send([$tenant->user_id], $request->title, $request->body, getOwnerUserId(), ['whatsapp']);
                 if (getOption('send_email_status', 0) == ACTIVE) {
                     $emails = [$tenant->user->email];
                     $subject = $request->title;

@@ -76,12 +76,13 @@ class TwilioSmsService
         }
     }
 
-    public static function historyStore($ownerUserId, $sid, $token, $from_number, $number, $message, $status, $error = null)
+    public static function historyStore($ownerUserId, $sid, $token, $from_number, $number, $message, $status, $error = null, $channel = 'sms')
     {
         $history = new SmsHistory();
         $history->owner_user_id = $ownerUserId;
         $history->api = 'sid : ' . $sid . 'token : ' . $token . ' number : ' . $from_number;
         $history->phone_number = $number;
+        $history->channel = $channel;
         $history->message = $message;
         $history->status = $status;
         $history->date = now();

@@ -97,6 +97,60 @@
                                                         <div class="row">
                                                             <div class="col-xl-6 mb-25">
                                                                 <label
+                                                                    class="label-text-title color-heading font-medium mb-2">{{ __('WhatsApp Status') }}</label>
+                                                                <select name="WHATSAPP_STATUS" class="form-control">
+                                                                    <option value="0"
+                                                                        {{ getOption('WHATSAPP_STATUS') == '0' ? 'selected' : '' }}>
+                                                                        {{ __('Disable') }}</option>
+                                                                    <option value="1"
+                                                                        {{ getOption('WHATSAPP_STATUS') == '1' ? 'selected' : '' }}>
+                                                                        {{ __('Enable') }}</option>
+                                                                </select>
+                                                                <small
+                                                                    class="small">{{ __('Uses the Meta WhatsApp Cloud API. Leave disabled until the fields below are filled in.') }}</small>
+                                                            </div>
+                                                            <div class="col-xl-6 mb-25">
+                                                                <label
+                                                                    class="label-text-title color-heading font-medium mb-2">{{ __('Meta Access Token') }}</label>
+                                                                <input type="password" name="META_WHATSAPP_ACCESS_TOKEN"
+                                                                    value="{{ getOption('META_WHATSAPP_ACCESS_TOKEN') }}"
+                                                                    class="form-control"
+                                                                    placeholder="{{ __('Meta WhatsApp access token') }}">
+                                                            </div>
+                                                            <div class="col-xl-6 mb-25">
+                                                                <label
+                                                                    class="label-text-title color-heading font-medium mb-2">{{ __('Meta Phone Number ID') }}</label>
+                                                                <input type="text" name="META_WHATSAPP_PHONE_NUMBER_ID"
+                                                                    value="{{ getOption('META_WHATSAPP_PHONE_NUMBER_ID') }}"
+                                                                    class="form-control"
+                                                                    placeholder="{{ __('e.g. 109876543212345') }}">
+                                                            </div>
+                                                            <div class="col-xl-6 mb-25">
+                                                                <label
+                                                                    class="label-text-title color-heading font-medium mb-2">{{ __('WhatsApp Template Name') }}</label>
+                                                                <input type="text" name="WHATSAPP_TEMPLATE_NAME"
+                                                                    value="{{ getOption('WHATSAPP_TEMPLATE_NAME', 'orinno_notification') }}"
+                                                                    class="form-control"
+                                                                    placeholder="{{ __('e.g. orinno_notification') }}">
+                                                                <small
+                                                                    class="small">{{ __('Must match a template approved in WhatsApp Manager. Free-form text only works within 24h of the tenant messaging first, so notices/reminders use this template instead.') }}</small>
+                                                            </div>
+                                                            <div class="col-xl-6 mb-25">
+                                                                <label
+                                                                    class="label-text-title color-heading font-medium mb-2">{{ __('WhatsApp Template Language') }}</label>
+                                                                <input type="text" name="WHATSAPP_TEMPLATE_LANGUAGE_CODE"
+                                                                    value="{{ getOption('WHATSAPP_TEMPLATE_LANGUAGE_CODE', 'en_US') }}"
+                                                                    class="form-control"
+                                                                    placeholder="{{ __('e.g. en_US') }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="settings-inner-box bg-white theme-border radius-4 mb-25">
+                                                    <div class="settings-inner-box-fields p-20 pb-0">
+                                                        <div class="row">
+                                                            <div class="col-xl-6 mb-25">
+                                                                <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('Send Email Status') }}</label>
                                                                 <select name="send_email_status"
                                                                     class="form-select flex-shrink-0">

@@ -84,8 +84,7 @@
                                                     <div
                                                         class="property-item-address tenants-img-info-box d-flex align-items-center mb-20">
                                                         <div class="flex-shrink-0 font-13">
-                                                            <div class="tenant-img bg-img-property radius-4"
-                                                                style="background-image: url({{ $tenant->image }});"></div>
+                                                            {!! renderUserAvatar($tenant->first_name, $tenant->last_name, $tenant->email, $tenant->image) !!}
                                                         </div>
                                                         <div class="flex-grow-1 ms-3">
                                                             <h4 class="mb-1">{{ $tenant->first_name }}

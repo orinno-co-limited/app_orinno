@@ -35,6 +35,130 @@ function getOption($option_key, $default = '')
     }
 }
 
+if (!function_exists('renderUserAvatar')) {
+    /**
+     * Circular avatar: a real photo when $imageUrl points at an actual
+     * upload, otherwise a colored initials avatar instead of the vendor's
+     * generic placeholder graphic. Shared by renderUserListCell() (table
+     * rows) and any card-style view that shows a person's photo on its own.
+     */
+    function renderUserAvatar($firstName, $lastName, $email, $imageUrl = null)
+    {
+        $name = trim($firstName . ' ' . $lastName);
+        $placeholder = asset('assets/images/no-image.jpg');
+        $hasPhoto = $imageUrl && $imageUrl !== $placeholder;
+
+        if ($hasPhoto) {
+            return '<img src="' . e($imageUrl) . '" class="tbl-user-avatar-img" alt="' . e($name) . '">';
+        }
+
+        $initials = strtoupper(mb_substr($firstName, 0, 1) . mb_substr($lastName, 0, 1));
+        $colorIndex = (crc32($email ?: $name) % 6) + 1;
+        return '<div class="tbl-user-avatar avatar-color-' . $colorIndex . '">' . e($initials) . '</div>';
+    }
+}
+
+if (!function_exists('renderUserListCell')) {
+    /**
+     * Avatar + stacked name/email markup shared by every people-list
+     * datatable (owner, tenant, maintainer, monitoring).
+     */
+    function renderUserListCell($firstName, $lastName, $email, $imageUrl = null)
+    {
+        $name = trim($firstName . ' ' . $lastName);
+        $avatar = renderUserAvatar($firstName, $lastName, $email, $imageUrl);
+
+        return '<div class="tbl-user-info-object d-flex align-items-center">
+                    <div class="flex-shrink-0">' . $avatar . '</div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="mb-0">' . e($name) . '</h6>
+                        <p class="font-13 mb-0 text-muted">' . e($email) . '</p>
+                    </div>
+                </div>';
+    }
+}
+
+if (!function_exists('propertyFilterToken')) {
+    /**
+     * Single-token values (no spaces/HTML) for the Type/Status/District
+     * filter dropdowns on the property list pages — used both as data-*
+     * attributes on grid cards and as hidden, exact-match-searchable
+     * DataTable columns on the list view, so one set of dropdowns can
+     * filter both views identically.
+     */
+    function propertyFilterToken($property, $field)
+    {
+        switch ($field) {
+            case 'type':
+                return $property->property_type == PROPERTY_TYPE_LEASE ? 'lease' : 'own';
+            case 'status':
+                return $property->available_unit <= 0 ? 'rented' : 'available';
+            case 'district':
+                return $property->propertyDetail?->state_id ?? '';
+        }
+        return '';
+    }
+}
+
+if (!function_exists('renderPropertyListCell')) {
+    /**
+     * ITAB-style property row: thumbnail, title, inline availability/type
+     * badges, address, and a unit/room/type meta chip row. Shared by the
+     * list-view DataTable across all three property list pages.
+     */
+    function renderPropertyListCell($property)
+    {
+        $isFullyRented = $property->available_unit <= 0;
+        $availabilityBadge = $isFullyRented
+            ? '<div class="status-btn status-btn-red font-13 radius-4">' . __('Fully Rented') . '</div>'
+            : '<div class="status-btn status-btn-green font-13 radius-4">' . __('Available') . '</div>';
+
+        $typeLabel = $property->property_type == PROPERTY_TYPE_LEASE ? __('Lease') : __('Own');
+        $typeBadge = '<div class="status-btn status-btn-purple font-13 radius-4">' . e($typeLabel) . '</div>';
+
+        $address = $property->propertyDetail?->address;
+        $district = $property->propertyDetail?->state_id;
+
+        return '<div class="tbl-property-info-object d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="' . e($property->thumbnail_image) . '" class="tbl-property-thumb" alt="' . e($property->name) . '">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <h6 class="mb-0">' . e($property->name) . '</h6>
+                            ' . $availabilityBadge . $typeBadge . '
+                        </div>
+                        <p class="font-13 mb-0 text-muted">' . e(trim($address . ($district ? ' · ' . $district : ''), ' ·')) . '</p>
+                        <div class="tbl-property-meta font-13 text-muted mt-1">
+                            <span>' . (int) $property->number_of_unit . ' ' . __('Unit') . '</span>
+                            <span>' . (int) propertyTotalRoom($property->id) . ' ' . __('rooms') . '</span>
+                        </div>
+                    </div>
+                </div>';
+    }
+}
+
+if (!function_exists('renderPropertyPriceCell')) {
+    /**
+     * Right-aligned price + availability-count pill, mirroring the ITAB
+     * list row's price column. $property->starting_price is the cheapest
+     * active unit rent on the property (see PropertyService::getAll()).
+     */
+    function renderPropertyPriceCell($property)
+    {
+        $priceHtml = $property->starting_price
+            ? '<div class="tbl-property-price">' . currencyPrice($property->starting_price) . '</div><p class="font-13 text-muted mb-0">' . __('per month') . '</p>'
+            : '<div class="tbl-property-price text-muted">' . __('N/A') . '</div>';
+
+        $availableCount = (int) $property->available_unit;
+        $availabilityPill = $availableCount > 0
+            ? '<div class="status-btn status-btn-green font-13 radius-4 mt-1">' . $availableCount . ' ' . __('Available') . '</div>'
+            : '';
+
+        return '<div class="text-end">' . $priceHtml . $availabilityPill . '</div>';
+    }
+}
+
 if (!function_exists('getSlug')) {
     function getSlug($text)
     {

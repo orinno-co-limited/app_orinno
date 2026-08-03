@@ -20,7 +20,7 @@ class PropertyService
     public function getAll()
     {
         $data = Property::query()
-            ->with('propertyUnits')
+            ->with('propertyUnits', 'propertyDetail')
             ->leftJoin('tenants', ['properties.id' => 'tenants.property_id', 'tenants.status' => (DB::raw(TENANT_STATUS_ACTIVE))])
             ->leftJoin('users', function ($q) {
                 $q->on('tenants.user_id', 'users.id')->whereNull('users.deleted_at');
@@ -28,8 +28,9 @@ class PropertyService
             ->leftJoin('property_units', function ($q) {
                 $q->on('tenants.unit_id', 'property_units.id')->whereNull('property_units.deleted_at');
             })
-            ->selectRaw('properties.number_of_unit - (COUNT(users.id)) as available_unit,(SUM(property_units.bedroom)) as rooms,properties.*')
-            ->groupBy('properties.id')
+            ->leftJoin(DB::raw('(select property_id, MIN(general_rent) as starting_price from property_units where deleted_at is null and general_rent > 0 group by property_id) as pu_price'), 'pu_price.property_id', '=', 'properties.id')
+            ->selectRaw('properties.number_of_unit - (COUNT(users.id)) as available_unit,(SUM(property_units.bedroom)) as rooms,pu_price.starting_price,properties.*')
+            ->groupBy('properties.id', 'pu_price.starting_price')
             ->where('properties.owner_user_id', getOwnerUserId())
             ->get();
         return $data?->makeHidden(['updated_at', 'created_at', 'deleted_at']);
@@ -41,27 +42,21 @@ class PropertyService
 
         return datatables($properties)
             ->addIndexColumn()
-            ->addColumn('image', function ($property) {
-                return '<img src="' . $property->thumbnail_image . '"
-                class="rounded-circle avatar-md tbl-user-image"
-                alt="">';
+            ->addColumn('property', function ($property) {
+                return renderPropertyListCell($property);
             })
-            ->addColumn('name', function ($property) {
-                return $property->name;
+            ->addColumn('price', function ($property) {
+                return renderPropertyPriceCell($property);
             })
-            ->addColumn('address', function ($property) {
-                return $property->propertyDetail?->address;
+            ->addColumn('type_filter', function ($property) {
+                return propertyFilterToken($property, 'type');
             })
-            ->addColumn('unit', function ($property) {
-                return $property->number_of_unit;
+            ->addColumn('status_filter', function ($property) {
+                return propertyFilterToken($property, 'status');
             })
-            ->addColumn('rooms', function ($property) {
-                return propertyTotalRoom($property->id);
+            ->addColumn('district_filter', function ($property) {
+                return propertyFilterToken($property, 'district');
             })
-            ->addColumn('available', function ($property) {
-                return $property->available_unit;
-            })
-
             ->addColumn('action', function ($property) {
                 return '<div class="tbl-action-btns d-inline-flex">
                             <a type="button" class="p-1 tbl-action-btn" href="' . route('owner.property.edit', $property->id) . '" title="' . __('Edit') . '"><span class="iconify" data-icon="clarity:note-edit-solid"></span></a>
@@ -69,7 +64,7 @@ class PropertyService
                             <button onclick="deleteItem(\'' . route('owner.property.delete', $property->id) . '\', \'allDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>
                         </div>';
             })
-            ->rawColumns(['name', 'address', 'unit', 'rooms', 'image', 'available', 'action'])
+            ->rawColumns(['property', 'price', 'action'])
             ->make(true);
     }
 
@@ -138,6 +133,7 @@ class PropertyService
     public function getByType($type)
     {
         return Property::query()
+            ->with('propertyDetail')
             ->leftJoin('tenants', ['properties.id' => 'tenants.property_id', 'tenants.status' => (DB::raw(TENANT_STATUS_ACTIVE))])
             ->leftJoin('users', function ($q) {
                 $q->on('tenants.user_id', 'users.id')->whereNull('users.deleted_at');
@@ -161,32 +157,28 @@ class PropertyService
     {
         $properties = Property::query()
             ->leftJoin('tenants', ['properties.id' => 'tenants.property_id', 'tenants.status' => (DB::raw(TENANT_STATUS_ACTIVE))])
-            ->selectRaw('properties.number_of_unit - (COUNT(tenants.id)) as available_unit,properties.*')
-            ->groupBy('properties.id')
+            ->leftJoin(DB::raw('(select property_id, MIN(general_rent) as starting_price from property_units where deleted_at is null and general_rent > 0 group by property_id) as pu_price'), 'pu_price.property_id', '=', 'properties.id')
+            ->selectRaw('properties.number_of_unit - (COUNT(tenants.id)) as available_unit,pu_price.starting_price,properties.*')
+            ->groupBy('properties.id', 'pu_price.starting_price')
             ->where('properties.property_type', $type)
             ->where('properties.owner_user_id', getOwnerUserId());
 
         return datatables($properties)
             ->addIndexColumn()
-            ->addColumn('image', function ($property) {
-                return '<img src="' . $property->thumbnail_image . '"
-                class="rounded-circle avatar-md tbl-user-image"
-                alt="">';
+            ->addColumn('property', function ($property) {
+                return renderPropertyListCell($property);
             })
-            ->addColumn('name', function ($property) {
-                return $property->name;
+            ->addColumn('price', function ($property) {
+                return renderPropertyPriceCell($property);
             })
-            ->addColumn('address', function ($property) {
-                return $property->propertyDetail?->address;
+            ->addColumn('type_filter', function ($property) {
+                return propertyFilterToken($property, 'type');
             })
-            ->addColumn('unit', function ($property) {
-                return $property->number_of_unit;
+            ->addColumn('status_filter', function ($property) {
+                return propertyFilterToken($property, 'status');
             })
-            ->addColumn('rooms', function ($property) {
-                return propertyTotalRoom($property->id);
-            })
-            ->addColumn('available', function ($property) {
-                return $property->available_unit;
+            ->addColumn('district_filter', function ($property) {
+                return propertyFilterToken($property, 'district');
             })
             ->addColumn('action', function ($property) {
                 return '<div class="tbl-action-btns d-inline-flex">
@@ -195,7 +187,7 @@ class PropertyService
                             <button onclick="deleteItem(\'' . route('owner.property.delete', $property->id) . '\', \'allDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>
                         </div>';
             })
-            ->rawColumns(['name', 'address', 'unit', 'rooms', 'image', 'available', 'action'])
+            ->rawColumns(['property', 'price', 'action'])
             ->make(true);
     }
 

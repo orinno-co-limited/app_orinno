@@ -26,10 +26,7 @@ class OwnerService
         return datatables($owners)
             ->addIndexColumn()
             ->addColumn('name', function ($owner) {
-                return $owner->first_name . ' ' . $owner->last_name;
-            })
-            ->addColumn('email', function ($owner) {
-                return $owner->email;
+                return renderUserListCell($owner->first_name, $owner->last_name, $owner->email);
             })
             ->addColumn('contact_number', function ($owner) {
                 return $owner->contact_number;

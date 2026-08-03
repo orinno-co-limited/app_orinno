@@ -67,17 +67,7 @@ class TenantService
         return datatables($tenants)
             ->addIndexColumn()
             ->addColumn('name', function ($tenant) {
-                return '<div class="tenants-tbl-info-object d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <img src="' . $tenant->image . '"
-                            class="rounded-circle avatar-md tbl-user-image"
-                            alt="">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6>' . $tenant->first_name . ' ' . $tenant->last_name . '</h6>
-                            <p class="font-13">' . $tenant->email . '</p>
-                        </div>
-                    </div>';
+                return renderUserListCell($tenant->first_name, $tenant->last_name, $tenant->email, $tenant->image);
             })
             ->addColumn('property', function ($tenant) {
                 return $tenant->property_name;
@@ -136,17 +126,7 @@ class TenantService
         return datatables($tenants)
             ->addIndexColumn()
             ->addColumn('name', function ($tenant) {
-                return '<div class="tenants-tbl-info-object d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <img src="' . $tenant->image . '"
-                            class="rounded-circle avatar-md tbl-user-image"
-                            alt="">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6>' . $tenant->first_name . ' ' . $tenant->last_name . '</h6>
-                            <p class="font-13">' . $tenant->email . '</p>
-                        </div>
-                    </div>';
+                return renderUserListCell($tenant->first_name, $tenant->last_name, $tenant->email, $tenant->image);
             })
             ->addColumn('property', function ($tenant) {
                 return $tenant->property_name;

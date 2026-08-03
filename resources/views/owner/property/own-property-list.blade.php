@@ -31,29 +31,71 @@
                     <div class="row">
                         <!-- Property Top Search Bar Start -->
                         <div class="property-top-search-bar">
-                            <div class="row">
-                                <div class="col-md-6">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
                                     <a href="{{ route('owner.property.add') }}" class="theme-btn mb-25"
                                         title="{{ __('Add New Property') }}">{{ __('Add New Property') }}</a>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="page-inner-search ms-auto position-relative mb-25">
-                                        <span class="ri-search-line"></span>
-                                        <input type="text" class="form-control property-search" name="search"
-                                            placeholder="{{ __('Search properties') }}">
+                            </div>
+                            <div class="property-filter-bar bg-off-white theme-border radius-10 p-20 mb-25">
+                                <div class="row align-items-center g-2">
+                                    <div class="col-md-4">
+                                        <div class="page-inner-search position-relative">
+                                            <span class="ri-search-line"></span>
+                                            <input type="text" class="form-control property-search" name="search"
+                                                placeholder="{{ __('Search by name, address, district...') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select class="form-select property-filter-type">
+                                            <option value="">{{ __('All Types') }}</option>
+                                            <option value="own">{{ __('Own') }}</option>
+                                            <option value="lease">{{ __('Lease') }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select class="form-select property-filter-status">
+                                            <option value="">{{ __('All Status') }}</option>
+                                            <option value="available">{{ __('Available') }}</option>
+                                            <option value="rented">{{ __('Fully Rented') }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select class="form-select property-filter-district">
+                                            <option value="">{{ __('All Districts') }}</option>
+                                            @foreach ($districts ?? [] as $district)
+                                                <option value="{{ $district }}">{{ $district }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 d-flex align-items-center justify-content-end">
+                                        <div class="property-view-toggle flex-shrink-0">
+                                            <button type="button"
+                                                class="view-toggle-btn {{ getOption('app_card_data_show', 1) == 1 ? 'active' : '' }}"
+                                                data-view="grid"
+                                                title="{{ __('Grid View') }}"><i class="ri-grid-fill"></i></button>
+                                            <button type="button"
+                                                class="view-toggle-btn {{ getOption('app_card_data_show', 1) == 1 ? '' : 'active' }}"
+                                                data-view="list"
+                                                title="{{ __('List View') }}"><i class="ri-list-check-2"></i></button>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="property-filter-result-count font-13 text-muted mt-2" id="propertyResultCount"></div>
                             </div>
                         </div>
                         <!-- Property Top Search Bar End -->
 
                         <!-- Properties Item Wrap Start -->
-                        <div class="properties-item-wrap">
+                        <div id="propertyGridView" class="properties-item-wrap {{ getOption('app_card_data_show', 1) == 1 ? '' : 'd-none' }}">
                             <div class="row">
-                                @if (getOption('app_card_data_show', 1) == 1)
                                     @forelse($properties as $property)
                                         <!-- Property Item Start -->
-                                        <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+                                        <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3 property-grid-item"
+                                            data-type="{{ propertyFilterToken($property, 'type') }}"
+                                            data-status="{{ propertyFilterToken($property, 'status') }}"
+                                            data-district="{{ propertyFilterToken($property, 'district') }}"
+                                            data-search="{{ strtolower($property->name . ' ' . $property->propertyDetail?->address . ' ' . $property->propertyDetail?->state_id) }}">
                                             <div
                                                 class="property-item bg-off-white theme-border radius-10 position-relative mb-25">
                                                 <a href="{{ route('owner.property.show', $property->id) }}"
@@ -63,6 +105,18 @@
                                                             class="fit-image">
                                                     </div>
                                                 </a>
+                                                <div class="property-item-badges">
+                                                    @if ($property->available_unit <= 0)
+                                                        <div class="status-btn status-btn-red font-13 radius-4">{{ __('Fully Rented') }}</div>
+                                                    @else
+                                                        <div class="status-btn status-btn-green font-13 radius-4">{{ __('Available') }}</div>
+                                                    @endif
+                                                </div>
+                                                <div class="property-item-type-badge">
+                                                    <div class="status-btn status-btn-purple font-13 radius-4">
+                                                        {{ $property->property_type == PROPERTY_TYPE_LEASE ? __('Lease') : __('Own') }}
+                                                    </div>
+                                                </div>
                                                 <div class="property-item-content p-20">
                                                     <h4 class="property-item-title position-relative">
                                                         <a href="{{ route('owner.property.show', $property->id) }}"
@@ -148,7 +202,11 @@
                                         </div>
                                         <!-- Empty Properties row -->
                                     @endforelse
-                                @else
+                            </div>
+                        </div>
+
+                        <div id="propertyListView" class="properties-item-wrap {{ getOption('app_card_data_show', 1) == 1 ? 'd-none' : '' }}">
+                            <div class="row">
                                     <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                                         <div class="account-settings-rightside bg-off-white theme-border radius-4 p-25">
                                             <div class="tenants-details-payment-history">
@@ -158,12 +216,11 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>{{ __('SL') }}</th>
-                                                                    <th>{{ __('Image') }}</th>
-                                                                    <th data-priority="1">{{ __('Name') }}</th>
-                                                                    <th>{{ __('Address') }}</th>
-                                                                    <th>{{ __('Rooms') }}</th>
-                                                                    <th>{{ __('Unit') }}</th>
-                                                                    <th>{{ __('Available') }}</th>
+                                                                    <th data-priority="1">{{ __('Property') }}</th>
+                                                                    <th>{{ __('Price') }}</th>
+                                                                    <th class="d-none">{{ __('Type') }}</th>
+                                                                    <th class="d-none">{{ __('Status') }}</th>
+                                                                    <th class="d-none">{{ __('District') }}</th>
                                                                     <th>{{ __('Action') }}</th>
                                                                 </tr>
                                                             </thead>
@@ -173,7 +230,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endif
                             </div>
                         </div>
                         <!-- Properties Item Wrap End -->
@@ -189,17 +245,12 @@
     <input type="hidden" id="getSearchRoute" value="{{ route('owner.property.own-property-search') }}">
 
 @endsection
-@if (getOption('app_card_data_show', 1) != 1)
-    @push('style')
-        @include('common.layouts.datatable-style')
-    @endpush
-    @push('script')
-        @include('common.layouts.datatable-script')
-        <script src="{{ asset('assets/js/custom/propery-datatable.js') }}"></script>
-    @endpush
-@endif
-
+@push('style')
+    @include('common.layouts.datatable-style')
+@endpush
 @push('script')
-        @include('common.layouts.datatable-script')
-        <script src="{{ asset('assets/js/custom/property-search-datatable.js') }}"></script>
- @endpush
+    @include('common.layouts.datatable-script')
+    <script src="{{ asset('assets/js/custom/propery-datatable.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/property-view-toggle.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/property-filters.js') }}"></script>
+@endpush

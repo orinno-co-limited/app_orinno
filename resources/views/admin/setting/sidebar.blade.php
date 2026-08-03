@@ -55,21 +55,19 @@
                         <span class="iconify" data-icon="logos:recaptcha"></span>{{ __('reCaptcha Setting') }}
                     </a>
                 </li>
-                @if (isAddonInstalled('PROTYSMS', 0) > 0)
-                    <li>
-                        <a href="{{ route('admin.setting.sms.setting') }}"
-                            class="account-settings-menu-item {{ @$subSmsSettingActiveClass }}">
-                            <span class="iconify"
-                                data-icon="icon-park-outline:setting-web"></span>{{ __('Sms Setting') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.setting.reminder.setting') }}"
-                            class="account-settings-menu-item {{ @$subReminderSettingActiveClass }}">
-                            <span class="iconify" data-icon="carbon:reminder"></span>{{ __('Reminder Setting') }}
-                        </a>
-                    </li>
-                @endif
+                <li>
+                    <a href="{{ route('admin.setting.sms.setting') }}"
+                        class="account-settings-menu-item {{ @$subSmsSettingActiveClass }}">
+                        <span class="iconify"
+                            data-icon="icon-park-outline:setting-web"></span>{{ __('Sms Setting') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.setting.reminder.setting') }}"
+                        class="account-settings-menu-item {{ @$subReminderSettingActiveClass }}">
+                        <span class="iconify" data-icon="carbon:reminder"></span>{{ __('Reminder Setting') }}
+                    </a>
+                </li>
                 @if (isAddonInstalled('PROTYAGREEMENT', 0) > 0)
                     <li>
                         <a href="{{ route('admin.setting.agreement.setting') }}"

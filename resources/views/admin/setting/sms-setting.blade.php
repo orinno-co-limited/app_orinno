@@ -34,16 +34,8 @@
                                         <div class="account-settings-content-box">
                                             <div class="account-settings-title border-bottom mb-20 pb-20">
                                                 <div class="row align-items-center">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12">
                                                         <h4>{{ $pageTitle }}</h4>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="property-details-right text-end">
-                                                            <button type="button" class="theme-btn" data-bs-toggle="modal"
-                                                                data-bs-target="#testSmsModal" title="{{ __('Test Sms') }}">
-                                                                {{ __('Test Sms') }}
-                                                            </button>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,46 +182,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="testSmsModal" tabindex="-1" aria-labelledby="testSmsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="testSmsModalLabel">{{ __('Test Sms') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span>
-                    </button>
-                </div>
-                <form class="ajax" action="{{ route('sms-mail.sms.test.send') }}" method="post"
-                    data-handler="getShowMessage">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="modal-inner-form-box">
-                            <div class="row">
-                                <div class="col-md-12 mb-25">
-                                    <label
-                                        class="label-text-title color-heading font-medium mb-2">{{ __('Phone Number') }}</label>
-                                    <input type="text" name="phone_number" class="form-control"
-                                        placeholder="{{ __('Phone Number') }}">
-                                </div>
-
-                                <div class="col-md-12 mb-25">
-                                    <label
-                                        class="label-text-title color-heading font-medium mb-2">{{ __('Message') }}</label>
-                                    <textarea name="message" id="message" class="form-control" placeholder="{{ __('Message') }}"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-start">
-                        <button type="button" class="theme-btn-back me-3" data-bs-dismiss="modal"
-                            title="{{ __('Back') }}">{{ __('Back') }}</button>
-                        <button type="submit" class="theme-btn me-3"
-                            title="{{ __('Send') }}">{{ __('Send') }}</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

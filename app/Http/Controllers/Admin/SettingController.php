@@ -136,9 +136,6 @@ class SettingController extends Controller
 
     public function smsSetting()
     {
-        if (isAddonInstalled('PROTYSMS') < 1) {
-            abort(404);
-        }
         $data['pageTitle'] = __("Twilio Sms Setting");
         $data['subSmsSettingActiveClass'] = 'active';
         return view('admin.setting.sms-setting')->with($data);
@@ -146,9 +143,6 @@ class SettingController extends Controller
 
     public function reminderSetting()
     {
-        if (isAddonInstalled('PROTYSMS') < 1) {
-            abort(404);
-        }
         $data['pageTitle'] = __("Reminder Invoice Setting");
         $data['subReminderSettingActiveClass'] = 'active';
         return view('admin.setting.reminder-setting')->with($data);

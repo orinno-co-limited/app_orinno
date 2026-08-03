@@ -32,6 +32,7 @@ class PropertyController extends Controller
             return $this->propertyService->getAllData();
         } else {
             $data['properties'] = $this->propertyService->getAll();
+            $data['districts'] = $data['properties']->pluck('propertyDetail.state_id')->filter()->unique()->values();
         }
         return view('owner.property.all-property-list')->with($data);
     }
@@ -53,9 +54,8 @@ class PropertyController extends Controller
         $data['subNavOwnPropertyMMActiveClass'] = 'mm-active';
         $data['subNavOwnPropertyActiveClass'] = 'active';
         $data['propertiesCount'] = $this->propertyService->getByTypeCount(PROPERTY_TYPE_OWN);
-        if (getOption('app_card_data_show', 1) == 1) {
-            $data['properties'] = $this->propertyService->getByType(PROPERTY_TYPE_OWN);
-        }
+        $data['properties'] = $this->propertyService->getByType(PROPERTY_TYPE_OWN);
+        $data['districts'] = $data['properties']->pluck('propertyDetail.state_id')->filter()->unique()->values();
         if ($request->ajax()) {
             return $this->propertyService->getByTypeData(PROPERTY_TYPE_OWN);
         }
@@ -69,9 +69,8 @@ class PropertyController extends Controller
         $data['subNavLeasePropertyMMActiveClass'] = 'mm-active';
         $data['subNavLeasePropertyActiveClass'] = 'active';
         $data['propertiesCount'] = $this->propertyService->getByTypeCount(PROPERTY_TYPE_LEASE);
-        if (getOption('app_card_data_show', 1) == 1) {
-            $data['properties'] = $this->propertyService->getByType(PROPERTY_TYPE_LEASE);
-        }
+        $data['properties'] = $this->propertyService->getByType(PROPERTY_TYPE_LEASE);
+        $data['districts'] = $data['properties']->pluck('propertyDetail.state_id')->filter()->unique()->values();
         if ($request->ajax()) {
             return $this->propertyService->getByTypeData(PROPERTY_TYPE_LEASE);
         }

@@ -31,7 +31,6 @@
                                     <thead>
                                         <th>{{ __('SL') }}</th>
                                         <th data-priority="1">{{ __('Landlord') }}</th>
-                                        <th>{{ __('Email') }}</th>
                                         <th>{{ __('Contact Number') }}</th>
                                         <th>{{ __('Properties') }}</th>
                                         <th>{{ __('Tenants') }}</th>
@@ -46,8 +45,7 @@
                                 <table id="allPlatformTenantDataTable" class="table responsive theme-border p-20">
                                     <thead>
                                         <th>{{ __('SL') }}</th>
-                                        <th data-priority="1">{{ __('Name') }}</th>
-                                        <th>{{ __('Email') }}</th>
+                                        <th data-priority="1">{{ __('Tenant') }}</th>
                                         <th>{{ __('Contact Number') }}</th>
                                         <th>{{ __('Landlord') }}</th>
                                         <th>{{ __('Property') }}</th>

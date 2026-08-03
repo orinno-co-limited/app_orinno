@@ -29,20 +29,9 @@ class MaintainerService
             ->select(DB::raw('CONCAT(owner.first_name, " " ,owner.last_name) as owner'), 'maintainers.id', 'maintainers.user_id', 'users.first_name', 'users.last_name', 'users.email', 'users.status', 'users.contact_number', 'file_managers.file_name', 'file_managers.folder_name');
         return datatables($maintainer)
             ->addIndexColumn()
-            ->addColumn('image', function ($maintainer) {
-                return '<div class="tenants-tbl-info-object tbl-info-property-img d-flex align-items-center">
-                            <div class="flex-shrink-0">
-                                <img src="' . getFileUrl($maintainer->folder_name, $maintainer->file_name) . '"
-                                class="rounded avatar-md tbl-user-image"
-                                alt="' . $maintainer->file_name . '">
-                            </div>
-                        </div>';
-            })
             ->editColumn('name', function ($maintainer) {
-                return $maintainer->first_name . ' ' . $maintainer->last_name;
-            })
-            ->addColumn('email', function ($maintainer) {
-                return $maintainer->email;
+                $imageUrl = $maintainer->file_name ? getFileUrl($maintainer->folder_name, $maintainer->file_name) : null;
+                return renderUserListCell($maintainer->first_name, $maintainer->last_name, $maintainer->email, $imageUrl);
             })
             ->addColumn('contact_number', function ($maintainer) {
                 return $maintainer->contact_number;
@@ -70,7 +59,7 @@ class MaintainerService
                             <button onclick="deleteItem(\'' . route('owner.maintainer.delete', $id) . '\', \'allDatatable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>
                         </div>';
             })
-            ->rawColumns(['image', 'property', 'status', 'action'])
+            ->rawColumns(['name', 'property', 'status', 'action'])
             ->make(true);
     }
 

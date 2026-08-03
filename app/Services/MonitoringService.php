@@ -29,7 +29,7 @@ class MonitoringService
         return datatables($owners)
             ->addIndexColumn()
             ->addColumn('name', function ($owner) {
-                return $owner->first_name . ' ' . $owner->last_name;
+                return renderUserListCell($owner->first_name, $owner->last_name, $owner->email);
             })
             ->addColumn('status', function ($owner) {
                 if ($owner->status == USER_STATUS_ACTIVE) {
@@ -72,7 +72,7 @@ class MonitoringService
         return datatables($tenants)
             ->addIndexColumn()
             ->addColumn('name', function ($tenant) {
-                return $tenant->first_name . ' ' . $tenant->last_name;
+                return renderUserListCell($tenant->first_name, $tenant->last_name, $tenant->email);
             })
             ->addColumn('landlord', function ($tenant) {
                 return $tenant->landlord_name ?: 'N/A';
@@ -96,7 +96,7 @@ class MonitoringService
                     return '<div class="status-btn status-btn-blue font-13 radius-4">' . __('Draft') . '</div>';
                 }
             })
-            ->rawColumns(['status'])
+            ->rawColumns(['name', 'status'])
             ->make(true);
     }
 }

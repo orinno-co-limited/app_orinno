@@ -39,8 +39,7 @@
                             <table id="allOwnerDataTable" class="table responsive theme-border p-20 ">
                                 <thead>
                                     <th>{{ __('SL') }}</th>
-                                    <th data-priority="1">{{ __('Name') }}</th>
-                                    <th>{{ __('Email') }}</th>
+                                    <th data-priority="1">{{ __('User') }}</th>
                                     <th>{{ __('Contact Number') }}</th>
                                     <th>{{ __('Status') }}</th>
                                     <th>{{ __('Action') }}</th>

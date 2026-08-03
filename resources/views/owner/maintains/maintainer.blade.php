@@ -68,10 +68,8 @@
                                     <thead>
                                         <tr>
                                             <th>{{ __('SL') }}</th>
-                                            <th>{{ __('Image') }}</th>
-                                            <th data-priority="1">{{ __('Name') }}</th>
+                                            <th data-priority="1">{{ __('User') }}</th>
                                             <th class="d-none">{{ __('Name') }}</th>
-                                            <th>{{ __('Email') }}</th>
                                             <th>{{ __('Contact Number') }}</th>
                                             <th>{{ __('Property') }}</th>
                                             <th>{{ __('Status') }}</th>

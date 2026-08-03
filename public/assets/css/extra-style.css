@@ -183,15 +183,17 @@
 
 /* Active state, scoped strictly to the real nav list so it can never bleed
    onto unrelated elements elsewhere on the page that happen to reuse the
-   mm-active/active class names. Minimal: a thin left indicator + bold text,
-   no filled background. */
+   mm-active/active class names. Bold text only here — the filled pill
+   background further down (#sidebar-menu .mm-active > a / .active) is what
+   signals "active" visually. (A left-edge inset box-shadow used to do that
+   job too, but on indented/rounded submenu rows the two insets from nested
+   .mm-active elements stacked and bled past the rounded corner as a visible
+   notch — removed rather than patched.) */
 #sidebar-menu .mm-active > a {
-    box-shadow: inset 3px 0 0 var(--primary-color);
     font-weight: 600;
 }
 
 #sidebar-menu .mm-active .active {
-    box-shadow: inset 3px 0 0 var(--primary-color);
     font-weight: 600;
 }
 
@@ -240,6 +242,311 @@
     font-size: 10px;
     font-weight: 700;
     line-height: 1;
+}
+
+/* ==========================================================================
+   People-list table reskin: avatar + stacked name/email cell, pill action
+   buttons. Renders via renderUserListCell() (app/Helper/helper.php) so all
+   people-lists (owner, tenant, maintainer, monitoring) share one markup
+   source; this is the CSS half.
+   ========================================================================== */
+
+.tbl-user-avatar,
+.tbl-user-avatar-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.tbl-user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+}
+
+.avatar-color-1 { background-color: var(--primary-color); }
+.avatar-color-2 { background-color: var(--secondary-color); }
+.avatar-color-3 { background-color: var(--green-color); }
+.avatar-color-4 { background-color: var(--orange-color); }
+.avatar-color-5 { background-color: var(--red-color); }
+.avatar-color-6 { background-color: #14b8a6; }
+
+/* Card-style tenant list header uses the same avatar at its original 60px
+   card size instead of the 40px table-row size. */
+.tenants-img-info-box .tbl-user-avatar,
+.tenants-img-info-box .tbl-user-avatar-img {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+}
+
+.tbl-user-info-object h6 {
+    font-weight: 600;
+    color: var(--heading-color);
+    font-size: 14px;
+}
+
+/* Action buttons: circular hover chip. Delete/destructive actions are
+   picked out by the vendor's inline onclick="deleteItem(...)" convention,
+   so every existing list gets a red "danger" icon button with no markup
+   changes needed per view. */
+.tbl-action-btn {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.tbl-action-btn:hover {
+    background-color: var(--bg-light);
+}
+
+.tbl-action-btns [onclick^="deleteItem"] {
+    color: var(--red-color);
+}
+
+.tbl-action-btns [onclick^="deleteItem"]:hover {
+    background-color: var(--red-color);
+    color: #fff;
+}
+
+/* Sidebar active row: filled tinted pill, layered on top of the existing
+   left accent bar. color-mix degrades safely — unsupported browsers just
+   keep the plain left-bar indicator already defined above. */
+#sidebar-menu .mm-active > a,
+#sidebar-menu .mm-active .active {
+    background-color: color-mix(in srgb, var(--primary-color) 10%, transparent);
+    border-radius: 8px;
+}
+
+/* ==========================================================================
+   DataTables Responsive "extendable row" reskin. Every list already has
+   responsive:true, which gives a built-in [+] control that expands a child
+   row with the columns that didn't fit — the plugin just ships unstyled.
+   Restyled here so every information-dense list (tenants, maintainers,
+   invoices, owners, monitoring...) gets a proper expand-to-detail-card
+   treatment automatically, with no per-page changes needed.
+   ========================================================================== */
+
+table.dataTable > tbody > tr.child {
+    background-color: var(--bg-light);
+}
+
+table.dataTable > tbody > tr.child td {
+    box-shadow: none !important;
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details {
+    display: block;
+    padding: 6px 10px;
+    margin: 0;
+    list-style: none;
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 9px 4px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details > li:last-child {
+    border-bottom: none;
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details > li .dtr-title {
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--body-font-color);
+    flex-shrink: 0;
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details > li .dtr-data {
+    color: var(--heading-color);
+    text-align: right;
+}
+
+/* ==========================================================================
+   Properties dashboard card reskin (pilot page). Card hover-lift, an
+   availability badge overlaid on the thumbnail, a property-type pill, and a
+   grid/list view toggle that swaps between the existing card grid and the
+   existing (already-built) DataTable list markup — both are rendered on the
+   page and toggled with a class, no server round-trip.
+   ========================================================================== */
+
+.property-item {
+    box-shadow: var(--card-shadow);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.property-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(22, 14, 77, 0.12);
+}
+
+.property-item-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    display: flex;
+    gap: 6px;
+}
+
+.property-item-badges .status-btn {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.property-item-type-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+}
+
+/* Grid/list toggle button pair */
+.property-view-toggle {
+    display: inline-flex;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.property-view-toggle .view-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: var(--bg-white);
+    color: var(--body-font-color);
+    border: none;
+    cursor: pointer;
+}
+
+.property-view-toggle .view-toggle-btn:not(:last-child) {
+    border-right: 1px solid var(--border-color);
+}
+
+.property-view-toggle .view-toggle-btn.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* ==========================================================================
+   Brand palette v2 (Navy / Teal / Amber). --primary-color/--secondary-color
+   are already wired dynamically per-request in common/layouts/style.blade.php
+   from the `settings` table (website_primary_color/website_secondary_color),
+   which now hold the Teal/Navy values too — this block covers the tokens
+   that aren't admin-configurable: status colors, text/neutral tones, and a
+   new Amber accent for "featured"-style badges. Previously --red/--orange/
+   --blue-adjacent tokens happened to read fine against a blue primary; now
+   that primary is teal they're decoupled here to their own hex values from
+   the palette rather than left implicitly tied to --primary-color.
+   ========================================================================== */
+
+:root {
+    --amber-color: #F2A93B;
+    --blue-color: #185FA5;
+
+    --green-color: #639922;
+    --orange-color: #854F0B;
+    --red-color: #A32D2D;
+
+    --heading-color: #2C2C2A;
+    --body-font-color: #5F5E5A;
+    --bg-light: #F7F7F5;
+    --border-color: #E5E2D9;
+}
+
+.status-btn-green {
+    background-color: #EAF3DE;
+    color: var(--green-color);
+}
+
+.status-btn-orange {
+    background-color: #FAEEDA;
+    color: var(--orange-color);
+}
+
+.status-btn-red {
+    background-color: #FCEBEB;
+    color: var(--red-color);
+}
+
+.status-btn-blue {
+    background-color: #E6F1FB;
+    color: var(--blue-color);
+}
+
+.status-btn-amber {
+    background-color: #FAEEDA;
+    color: var(--amber-color);
+}
+
+/* Corner-rounding pass: buttons/inputs/cards get a visibly softer, more
+   modern radius than the vendor template's mix of radius-4/radius-10
+   utility classes. Targets shared component classes so it cascades
+   everywhere rather than needing per-page class edits. */
+.theme-btn,
+.theme-btn-back,
+.btn,
+.form-control,
+.form-select,
+.select2-container--default .select2-selection--single {
+    border-radius: 10px !important;
+}
+
+.page-content-wrapper,
+.dashboard-feature-item,
+.property-item,
+.billing-center-area,
+.account-settings-rightside,
+.modal-content {
+    border-radius: 16px !important;
+}
+
+.tbl-user-avatar,
+.tbl-user-avatar-img,
+.status-btn,
+.property-item-badges .status-btn,
+.property-item-type-badge .status-btn {
+    border-radius: 999px !important;
+}
+
+/* ITAB-style property list row (renderPropertyListCell/renderPropertyPriceCell) */
+.tbl-property-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.tbl-property-info-object h6 {
+    font-weight: 600;
+    color: var(--heading-color);
+    font-size: 14px;
+}
+
+.tbl-property-meta span {
+    margin-right: 10px;
+}
+
+.tbl-property-price {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--blue-color);
 }
 
 /* Modern Dashboard Reskin End */

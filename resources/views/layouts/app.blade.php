@@ -71,10 +71,10 @@
                 --button-primary-color: {{ getOption('button_primary_color', '#3686FC') }};
                 --button-hover-color: {{ getOption('button_hover_color', '#0063E6') }};
             @else
-                --primary-color: #3686FC;
-                --secondary-color: #8253FB;
-                --button-primary-color: #3686FC;
-                --button-hover-color: #0063E6;
+                --primary-color: #02b497;
+                --secondary-color: #01172e;
+                --button-primary-color: #02b497;
+                --button-hover-color: #029b83;
             @endif
         }
     </style>

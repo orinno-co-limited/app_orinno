@@ -29,7 +29,13 @@ class WhatsAppCloudService
                 foreach ($numbers as $key => $number) {
                     $to = preg_replace('/\D/', '', $number);
                     try {
-                        $response = Http::withToken($token)
+                        $client = Http::withToken($token);
+                        // ponytail: WHATSAPP_HTTP_PROXY is a local-dev-only escape hatch for
+                        // networks that block Meta's API directly; unset in every real deploy.
+                        if (env('WHATSAPP_HTTP_PROXY')) {
+                            $client = $client->withOptions(['proxy' => env('WHATSAPP_HTTP_PROXY')]);
+                        }
+                        $response = $client
                             ->post("https://graph.facebook.com/v20.0/{$phoneNumberId}/messages", [
                                 'messaging_product' => 'whatsapp',
                                 'to' => $to,

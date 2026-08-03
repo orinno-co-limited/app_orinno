@@ -45,7 +45,6 @@ allOwnerDataTable = $('#allOwnerDataTable').DataTable({
     columns: [
         { "data": 'DT_RowIndex', "name": 'DT_RowIndex', orderable: false, searchable: false, },
         { "data": "name", "name": "users.first_name" },
-        { "data": "email", "name": "users.email" },
         { "data": "contact_number", "name": "users.contact_number" },
         { "data": "status", "name": "status" },
         { "data": "action", "name": "action" }

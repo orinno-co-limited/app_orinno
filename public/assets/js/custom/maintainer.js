@@ -62,10 +62,8 @@ function getDataEditRes(response) {
         },
         columns: [
             { "data": 'DT_RowIndex', "name": 'DT_RowIndex', orderable: false, searchable: false },
-            { "data": "image" },
             { "data": "name", "name": "users.first_name" },
             { "data": "name", "visible": false, "name": "users.last_name" },
-            { "data": "email", "name": "users.email" },
             { "data": "contact_number", "name": "users.contact_number" },
             { "data": "property", "name": "properties.name" },
             { "data": "status" },

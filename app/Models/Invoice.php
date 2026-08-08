@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Invoice extends Model
 {
@@ -52,6 +53,15 @@ class Invoice extends Model
     protected static function boot()
     {
         parent::boot();
+        self::creating(function ($model) {
+            // invoice_no is NOT NULL/unique but depends on the auto-increment id, which
+            // doesn't exist yet here - give it a placeholder so the initial insert succeeds
+            // on databases that enforce NOT NULL strictly (the created event below then
+            // overwrites it with the real id-based value right after).
+            if (empty($model->invoice_no)) {
+                $model->invoice_no = 'TEMP-' . Str::uuid();
+            }
+        });
         self::created(function ($model) {
             $model->invoice_no = $model->name . '-' . sprintf("%'.08d", $model->id);
             $model->save();

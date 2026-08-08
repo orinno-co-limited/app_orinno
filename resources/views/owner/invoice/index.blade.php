@@ -900,6 +900,8 @@
             var status = 'Pending';
             if (response.data.invoice.status == '1') {
                 status = "Paid"
+            } else if (response.data.invoice.status == '2') {
+                status = "Due"
             }
             selector.find('.invoiceStatus').html(status)
 

@@ -78,6 +78,14 @@
                                                                     class="form-control" placeholder="3">
                                                                 <small>{{ __('Day separet by comma(,)') }}</small>
                                                             </div>
+                                                            <div class="col-xl-4 mb-25">
+                                                                <label
+                                                                    class="label-text-title color-heading font-medium mb-2">{{ __('Max Reminders') }}</label>
+                                                                <input type="number" name="reminder_max_count"
+                                                                    value="{{ getOption('reminder_max_count', 3) }}"
+                                                                    class="form-control" placeholder="3" min="1">
+                                                                <small>{{ __('After this many reminders, the invoice is automatically flagged overdue and stops reminding.') }}</small>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

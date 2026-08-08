@@ -49,7 +49,8 @@ class GenerateInvoice extends Command
                         ->where('month', month(now()->format('n')))
                         ->whereYear('created_at', '=', now()->format('Y'))
                         ->exists();
-                    if (!$invoiceExist) {
+                    $dayReady = is_null($invoiceRecurring->generation_day) || now()->day >= $invoiceRecurring->generation_day;
+                    if (!$invoiceExist && $dayReady) {
                         $this->generateInvoice($invoiceRecurring);
                         echo "Created \n";
                     } else {

@@ -114,6 +114,9 @@ class InvoiceService
                 } elseif ($invoice->status == INVOICE_STATUS_PAID) {
                     $html .= '<button type="button" class="p-1 tbl-action-btn view" data-detailsurl="' . route('owner.invoice.details', $invoice->id) . '" title="' . __('View') . '"><span class="iconify" data-icon="carbon:view-filled"></span></button>';
                     $html .= '<button type="button" class="p-1 tbl-action-btn reminder" data-id="' . $invoice->id . '" title="' . __('Send Reminder') . '"><span class="iconify" data-icon="ri:send-plane-fill"></span></button>';
+                } elseif ($invoice->status == INVOICE_STATUS_OVER_DUE) {
+                    $html .= '<button type="button" class="p-1 tbl-action-btn view" data-detailsurl="' . route('owner.invoice.details', $invoice->id) . '" title="' . __('View') . '"><span class="iconify" data-icon="carbon:view-filled"></span></button>';
+                    $html .= '<button type="button" class="p-1 tbl-action-btn reminder" data-id="' . $invoice->id . '" title="' . __('Send Reminder') . '"><span class="iconify" data-icon="ri:send-plane-fill"></span></button>';
                 }
                 $html .= '</div>';
                 return $html;

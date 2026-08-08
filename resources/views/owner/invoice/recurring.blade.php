@@ -133,6 +133,13 @@
                                     <input type="number" name="cycle_day" class="form-control" autocomplete="off"
                                         placeholder="{{ __('Day') }}">
                                 </div>
+                                <div class="col-md-6 mb-25 d-none generation_day">
+                                    <label
+                                        class="label-text-title color-heading font-medium mb-2">{{ __('Generation Day') }}</label>
+                                    <input type="number" name="generation_day" class="form-control" autocomplete="off"
+                                        min="1" max="31" placeholder="{{ __('Day of month, e.g. 5') }}">
+                                    <small class="small">{{ __('Day of the month invoices are generated. Leave blank to generate as soon as the period rolls over.') }}</small>
+                                </div>
                                 <div class="col-md-6 mb-25">
                                     <label
                                         class="label-text-title color-heading font-medium mb-2">{{ __('Due Date After Invoice Creation') }}</label>
@@ -260,6 +267,13 @@
                                         class="label-text-title color-heading font-medium mb-2">{{ __('Cycle Day') }}</label>
                                     <input type="number" name="cycle_day" class="form-control" autocomplete="off"
                                         placeholder="{{ __('Day') }}">
+                                </div>
+                                <div class="col-md-6 mb-25 d-none generation_day">
+                                    <label
+                                        class="label-text-title color-heading font-medium mb-2">{{ __('Generation Day') }}</label>
+                                    <input type="number" name="generation_day" class="form-control" autocomplete="off"
+                                        min="1" max="31" placeholder="{{ __('Day of month, e.g. 5') }}">
+                                    <small class="small">{{ __('Day of the month invoices are generated. Leave blank to generate as soon as the period rolls over.') }}</small>
                                 </div>
                                 <div class="col-md-6 mb-25">
                                     <label

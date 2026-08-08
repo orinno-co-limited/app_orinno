@@ -21,10 +21,6 @@ Route::group(['middleware' => ['auth:api', 'owner'], 'prefix' => 'owner'], funct
     Route::get('properties', [PropertyController::class, 'allProperty']);
     Route::get('property-details/{id}', [PropertyController::class, 'details']);
     Route::get('units', [PropertyController::class, 'allUnit']);
-    
-    //recurring-setting
-    Route::get('invoice/recurring-setting/tenant-rent/{unitId}', [InvoiceRecurringController::class, 'getTenantRent'])
-    ->name('owner.invoice.recurring-setting.tenant-rent');
 
     // tenant
     Route::get('tenants', [TenantController::class, 'index']);

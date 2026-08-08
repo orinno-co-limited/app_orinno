@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InvoiceRecurringRequest;
+use App\Models\PropertyUnit;
 use App\Services\InvoiceRecurringService;
 use App\Services\InvoiceTypeService;
 use App\Services\PropertyService;
@@ -45,8 +46,9 @@ class InvoiceRecurringController extends Controller
         if (!$tenant) {
             return $this->error([], __('No active tenant found for this unit'));
         }
-        return $this->success(['rent' => $tenant->general_rent]);
-    }   
+        $unit = PropertyUnit::find($unitId);
+        return $this->success(['rent' => $unit ? $unit->general_rent : $tenant->general_rent]);
+    }
 
     public function store(InvoiceRecurringRequest $request)
     {

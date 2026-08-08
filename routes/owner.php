@@ -143,6 +143,7 @@ Route::group(['prefix' => 'owner', 'as' => 'owner.', 'middleware' => ['auth', 'o
             Route::post('store', [InvoiceRecurringController::class, 'store'])->name('store');
             Route::get('details/{id}', [InvoiceRecurringController::class, 'details'])->name('details');
             Route::get('destroy/{id}', [InvoiceRecurringController::class, 'destroy'])->name('destroy');
+            Route::get('tenant-rent/{unitId}', [InvoiceRecurringController::class, 'getTenantRent'])->name('tenant-rent');
         });
     });
 

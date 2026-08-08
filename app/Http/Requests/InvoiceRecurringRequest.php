@@ -30,6 +30,7 @@ class InvoiceRecurringRequest extends FormRequest
             'due_day_after' => 'required',
             'recurring_type' => 'required',
             'cycle_day' => 'required_if:recurring_type,3',
+            'generation_day' => 'nullable|integer|between:1,31|required_if:recurring_type,1',
             'invoiceItem.invoice_type_id.*' => 'required',
             'invoiceItem.amount.*' => 'required',
             'invoiceItem.description.*' => 'required',
@@ -40,6 +41,7 @@ class InvoiceRecurringRequest extends FormRequest
     {
         return [
             'cycle_day.required_if' => 'The cycle day field is required.',
+            'generation_day.required_if' => 'The generation day field is required.',
             'invoiceItem.invoice_type_id.*.required' => 'The invoice type field is required.',
             'invoiceItem.amount.*.required' => 'The amount field is required.',
             'invoiceItem.description.*.required' => 'The description field is required.',

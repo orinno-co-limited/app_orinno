@@ -60,6 +60,11 @@
         } else {
             selector.closest('.modal').find('.recurring_day').addClass('d-none');
         }
+        if (selector.val() == 1) {
+            selector.closest('.modal').find('.generation_day').removeClass('d-none');
+        } else {
+            selector.closest('.modal').find('.generation_day').addClass('d-none');
+        }
     });
 
     $(document).on("click", ".edit", function () {
@@ -82,11 +87,17 @@
         }, 2000);
         selector.find('select[name=recurring_type]').val(response.data.invoice.recurring_type)
         selector.find('input[name=cycle_day]').val(response.data.invoice.cycle_day)
+        selector.find('input[name=generation_day]').val(response.data.invoice.generation_day)
         selector.find('input[name=due_day_after]').val(response.data.invoice.due_day_after)
         if (response.data.invoice.recurring_type == 3) {
             selector.closest('.modal').find('.recurring_day').removeClass('d-none');
         } else {
             selector.closest('.modal').find('.recurring_day').addClass('d-none');
+        }
+        if (response.data.invoice.recurring_type == 1) {
+            selector.closest('.modal').find('.generation_day').removeClass('d-none');
+        } else {
+            selector.closest('.modal').find('.generation_day').addClass('d-none');
         }
         selector.find('select[name=status]').val(response.data.invoice.status)
 
@@ -213,7 +224,7 @@
             url: url,
             type: 'GET',
             success: function (response) {
-                if (response.result === true && response.data.rent) {
+                if (response.status === true && response.data.rent) {
                     // Fill only the first amount field (the rent line item)
                     $amountFields.first().val(response.data.rent);
                 } else {

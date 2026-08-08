@@ -97,6 +97,7 @@ class InvoiceRecurringService
             $invoiceRecurring->start_date = $request->start_date ?? now();
             $invoiceRecurring->recurring_type = $request->recurring_type;
             $invoiceRecurring->cycle_day = $request->cycle_day;
+            $invoiceRecurring->generation_day = $request->generation_day;
             $invoiceRecurring->due_day_after = $request->due_day_after;
             $invoiceRecurring->status = $request->status;
             $invoiceRecurring->save();

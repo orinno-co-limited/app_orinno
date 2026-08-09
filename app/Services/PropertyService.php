@@ -626,13 +626,24 @@ class PropertyService
                 $q->on('tenants.user_id', 'users.id')->whereNull('users.deleted_at');
             })
             ->leftJoin('file_managers', ['property_units.id' => 'file_managers.origin_id', 'file_managers.origin_type' => (DB::raw("'App\\\Models\\\PropertyUnit'"))])
-            ->leftJoin('property_unit_amenity', 'property_units.id', '=', 'property_unit_amenity.property_unit_id')
-            ->leftJoin('amenities', 'property_unit_amenity.amenity_id', '=', 'amenities.id')
-            ->select('property_units.*', 'tenants.status as tenant_status', 'tenants.user_id', 'users.first_name', 'users.last_name', 'users.email', 'file_managers.file_name', 'file_managers.folder_name', DB::raw('GROUP_CONCAT(DISTINCT amenities.name SEPARATOR ", ") as amenity_names'))
+            ->select('property_units.*', 'tenants.status as tenant_status', 'tenants.user_id', 'users.first_name', 'users.last_name', 'users.email', 'file_managers.file_name', 'file_managers.folder_name')
             ->where('property_units.property_id', $id)
             ->where('properties.owner_user_id', getOwnerUserId())
             ->groupBy('property_units.id')
             ->get();
+
+        $amenityNamesByUnitId = DB::table('property_unit_amenity')
+            ->join('amenities', 'property_unit_amenity.amenity_id', '=', 'amenities.id')
+            ->whereIn('property_unit_amenity.property_unit_id', $propertyUnits->pluck('id'))
+            ->orderBy('amenities.name')
+            ->get(['property_unit_amenity.property_unit_id', 'amenities.name'])
+            ->groupBy('property_unit_id')
+            ->map(fn ($rows) => $rows->pluck('name')->implode(', '));
+
+        $propertyUnits->each(function ($unit) use ($amenityNamesByUnitId) {
+            $unit->amenity_names = $amenityNamesByUnitId->get($unit->id, '');
+        });
+
         return $this->success($propertyUnits);
     }
 

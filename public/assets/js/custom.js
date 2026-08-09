@@ -331,12 +331,12 @@ if(notice){
   $(".vertical-menu").css('top','135px')
 }else{
   $(".page-content").css('padding','calc(80px + 0px) calc(24px / 2) 0 calc(24px / 2)')
-  $(".vertical-menu").css('top','100px')
+  $(".vertical-menu").css('top','80px')
 }
 
 $(".topBannerClose").on("click", function() {
   $(".page-content").css('padding','calc(80px + 0px) calc(24px / 2) 0 calc(24px / 2)')
-  $(".vertical-menu").css('top','100px')
+  $(".vertical-menu").css('top','80px')
 });
 
 /*------------------------

@@ -410,6 +410,9 @@ table.dataTable > tbody > tr.child ul.dtr-details > li .dtr-data {
 .property-item {
     box-shadow: var(--card-shadow);
     transition: transform .15s ease, box-shadow .15s ease;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .property-item:hover {
@@ -658,14 +661,19 @@ table.dataTable > tbody > tr.child ul.dtr-details > li .dtr-data {
 }
 
 /* Property grid card footer: price + type/availability info on the left,
-   a compact View button on the right, replacing the old full-width button. */
+   a compact View button on the right, replacing the old full-width button.
+   margin-top: auto pins it to the card bottom regardless of how many
+   amenity pills/description lines came before it, so price/View buttons
+   line up across cards of different content lengths in the same row
+   (the card itself stretches to match row height via .property-grid-item
+   being a flex item and .property-item being display:flex/flex-direction:column). */
 .property-item-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 15px;
+    margin-top: auto;
     margin-bottom: 4px;
     padding-top: 15px;
     border-top: 1px solid var(--border-color);
@@ -693,9 +701,13 @@ table.dataTable > tbody > tr.child ul.dtr-details > li .dtr-data {
 }
 
 /* Extra breathing room in the card body so the footer button never sits
-   flush against the card's rounded corner. */
+   flush against the card's rounded corner. display:flex + flex:1 lets the
+   footer's margin-top:auto push it to the bottom of the card. */
 .property-item .property-item-content.p-20 {
     padding: 20px 22px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 /* Small inline action buttons on the add-property wizard: copy-previous-

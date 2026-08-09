@@ -86,7 +86,7 @@
                             <div class="row">
                                     @forelse($properties as $property)
                                         <!-- Property Item Start -->
-                                        <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3 property-grid-item"
+                                        <div class="col-12 col-sm-6 col-lg-4 property-grid-item d-flex"
                                             data-category="{{ propertyFilterToken($property, 'category') }}"
                                             data-status="{{ propertyFilterToken($property, 'status') }}"
                                             data-district="{{ propertyFilterToken($property, 'district') }}"

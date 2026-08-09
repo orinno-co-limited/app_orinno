@@ -104,14 +104,14 @@
         {
             //Change type attribute
             $(".password").attr("type", "text");
-            $(this).removeClass("fa-eye");
-            $(this).addClass("fa-eye-slash");
+            $(this).removeClass("ri-eye-line");
+            $(this).addClass("ri-eye-off-line");
         } else
         {
             //Change type attribute
             $(".password").attr("type", "password");
-            $(this).addClass("fa-eye");
-            $(this).removeClass("fa-eye-slash");
+            $(this).addClass("ri-eye-line");
+            $(this).removeClass("ri-eye-off-line");
         }
     });
   /*---------------------------------
@@ -331,12 +331,12 @@ if(notice){
   $(".vertical-menu").css('top','135px')
 }else{
   $(".page-content").css('padding','calc(80px + 0px) calc(24px / 2) 0 calc(24px / 2)')
-  $(".vertical-menu").css('top','100px')
+  $(".vertical-menu").css('top','80px')
 }
 
 $(".topBannerClose").on("click", function() {
   $(".page-content").css('padding','calc(80px + 0px) calc(24px / 2) 0 calc(24px / 2)')
-  $(".vertical-menu").css('top','100px')
+  $(".vertical-menu").css('top','80px')
 });
 
 /*------------------------

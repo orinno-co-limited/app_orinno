@@ -63,7 +63,7 @@
                                                         <button type="button"
                                                                 onclick="getEditModal('{{ route('maintainer.maintenance-request.view', $request->id) }}', '#viewModal')"
                                                                 class="p-1 tbl-action-btn reminder" title="{{ __('View') }}">
-                                                            <span class="iconify" data-icon="carbon:view-filled"></span>
+                                                            <i class="ri-eye-line"></i>
                                                         </button>
                                                     </div>
                                                 </td>

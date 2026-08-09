@@ -49,8 +49,7 @@
                                     <div class="property-top-search-bar-right text-end">
                                         <button type="button" class="theme-btn-purple me-2 mb-25" id="reminderGroup"
                                             title="{{ __('Send Group Reminder') }}">
-                                            <span class="iconify font-12 me-2"
-                                                data-icon="clarity:notification-solid"></span>{{ __('Send Group Reminder') }}
+                                            <i class="ri-notification-3-fill font-12 me-2"></i>{{ __('Send Group Reminder') }}
                                         </button>
                                         <button type="button" class="theme-btn mb-25" id="add"
                                             title="{{ __('New Invoice') }}">{{ __('New Invoice') }}
@@ -195,7 +194,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="createNewInvoiceModalLabel">{{ __('New Invoice') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.invoice.store') }}" method="post"
@@ -313,7 +312,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editInvoiceModalLabel">{{ __('Edit Invoice') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.invoice.store') }}" method="post"
@@ -396,7 +395,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="payStatusChangeModalLabel">{{ __('Payment Status Change') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.invoice.payment.status') }}" method="post"
@@ -435,17 +434,17 @@
                 <div class="modal-header">
                     <h4 class="modal-title theme-link pointer-auto" id="invoicePreviewModalLabel" data-bs-dismiss="modal"
                         aria-label="Close">
-                        <span class="iconify me-2" data-icon="eva:arrow-back-fill"></span>{{ __('Back') }}
+                        <i class="ri-arrow-left-line me-2"></i>{{ __('Back') }}
                     </h4>
                     <div>
                         <a href="#" id="invoicePay" class="theme-btn-purple" data-bs-toggle="modal"
                            data-bs-target="#invoicePayModal">
                             {{ __('Make Paid') }}
-                            <span class="iconify ms-2" data-icon="wpf:paid"></span>
+                            <i class="ri-money-dollar-circle-line ms-2"></i>
                         </a>
 
                         <a href="" id="downloadInvoice" class="download-invoice theme-btn-green"
-                           target="_blank">{{ __('Print') }}<span class="iconify ms-2" data-icon="fa:print"></span></a>
+                           target="_blank">{{ __('Print') }}<i class="ri-printer-line ms-2"></i></a>
                     </div>
                 </div>
                 <div class="modal-body">
@@ -544,7 +543,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="reminderModalLabel">{{ __('Send Reminder') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.invoice.send.notification') }}" method="post"
@@ -586,8 +585,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="reminderGroupModalLabel">{{ __('Send Group Reminder') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('owner.invoice.send.notification') }}" method="POST"
                       enctype="multipart/form-data" data-handler="getShowMessage">
@@ -663,7 +661,7 @@
                     <h4 class="modal-title" id="editInvoiceModalLabel">{{__('Paid the Invoice')}} <span
                             class="invoiceNo"></span></h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="" id="invoicePayForm" method="post"
@@ -1050,8 +1048,8 @@
             },
             language: {
                 'paginate': {
-                    'previous': '<span class="iconify" data-icon="icons8:angle-left"></span>',
-                    'next': '<span class="iconify" data-icon="icons8:angle-right"></span>'
+                    'previous': '<i class="ri-arrow-left-s-line"></i>',
+                    'next': '<i class="ri-arrow-right-s-line"></i>'
                 }
             },
             columns: [
@@ -1079,8 +1077,8 @@
             },
             language: {
                 'paginate': {
-                    'previous': '<span class="iconify" data-icon="icons8:angle-left"></span>',
-                    'next': '<span class="iconify" data-icon="icons8:angle-right"></span>'
+                    'previous': '<i class="ri-arrow-left-s-line"></i>',
+                    'next': '<i class="ri-arrow-right-s-line"></i>'
                 }
             },
             columns: [
@@ -1107,8 +1105,8 @@
             },
             language: {
                 'paginate': {
-                    'previous': '<span class="iconify" data-icon="icons8:angle-left"></span>',
-                    'next': '<span class="iconify" data-icon="icons8:angle-right"></span>'
+                    'previous': '<i class="ri-arrow-left-s-line"></i>',
+                    'next': '<i class="ri-arrow-right-s-line"></i>'
                 }
             },
             columns: [
@@ -1135,8 +1133,8 @@
             },
             language: {
                 'paginate': {
-                    'previous': '<span class="iconify" data-icon="icons8:angle-left"></span>',
-                    'next': '<span class="iconify" data-icon="icons8:angle-right"></span>'
+                    'previous': '<i class="ri-arrow-left-s-line"></i>',
+                    'next': '<i class="ri-arrow-right-s-line"></i>'
                 }
             },
             columns: [
@@ -1164,8 +1162,8 @@
             },
             language: {
                 'paginate': {
-                    'previous': '<span class="iconify" data-icon="icons8:angle-left"></span>',
-                    'next': '<span class="iconify" data-icon="icons8:angle-right"></span>'
+                    'previous': '<i class="ri-arrow-left-s-line"></i>',
+                    'next': '<i class="ri-arrow-right-s-line"></i>'
                 }
             },
             columns: [

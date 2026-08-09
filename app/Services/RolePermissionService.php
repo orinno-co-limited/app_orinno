@@ -27,13 +27,13 @@ class RolePermissionService
             ->addColumn('action', function ($role) {
                 return '<div class="tbl-action-btns d-inline-flex text-end">
                 <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $role->id . '" title="' . __('Edit') . '">
-                    <span class="iconify" data-icon="clarity:note-edit-solid"></span>
+                    <i class="ri-edit-line"></i>
                 </button>
                 <button onclick="deleteItem(\'' . route('owner.role-permission.delete', $role->id) . '\', \'roleListDataTable\')" class="p-1 tbl-action-btn" title="' . __('Delete') . '">
-                    <span class="iconify" data-icon="ep:delete-filled"></span>
+                    <i class="ri-delete-bin-line"></i>
                 </button>
                 <button type="button" onclick="getEditModal(\'' . route('owner.role-permission.permission', $role->id) . '\', \'#permissionModal\')" class="p-1 tbl-action-btn reminder" title="' . __('Add Permission') . '">
-                    <span class="iconify" data-icon="ri:send-plane-fill"></span>
+                    <i class="ri-send-plane-fill"></i>
                 </button>
             </div>';
             })

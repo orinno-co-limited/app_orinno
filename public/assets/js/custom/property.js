@@ -34,6 +34,8 @@ function stepChange(response) {
             }
         }
         datePicker()
+        initAmenitiesSelect2()
+        initLocationSelect2()
         if (response.data.step == 5) {
             thumbmnilImage()
             dropzone()
@@ -214,6 +216,7 @@ function getLocation(property_id) {
 function getLocationRes(response) {
     $('#addHtmlForm').html(response.data.view)
     datePicker()
+    initLocationSelect2()
     if (response.data.property.property_detail) {
         country_id = response.data.property.property_detail.country_id;
         state_id = response.data.property.property_detail.state_id;
@@ -227,6 +230,49 @@ function getLocationRes(response) {
     }
 }
 
+// District/City searchable dropdowns (Select2, already loaded globally),
+// re-initialized every time the location step's HTML is swapped in.
+function initLocationSelect2() {
+    $('.select2-location').each(function () {
+        if (!$(this).hasClass('select2-hidden-accessible')) {
+            $(this).select2({ width: '100%' });
+        }
+    });
+}
+
+// "Use my current location": reads the device GPS via the browser
+// Geolocation API and auto-fills the existing map_link field with an
+// OpenStreetMap embed URL centered on a marker at those coordinates —
+// no map library/API key needed, just a URL the iframe already supports.
+$(document).on('click', '#useCurrentLocationBtn', function (e) {
+    e.preventDefault();
+    var $btn = $(this);
+    var originalHtml = $btn.html();
+
+    if (!navigator.geolocation) {
+        toastr.error('Geolocation is not supported by this browser.');
+        return;
+    }
+
+    $btn.prop('disabled', true).html('<i class="ri-loader-4-line"></i> Locating...');
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        var delta = 0.01;
+        var bbox = (lng - delta) + ',' + (lat - delta) + ',' + (lng + delta) + ',' + (lat + delta);
+        var embedUrl = 'https://www.openstreetmap.org/export/embed.html?bbox=' + bbox + '&layer=mapnik&marker=' + lat + ',' + lng;
+
+        $('.map_link').val(embedUrl);
+        $('#map_link_iframe').attr('src', embedUrl);
+        $btn.prop('disabled', false).html(originalHtml);
+        toastr.success('Location captured');
+    }, function (error) {
+        $btn.prop('disabled', false).html(originalHtml);
+        toastr.error('Could not get your location: ' + error.message);
+    }, { enableHighAccuracy: true, timeout: 10000 });
+});
+
 function getUnitByPropertyId(property_id) {
     var getUnitRoute = $('#getUnitRoute').val();
     commonAjax('GET', getUnitRoute, getUnitRes, getUnitRes, { 'property_id': property_id });
@@ -235,7 +281,45 @@ function getUnitByPropertyId(property_id) {
 function getUnitRes(response) {
     $('#addHtmlForm').html(response.data.view)
     datePicker()
+    initAmenitiesSelect2()
 }
+
+// Amenities: emoji-labelled multi-select (Select2, already loaded globally)
+// re-initialized every time the unit step's HTML is swapped in, and a
+// "copy previous" button that clones the immediately preceding unit
+// block's selection so owners don't have to re-pick the same amenities
+// for every unit in a building.
+function formatAmenityOption(option) {
+    if (!option.id) {
+        return option.text;
+    }
+    var icon = $(option.element).data('icon');
+    return $('<span><i class="' + icon + ' me-1"></i>' + option.text + '</span>');
+}
+
+function initAmenitiesSelect2() {
+    $('.multiple-amenities-select').each(function () {
+        if (!$(this).hasClass('select2-hidden-accessible')) {
+            $(this).select2({
+                placeholder: 'Select amenities',
+                width: '100%',
+                templateResult: formatAmenityOption,
+                templateSelection: formatAmenityOption
+            });
+        }
+    });
+}
+
+$(document).on('click', '.copy-prev-amenities-btn', function () {
+    var $currentField = $(this).closest('.multi-field');
+    var $prevField = $currentField.prev('.multi-field');
+    if (!$prevField.length) {
+        toastr.warning('No previous unit to copy from');
+        return;
+    }
+    var prevValues = $prevField.find('.multiple-amenities-select').val() || [];
+    $currentField.find('.multiple-amenities-select').val(prevValues).trigger('change');
+});
 function resImgDoc(response) {
     $('#addHtmlForm').html(response.data.view)
     dropzone();

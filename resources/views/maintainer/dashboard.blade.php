@@ -10,8 +10,7 @@
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                 <div class="page-title-left">
                                     <h2 class="mb-sm-0">{{ __('Dashboard') }}</h2>
-                                    <p>{{ __('Welcome back') }}, {{ auth()->user()->name }} <span class="iconify font-24"
-                                            data-icon="openmoji:waving-hand"></span></p>
+                                    <p>{{ __('Welcome back') }}, {{ auth()->user()->name }} <i class="ri-hand-heart-line font-24"></i></p>
                                 </div>
                             </div>
                         </div>
@@ -21,7 +20,7 @@
                             <div class="dashboard-feature-item stat-blue bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify" data-icon="bxs:home-circle"></span>
+                                    <i class="ri-home-4-line"></i>
                                 </div>
                                 <p class="mt-2">{{ __('Total Property') }}</p>
                                 <h2 class="mt-1">{{ count($properties) }}</h2>
@@ -32,7 +31,7 @@
                             <div class="dashboard-feature-item stat-orange bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify" data-icon="mdi:ticket-outline"></span>
+                                    <i class="ri-ticket-line"></i>
                                 </div>
                                 <p class="mt-2">{{ __('Open Ticket') }}</p>
                                 <h2 class="mt-1">{{ $totalOpenTickets }}</h2>
@@ -42,7 +41,7 @@
                             <div class="dashboard-feature-item stat-green bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify" data-icon="mdi:check-circle"></span>
+                                    <i class="ri-checkbox-circle-line"></i>
                                 </div>
                                 <p class="mt-2">{{ __('Resolved Ticket') }}</p>
                                 <h2 class="mt-1">{{ $totalResolvedTickets }}</h2>
@@ -52,7 +51,7 @@
                             <div class="dashboard-feature-item stat-red bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify" data-icon="gridicons:cross-circle"></span>
+                                    <i class="ri-close-circle-line"></i>
                                 </div>
                                 <p class="mt-2">{{ __('Close Ticket') }}</p>
                                 <h2 class="mt-1">{{ $totalCloseTickets }}</h2>

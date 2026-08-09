@@ -66,8 +66,7 @@
                     <div class="modal-header">
                         <h4 class="modal-title" id="addPackageModalLabel"><span
                                 class="modalTitle">{{ __('Assign Package') }}</span></h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                                class="iconify" data-icon="akar-icons:cross"></span></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                     </div>
                     <form class="ajax" action="{{ route('admin.packages.assign') }}" method="post"
                         enctype="multipart/form-data" data-handler="getShowMessage">
@@ -133,8 +132,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editModalLabel"><span class="modalTitle">{{ __('Edit Owner Packages Status') }}</span>
                     </h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('admin.packages.owner.packages.status.update') }}" method="post"
                       enctype="multipart/form-data" data-handler="getShowMessage">

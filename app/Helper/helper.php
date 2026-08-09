@@ -89,14 +89,38 @@ if (!function_exists('propertyFilterToken')) {
     function propertyFilterToken($property, $field)
     {
         switch ($field) {
-            case 'type':
-                return $property->property_type == PROPERTY_TYPE_LEASE ? 'lease' : 'own';
+            case 'category':
+                return $property->category ?: PROPERTY_CATEGORY_RESIDENTIAL;
             case 'status':
                 return $property->available_unit <= 0 ? 'rented' : 'available';
             case 'district':
                 return $property->propertyDetail?->state_id ?? '';
         }
         return '';
+    }
+}
+
+if (!function_exists('propertyCategoryOptions')) {
+    /**
+     * Category label list for the add/edit property form and the list-page
+     * filter dropdown. Separate from PROPERTY_TYPE_OWN/LEASE (ownership),
+     * which stays as-is on the Own/Lease Property pages.
+     */
+    function propertyCategoryOptions()
+    {
+        return [
+            PROPERTY_CATEGORY_RESIDENTIAL => __('Residential'),
+            PROPERTY_CATEGORY_COMMERCIAL => __('Commercial'),
+            PROPERTY_CATEGORY_AIRBNB => __('Airbnb'),
+            PROPERTY_CATEGORY_HOSTEL => __('Hostel'),
+        ];
+    }
+}
+
+if (!function_exists('propertyCategoryLabel')) {
+    function propertyCategoryLabel($category)
+    {
+        return propertyCategoryOptions()[$category] ?? __('Residential');
     }
 }
 
@@ -130,6 +154,7 @@ if (!function_exists('renderPropertyListCell')) {
                         </div>
                         <p class="font-13 mb-0 text-muted">' . e(trim($address . ($district ? ' · ' . $district : ''), ' ·')) . '</p>
                         <div class="tbl-property-meta font-13 text-muted mt-1">
+                            <span>' . e(propertyCategoryLabel($property->category)) . '</span>
                             <span>' . (int) $property->number_of_unit . ' ' . __('Unit') . '</span>
                             <span>' . (int) propertyTotalRoom($property->id) . ' ' . __('rooms') . '</span>
                         </div>
@@ -146,8 +171,9 @@ if (!function_exists('renderPropertyPriceCell')) {
      */
     function renderPropertyPriceCell($property)
     {
+        $typeLabel = $property->property_type == PROPERTY_TYPE_LEASE ? __('Lease') : __('Own');
         $priceHtml = $property->starting_price
-            ? '<div class="tbl-property-price">' . currencyPrice($property->starting_price) . '</div><p class="font-13 text-muted mb-0">' . __('per month') . '</p>'
+            ? '<div class="tbl-property-price">' . currencyPrice($property->starting_price) . '</div><p class="font-13 text-muted mb-0">' . __('per month') . ' &middot; ' . e($typeLabel) . '</p>'
             : '<div class="tbl-property-price text-muted">' . __('N/A') . '</div>';
 
         $availableCount = (int) $property->available_unit;
@@ -156,6 +182,53 @@ if (!function_exists('renderPropertyPriceCell')) {
             : '';
 
         return '<div class="text-end">' . $priceHtml . $availabilityPill . '</div>';
+    }
+}
+
+if (!function_exists('propertyAmenityList')) {
+    /**
+     * Unique amenities aggregated across a property's units, each as
+     * ['name' => ..., 'icon' => ...] — sourced from the amenities lookup
+     * table via property_units.amenityList (see property_unit_amenities_plan
+     * memory: amenities moved from free text to a proper lookup+pivot).
+     */
+    function propertyAmenityList($property)
+    {
+        $amenities = [];
+        foreach ($property->propertyUnits ?? [] as $unit) {
+            foreach ($unit->amenityList ?? [] as $amenity) {
+                $amenities[$amenity->id] = $amenity;
+            }
+        }
+        return array_values($amenities);
+    }
+}
+
+if (!function_exists('renderPropertyAmenityBadges')) {
+    /**
+     * Emoji+label pill row for a property's aggregated amenities, capped at
+     * $limit with a "+N more" pill for the rest — mirrors the ITAB card
+     * reference. Returns '' when the property has none recorded yet.
+     */
+    function renderPropertyAmenityBadges($property, $limit = 4)
+    {
+        $amenities = propertyAmenityList($property);
+        if (empty($amenities)) {
+            return '';
+        }
+
+        $shown = array_slice($amenities, 0, $limit);
+        $remaining = count($amenities) - count($shown);
+
+        $html = '<div class="property-amenity-list d-flex flex-wrap gap-1">';
+        foreach ($shown as $amenity) {
+            $html .= '<span class="property-amenity-pill"><i class="' . e($amenity->icon) . '"></i> ' . e($amenity->name) . '</span>';
+        }
+        if ($remaining > 0) {
+            $html .= '<span class="property-amenity-pill property-amenity-pill-more">+' . $remaining . ' ' . __('more') . '</span>';
+        }
+        $html .= '</div>';
+        return $html;
     }
 }
 
@@ -1433,5 +1506,165 @@ if (!function_exists('getSubText')) {
     function getSubText($html, $limit= 100000)
     {
         return \Illuminate\Support\Str::limit(strip_tags($html), $limit);
+    }
+}
+
+if (!function_exists('propertyImageQualityCheck')) {
+    /**
+     * Rejects only genuinely poor-quality property photos: too small to be
+     * useful, or too blurry to tell what's in them. Deliberately loose —
+     * this should never force an owner to own a high-end camera. Returns
+     * null (pass) or a user-facing rejection reason string.
+     *
+     * Blur is estimated with a Laplacian-edge variance on a downscaled
+     * grayscale copy (classic "variance of Laplacian" blur heuristic,
+     * done by hand here since no image-processing package is installed).
+     * Low variance = few sharp edges = likely blurry/blank. If the image
+     * can't be decoded for any reason, this fails open (treated as pass)
+     * rather than blocking an otherwise-fine upload on a processing error.
+     */
+    function propertyImageQualityCheck($path, $mimeType)
+    {
+        $info = @getimagesize($path);
+        if (!$info) {
+            return null;
+        }
+
+        [$width, $height] = $info;
+        $minWidth = 480;
+        $minHeight = 360;
+        if ($width < $minWidth || $height < $minHeight) {
+            return __('Image resolution is too low (:widthx:height). Please use a photo at least :minWidthx:minHeight.', [
+                'width' => $width, 'height' => $height, 'minWidth' => $minWidth, 'minHeight' => $minHeight,
+            ]);
+        }
+
+        if (!in_array($mimeType, ['image/jpeg', 'image/png'])) {
+            return null;
+        }
+
+        try {
+            $source = $mimeType === 'image/png' ? @imagecreatefrompng($path) : @imagecreatefromjpeg($path);
+            if (!$source) {
+                return null;
+            }
+
+            $maxDim = 400;
+            $scale = min(1, $maxDim / max($width, $height));
+            $newWidth = max(1, (int) ($width * $scale));
+            $newHeight = max(1, (int) ($height * $scale));
+
+            $resized = imagecreatetruecolor($newWidth, $newHeight);
+            imagecopyresampled($resized, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+            imagedestroy($source);
+
+            imagefilter($resized, IMG_FILTER_GRAYSCALE);
+            $laplacian = [[0, 1, 0], [1, -4, 1], [0, 1, 0]];
+            imageconvolution($resized, $laplacian, 1, 0);
+
+            $sum = 0;
+            $sumSquares = 0;
+            $count = 0;
+            for ($y = 0; $y < $newHeight; $y += 2) {
+                for ($x = 0; $x < $newWidth; $x += 2) {
+                    $gray = imagecolorat($resized, $x, $y) & 0xFF;
+                    $sum += $gray;
+                    $sumSquares += $gray * $gray;
+                    $count++;
+                }
+            }
+            imagedestroy($resized);
+
+            if ($count === 0) {
+                return null;
+            }
+
+            $mean = $sum / $count;
+            $variance = ($sumSquares / $count) - ($mean * $mean);
+
+            // Tuned to only catch clearly out-of-focus or blank photos —
+            // a normal handheld phone photo scores well above this.
+            $blurThreshold = 8;
+            if ($variance < $blurThreshold) {
+                return __('This photo looks blurry or out of focus. Please retake it and try again.');
+            }
+        } catch (\Throwable $e) {
+            return null;
+        }
+
+        return null;
+    }
+}
+
+if (!function_exists('ugandaDistricts')) {
+    /**
+     * Uganda's districts, for the property location step's searchable
+     * District dropdown (replaces a free-text input — see
+     * uganda_localization_nin_zipcode_phone memory for the broader pending
+     * Uganda-localization cleanup this is one piece of).
+     *
+     * Compiled from general knowledge of Uganda's administrative map, not
+     * pulled from a live UBOS registry — treat as a strong starting list
+     * rather than a guaranteed-current authoritative one, since district
+     * boundaries/splits are occasionally gazetted. Worth revisiting if an
+     * official source becomes available.
+     */
+    function ugandaDistricts()
+    {
+        return [
+            // Central
+            'Buikwe', 'Bukomansimbi', 'Butambala', 'Buvuma', 'Gomba', 'Kalangala', 'Kalungu', 'Kampala',
+            'Kassanda', 'Kayunga', 'Kiboga', 'Kyankwanzi', 'Kyotera', 'Luwero', 'Lwengo', 'Lyantonde',
+            'Masaka', 'Mityana', 'Mpigi', 'Mubende', 'Mukono', 'Nakaseke', 'Nakasongola', 'Rakai',
+            'Sembabule', 'Wakiso',
+            // Eastern
+            'Amuria', 'Budaka', 'Bududa', 'Bugiri', 'Bugweri', 'Bukedea', 'Bukwa', 'Bulambuli', 'Busia',
+            'Butaleja', 'Butebo', 'Buyende', 'Iganga', 'Jinja', 'Kaliro', 'Kamuli', 'Kapchorwa',
+            'Kapelebyong', 'Kibuku', 'Kumi', 'Kween', 'Luuka', 'Manafwa', 'Mayuge', 'Mbale', 'Namayingo',
+            'Namisindwa', 'Namutumba', 'Ngora', 'Pallisa', 'Serere', 'Sironko', 'Soroti', 'Tororo',
+            // Northern
+            'Abim', 'Adjumani', 'Agago', 'Alebtong', 'Amolatar', 'Amudat', 'Amuru', 'Apac', 'Arua',
+            'Dokolo', 'Gulu', 'Kaabong', 'Kitgum', 'Kole', 'Kotido', 'Koboko', 'Kwania', 'Lamwo', 'Lira',
+            'Maracha', 'Moroto', 'Moyo', 'Nabilatuk', 'Nakapiripirit', 'Napak', 'Nebbi', 'Nwoya', 'Obongi',
+            'Omoro', 'Otuke', 'Oyam', 'Pader', 'Pakwach', 'Terego', 'Yumbe', 'Zombo',
+            // Western
+            'Buhweju', 'Buliisa', 'Bundibugyo', 'Bunyangabu', 'Bushenyi', 'Hoima', 'Ibanda', 'Isingiro',
+            'Kabale', 'Kabarole', 'Kagadi', 'Kakumiro', 'Kamwenge', 'Kanungu', 'Kasese', 'Kazo', 'Kibaale',
+            'Kikuube', 'Kiruhura', 'Kiryandongo', 'Kisoro', 'Kitagwenda', 'Kyegegwa', 'Kyenjojo', 'Mbarara',
+            'Mitooma', 'Ntoroko', 'Ntungamo', 'Rubanda', 'Rubirizi', 'Rukiga', 'Rukungiri', 'Rwampara',
+            'Sheema',
+        ];
+    }
+}
+
+if (!function_exists('ugandaTowns')) {
+    /**
+     * Major Uganda towns/cities for the City/Town field, sourced from the
+     * app's existing bundled worldwide cities.csv (public/file/cities.csv,
+     * used by LocationService) filtered to Uganda's rows — real, already
+     * present data rather than a hand-typed list, so no fabrication risk
+     * here the way there is with ugandaDistricts() above.
+     */
+    function ugandaTowns()
+    {
+        static $towns = null;
+        if ($towns !== null) {
+            return $towns;
+        }
+
+        $towns = [];
+        $ugandaStateIds = ['3762', '3763', '3764', '3765'];
+        $path = public_path('file/cities.csv');
+        if (($handle = fopen($path, 'r')) !== false) {
+            fgetcsv($handle);
+            while (($row = fgetcsv($handle)) !== false) {
+                if (isset($row[2]) && in_array($row[2], $ugandaStateIds)) {
+                    $towns[] = $row[1];
+                }
+            }
+            fclose($handle);
+        }
+        sort($towns);
+        return $towns;
     }
 }

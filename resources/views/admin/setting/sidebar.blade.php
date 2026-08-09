@@ -5,75 +5,70 @@
                 <li>
                     <a href="{{ route('admin.setting.general-setting') }}"
                         class="account-settings-menu-item {{ @$subGeneralSettingActiveClass }}">
-                        <span class="iconify" data-icon="carbon:settings"></span>{{ __('Basic Setting') }}
+                        <i class="ri-settings-line"></i>{{ __('Basic Setting') }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.setting.color-setting') }}"
                         class="account-settings-menu-item {{ @$subColorSettingActiveClass }}">
-                        <span class="iconify"
-                            data-icon="fluent:color-background-24-regular"></span>{{ __('Color Setting') }}
+                        <i class="ri-palette-line"></i>{{ __('Color Setting') }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.language.index') }}"
                         class="account-settings-menu-item {{ @$subLanguageActiveClass }}">
-                        <span class="iconify" data-icon="clarity:language-line"></span>{{ __('Language') }}
+                        <i class="ri-translate"></i>{{ __('Language') }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.setting.currency.index') }}"
                         class="account-settings-menu-item {{ @$subCurrencyActiveClass }}">
-                        <span class="iconify" data-icon="heroicons:currency-dollar"></span>{{ __('Currency') }}
+                        <i class="ri-money-dollar-circle-line"></i>{{ __('Currency') }}
                     </a>
                 </li>
                 @if (isAddonInstalled('PROTYSAAS') > 1)
                     <li>
                         <a href="{{ route('admin.setting.gateway.index') }}"
                             class="account-settings-menu-item {{ @$subGatewaySettingActiveClass }}">
-                            <span class="iconify"
-                                data-icon="fluent:payment-16-regular"></span>{{ __('Payment Gateway') }}
+                            <i class="ri-bank-card-line"></i>{{ __('Payment Gateway') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.setting.frontend.setting') }}"
                             class="account-settings-menu-item {{ @$subFrontendSettingActiveClass }}">
-                            <span class="iconify"
-                                data-icon="icon-park-outline:setting-laptop"></span>{{ __('Frontend Setting') }}
+                            <i class="ri-computer-line"></i>{{ __('Frontend Setting') }}
                         </a>
                     </li>
                 @endif
                 <li>
                     <a href="{{ route('admin.setting.smtp.setting') }}"
                         class="account-settings-menu-item {{ @$subSmtpSettingActiveClass }}">
-                        <span class="iconify" data-icon="mdi:git-issue"></span>{{ __('SMTP Setting') }}
+                        <i class="ri-tools-line"></i>{{ __('SMTP Setting') }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.setting.recaptcha.setting') }}"
                         class="account-settings-menu-item {{ @$subRecaptchaSettingActiveClass }}">
-                        <span class="iconify" data-icon="logos:recaptcha"></span>{{ __('reCaptcha Setting') }}
+                        <i class="ri-shield-check-line"></i>{{ __('reCaptcha Setting') }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.setting.sms.setting') }}"
                         class="account-settings-menu-item {{ @$subSmsSettingActiveClass }}">
-                        <span class="iconify"
-                            data-icon="icon-park-outline:setting-web"></span>{{ __('Sms Setting') }}
+                        <i class="ri-settings-3-line"></i>{{ __('Sms Setting') }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.setting.reminder.setting') }}"
                         class="account-settings-menu-item {{ @$subReminderSettingActiveClass }}">
-                        <span class="iconify" data-icon="carbon:reminder"></span>{{ __('Reminder Setting') }}
+                        <i class="ri-alarm-line"></i>{{ __('Reminder Setting') }}
                     </a>
                 </li>
                 @if (isAddonInstalled('PROTYAGREEMENT', 0) > 0)
                     <li>
                         <a href="{{ route('admin.setting.agreement.setting') }}"
                             class="account-settings-menu-item {{ @$subAgreementSettingActiveClass }}">
-                            <span class="iconify"
-                                data-icon="icon-park-outline:agreement"></span>{{ __('Agreement Setting') }}
+                            <i class="ri-file-list-3-line"></i>{{ __('Agreement Setting') }}
                         </a>
                     </li>
                 @endif
@@ -81,8 +76,7 @@
                     <li>
                         <a href="{{ route('admin.setting.tenancy.setting') }}"
                             class="account-settings-menu-item {{ @$subTenancySettingActiveClass }}">
-                            <span class="iconify"
-                                data-icon="material-symbols:tenancy-outline"></span>{{ __('Tenancy Setting') }}
+                            <i class="ri-home-4-line"></i>{{ __('Tenancy Setting') }}
                         </a>
                     </li>
                 @endif
@@ -90,20 +84,20 @@
                     <li>
                         <a href="{{ route('admin.setting.listing.setting') }}"
                             class="account-settings-menu-item {{ @$subListingSettingActiveClass }}">
-                            <span class="iconify" data-icon="ri:threads-fill"></span>{{ __('Listing Setting') }}
+                            <i class="ri-home-4-line"></i>{{ __('Listing Setting') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.setting.map-box.setting') }}"
                             class="account-settings-menu-item {{ @$subMapBoxSettingActiveClass }}">
-                            <span class="iconify" data-icon="bx:map"></span>{{ __('Mapbox Setting') }}
+                            <i class="ri-map-pin-line"></i>{{ __('Mapbox Setting') }}
                         </a>
                     </li>
                 @endif
                 <li>
                     <a href="{{ route('admin.setting.cron.setting') }}"
                         class="account-settings-menu-item {{ @$subCronSettingActiveClass }}">
-                        <span class="iconify" data-icon="carbon:batch-job"></span>{{ __('Cron Setting') }}
+                        <i class="ri-time-line"></i>{{ __('Cron Setting') }}
                     </a>
                 </li>
                 @if (isAddonInstalled('PROTYSAAS') > 1)
@@ -113,50 +107,50 @@
                     <li>
                         <a href="{{ route('admin.home-setting.section') }}"
                             class="account-settings-menu-item {{ @$subHomeSectionSettingActiveClass }}">
-                            <span class="iconify" data-icon="carbon:settings"></span>{{ __('Section Show/Hide') }}
+                            <i class="ri-settings-line"></i>{{ __('Section Show/Hide') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.feature.index') }}"
                             class="account-settings-menu-item {{ @$subFeatureActiveClass }}">
-                            <span class="iconify" data-icon="carbon:settings"></span>{{ __('Amazing Features') }}
+                            <i class="ri-settings-line"></i>{{ __('Amazing Features') }}
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('admin.how-it-work.index') }}"
                             class="account-settings-menu-item {{ @$subHowItWorkActiveClass }}">
-                            <span class="iconify" data-icon="carbon:settings"></span>{{ __('How It Work') }}
+                            <i class="ri-settings-line"></i>{{ __('How It Work') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.core-page.index') }}"
                             class="account-settings-menu-item {{ @$subCorePageActiveClass }}">
-                            <span class="iconify" data-icon="carbon:settings"></span>{{ __('Advance Feature') }}
+                            <i class="ri-settings-line"></i>{{ __('Advance Feature') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.testimonials.index') }}"
                             class="account-settings-menu-item {{ @$subTestimonialsActiveClass }}">
-                            <span class="iconify" data-icon="carbon:settings"></span>{{ __('Testimonials') }}
+                            <i class="ri-settings-line"></i>{{ __('Testimonials') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.faq.index') }}"
                             class="account-settings-menu-item {{ @$subFaqActiveClass }}">
-                            <span class="iconify" data-icon="carbon:settings"></span>{{ __('Faq') }}
+                            <i class="ri-settings-line"></i>{{ __('Faq') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.blogs.categories.index') }}"
                            class="account-settings-menu-item {{ @$subBlogCategoryActiveClass }}">
-                            <span class="iconify" data-icon="carbon:settings"></span>{{ __('Blog Category') }}
+                            <i class="ri-settings-line"></i>{{ __('Blog Category') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.blogs.index') }}"
                            class="account-settings-menu-item {{ @$subBlogActiveClass }}">
-                            <span class="iconify" data-icon="carbon:settings"></span>{{ __('Blog') }}
+                            <i class="ri-settings-line"></i>{{ __('Blog') }}
                         </a>
                     </li>
                 @endif

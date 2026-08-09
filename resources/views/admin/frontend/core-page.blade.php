@@ -88,14 +88,11 @@
                                                                         <div class="tbl-action-btns d-inline-flex">
                                                                             <button class="p-1 tbl-action-btn edit"
                                                                                 data-id="{{ $corePage->id }}"
-                                                                                title="{{ __('Edit') }}"><span
-                                                                                    class="iconify"
-                                                                                    data-icon="clarity:note-edit-solid"></span>
+                                                                                title="{{ __('Edit') }}"><i class="ri-edit-line"></i>
                                                                             </button>
                                                                             <button class="p-1 tbl-action-btn deleteItem"
                                                                                 data-formid="delete_row_form_{{ $corePage->id }}">
-                                                                                <span class="iconify"
-                                                                                    data-icon="ep:delete-filled"></span>
+                                                                                <i class="ri-delete-bin-line"></i>
                                                                             </button>
                                                                             <form
                                                                                 action="{{ route('admin.how-it-work.destroy', [$corePage->id]) }}"
@@ -129,8 +126,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="addModalLabel">{{ __('Add Advance Feature') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('admin.core-page.store') }}" method="post"
@@ -194,8 +190,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="editModalLabel">{{ __('Edit Advance Feature') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('admin.core-page.store') }}" method="post"

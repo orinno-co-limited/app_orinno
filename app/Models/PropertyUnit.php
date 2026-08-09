@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,6 +17,11 @@ class PropertyUnit extends Model
     public function propertyUnits(): HasMany
     {
         return $this->hasMany(PropertyUnit::class);
+    }
+
+    public function amenityList(): BelongsToMany
+    {
+        return $this->belongsToMany(Amenity::class, 'property_unit_amenity');
     }
 
     /**

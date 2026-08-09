@@ -3,11 +3,9 @@
         <h4 class="modal-title" id="viewModalLabel">{{ __('Details') }}</h4>
         <a href="{{ route('tenant.invoice.print', $invoice->id) }}"
            target="_blank" class="download-invoice status-btn theme-btn-green"
-           title="{{ __('Print') }}">{{ __('Print') }}<span
-                class="iconify ms-2" data-icon="fa:print"></span></a>
+           title="{{ __('Print') }}">{{ __('Print') }}<i class="ri-printer-line ms-2"></i></a>
     </div>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-            class="iconify" data-icon="akar-icons:cross"></span></button>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
 </div>
 <div class="modal-body">
     <div class="row">

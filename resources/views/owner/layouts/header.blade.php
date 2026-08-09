@@ -25,7 +25,7 @@
             @if (!ownerCurrentPackage(getOwnerUserId()))
                 <div class="d-flex exclamation">
                     <button class="text-danger exclamation-btu">
-                        <i class="fas fa-exclamation-circle"></i>
+                        <i class="ri-error-warning-line"></i>
                     </button>
                     <div class="bg-button-primary-color exclamation-area text-center text-white">
                         {{ __('Currently you doesn\'t have any subscription!') }} <a

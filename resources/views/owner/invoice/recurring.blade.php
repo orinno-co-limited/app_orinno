@@ -83,7 +83,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="addModalLabel">{{ __('New Recurring Setting') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.invoice.recurring-setting.store') }}" method="post"
@@ -216,7 +216,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editInvoiceModalLabel">{{ __('Edit Recurring Setting') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.invoice.recurring-setting.store') }}" method="post"
@@ -316,7 +316,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title theme-link pointer-auto" id="invoicePreviewModalLabel" data-bs-dismiss="modal"
                         aria-label="Close">
-                        <span class="iconify me-2" data-icon="eva:arrow-back-fill"></span>{{ __('Back') }}
+                        <i class="ri-arrow-left-line me-2"></i>{{ __('Back') }}
                     </h4>
                 </div>
                 <div class="modal-body">

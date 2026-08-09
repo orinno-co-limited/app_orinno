@@ -72,8 +72,8 @@ class PackageService
             })
             ->addColumn('action', function ($package) {
                 return '<div class="tbl-action-btns d-inline-flex">
-                    <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $package->id . '" title="' . __('Edit') . '"><span class="iconify" data-icon="clarity:note-edit-solid"></span></button>
-                    <button onclick="deleteItem(\'' . route('admin.packages.destroy', $package->id) . '\', \'allDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>
+                    <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $package->id . '" title="' . __('Edit') . '"><i class="ri-edit-line"></i></button>
+                    <button onclick="deleteItem(\'' . route('admin.packages.destroy', $package->id) . '\', \'allDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><i class="ri-delete-bin-line"></i></button>
                 </div>';
             })
             ->rawColumns(['name', 'status', 'trail', 'action'])
@@ -279,7 +279,7 @@ class PackageService
                 }
             })->addColumn('action', function ($ownerPackage) {
                 return '<div class="tbl-action-btns d-inline-flex">
-                    <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $ownerPackage->id . '" title="Edit"><span class="iconify" data-icon="clarity:note-edit-solid"></span></button>
+                    <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $ownerPackage->id . '" title="Edit"><i class="ri-edit-line"></i></button>
                 </div>';
             })
             ->rawColumns(['user_name', 'package_name', 'payment_status', 'start_date', 'end_date', 'status', 'action'])

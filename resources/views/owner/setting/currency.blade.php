@@ -75,13 +75,11 @@
                                                                                 data-updateurl="{{ route('owner.setting.currency.update', $currency->id) }}"
                                                                                 data-bs-toggle="modal"
                                                                                 data-bs-target="#editCurrencyModal"
-                                                                                title="Edit"><span class="iconify"
-                                                                                    data-icon="clarity:note-edit-solid"></span>
+                                                                                title="Edit"><i class="ri-edit-line"></i>
                                                                             </a>
                                                                             <button class="p-1 tbl-action-btn deleteItem"
                                                                                 data-formid="delete_row_form_{{ $currency->id }}">
-                                                                                <span class="iconify"
-                                                                                    data-icon="ep:delete-filled"></span>
+                                                                                <i class="ri-delete-bin-line"></i>
                                                                             </button>
                                                                             <form
                                                                                 action="{{ route('owner.setting.currency.destroy', [$currency->id]) }}"
@@ -115,8 +113,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="addCurrencyModalLabel">{{ __('Add Currency') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="{{ route('owner.setting.currency.store') }}" method="post">
@@ -184,8 +181,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="editCurrencyModalLabel">{{ __('Edit Currency') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="" id="updateEditModal" method="post">

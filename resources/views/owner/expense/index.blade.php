@@ -62,8 +62,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="addExpensesModalLabel"><span
                             class="modalTitle">{{ __('Add Expenses') }}</span></h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('owner.expense.store') }}" method="post"
                     enctype="multipart/form-data" data-handler="getShowMessage">
@@ -182,8 +181,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editExpensesModalLabel"><span
                             class="modalTitle">{{ __('Edit Expenses') }}</span></h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('owner.expense.store') }}" method="post"
                     enctype="multipart/form-data" data-handler="getShowMessage">
@@ -296,8 +294,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="addTypeModalLabel">{{ __('Add New Expense') }}</h4>
-                    <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></a>
+                    <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></a>
                 </div>
                 <form class="ajax" action="{{ route('owner.expense.expenseType.store') }}" method="POST"
                     data-handler="typeStoreDataRes">

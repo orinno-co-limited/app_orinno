@@ -24,7 +24,7 @@
             { "data": 'DT_RowIndex', "name": 'DT_RowIndex', orderable: false, searchable: false, },
             { "data": "property", "name": 'name' },
             { "data": "price" },
-            { "data": "type_filter", visible: false },
+            { "data": "category_filter", visible: false },
             { "data": "status_filter", visible: false },
             { "data": "district_filter", visible: false },
             { "data": "action" },

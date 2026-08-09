@@ -74,8 +74,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="addNoticeModalLabel">{{ __('Add Notice Board') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('owner.noticeboard.store') }}" method="POST"
                     enctype="multipart/form-data" data-handler="getShowMessage">
@@ -182,8 +181,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="editNoticeModalLabel">{{ __('Edit Notice Board') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('owner.noticeboard.store') }}" method="POST"
                     enctype="multipart/form-data" data-handler="getShowMessage">
@@ -294,8 +292,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="viewNoticeBoardtDetailsModalLabel">{{ __('Notice') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <div class="modal-body pb-0">
                     <div class="view-information-page-modal-content">

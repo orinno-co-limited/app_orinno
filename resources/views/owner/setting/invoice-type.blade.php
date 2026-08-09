@@ -68,14 +68,12 @@
                                                                         <div class="tbl-action-btns d-inline-flex">
                                                                             <a class="p-1 tbl-action-btn edit"
                                                                                 data-item="{{ $invoiceType }}"
-                                                                                title="Edit"><span class="iconify"
-                                                                                    data-icon="clarity:note-edit-solid"></span>
+                                                                                title="Edit"><i class="ri-edit-line"></i>
                                                                             </a>
                                                                             <a href="#"
                                                                                 class="p-1 tbl-action-btn deleteItem"
                                                                                 data-formid="delete_row_form_{{ $invoiceType->id }}"
-                                                                                title="Delete"><span class="iconify"
-                                                                                    data-icon="ep:delete-filled"></span></a>
+                                                                                title="Delete"><i class="ri-delete-bin-line"></i></a>
                                                                             <form
                                                                                 action="{{ route('owner.setting.invoice-type.destroy', [$invoiceType->id]) }}"
                                                                                 method="post"
@@ -109,8 +107,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="addInvoiceTypeModalLabel">{{ __('Add Invoice Type') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.setting.invoice-type.store') }}" method="post"
@@ -150,8 +147,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="editInvoiceTypeModalLabel">{{ __('Edit Invoice Type') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.setting.invoice-type.store') }}" method="post"

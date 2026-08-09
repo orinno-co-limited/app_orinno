@@ -78,14 +78,12 @@
                                                                             <a class="p-1 tbl-action-btn edit"
                                                                                 data-item="{{ $ticketTopic }}"
                                                                                 title="{{ __('Edit') }}">
-                                                                                <span class="iconify"
-                                                                                    data-icon="clarity:note-edit-solid"></span>
+                                                                                <i class="ri-edit-line"></i>
                                                                             </a>
                                                                             <a href="#"
                                                                                 class="p-1 tbl-action-btn deleteItem"
                                                                                 data-formid="delete_row_form_{{ $ticketTopic->id }}"
-                                                                                title="Delete"><span class="iconify"
-                                                                                    data-icon="ep:delete-filled"></span></a>
+                                                                                title="Delete"><i class="ri-delete-bin-line"></i></a>
                                                                             <form
                                                                                 action="{{ route('owner.setting.ticket-topic.destroy', [$ticketTopic->id]) }}"
                                                                                 method="post"
@@ -118,8 +116,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="addModalLabel">{{ __('Add Ticket Topic') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('owner.setting.ticket-topic.store') }}" method="POST"
                     data-handler="getShowMessage">
@@ -159,8 +156,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="editModalLabel">{{ __('Edit Tickets Topic') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('owner.setting.ticket-topic.store') }}" method="POST"
                     data-handler="getShowMessage">

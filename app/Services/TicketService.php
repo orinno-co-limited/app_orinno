@@ -56,7 +56,7 @@ class TicketService
             })
             ->addColumn('action', function ($ticket) {
                 return '<div class="tbl-action-btns d-inline-flex">
-                            <a href="' . route('owner.ticket.details', $ticket->id) . '" class="p-1 tbl-action-btn" title="' . __('View') . '"><span class="iconify" data-icon="carbon:view-filled"></span></a>
+                            <a href="' . route('owner.ticket.details', $ticket->id) . '" class="p-1 tbl-action-btn" title="' . __('View') . '"><i class="ri-eye-line"></i></a>
                             <div class="ticket-item-dropdown text-end ms-2 mt-1">
                                 <div class="dropdown">
                                     <a class="dropdown-toggle dropdown-toggle-nocaret"

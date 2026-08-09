@@ -104,14 +104,14 @@
         {
             //Change type attribute
             $(".password").attr("type", "text");
-            $(this).removeClass("fa-eye");
-            $(this).addClass("fa-eye-slash");
+            $(this).removeClass("ri-eye-line");
+            $(this).addClass("ri-eye-off-line");
         } else
         {
             //Change type attribute
             $(".password").attr("type", "password");
-            $(this).addClass("fa-eye");
-            $(this).removeClass("fa-eye-slash");
+            $(this).addClass("ri-eye-line");
+            $(this).removeClass("ri-eye-off-line");
         }
     });
   /*---------------------------------

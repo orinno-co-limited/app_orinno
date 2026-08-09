@@ -41,6 +41,13 @@ const PROPERTY_TYPE_LEASE = 2;
 const PROPERTY_UNIT_TYPE_SINGLE = 1;
 const PROPERTY_UNIT_TYPE_MULTIPLE = 2;
 
+// Property Category (what kind of property it is, independent of
+// PROPERTY_TYPE_OWN/LEASE which is about ownership, not category)
+const PROPERTY_CATEGORY_RESIDENTIAL = 'residential';
+const PROPERTY_CATEGORY_COMMERCIAL = 'commercial';
+const PROPERTY_CATEGORY_AIRBNB = 'airbnb';
+const PROPERTY_CATEGORY_HOSTEL = 'hostel';
+
 // Property Amenity
 const PROPERTY_AMENITY_FIRE_SECURITY = 1;
 const PROPERTY_AMENITY_ELECTRICITY = 2;

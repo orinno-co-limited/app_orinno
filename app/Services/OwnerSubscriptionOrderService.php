@@ -56,13 +56,13 @@ class OwnerSubscriptionOrderService
             ->addColumn('action', function ($order) {
                 $html = '<div class="tbl-action-btns d-inline-flex">';
                 if ($order->payment_status == ORDER_PAYMENT_STATUS_PENDING) {
-                    $html .= '<button type="button" class="p-1 tbl-action-btn view" data-id="' . $order->id . '" title="View"><span class="iconify" data-icon="carbon:view-filled"></span></button>';
+                    $html .= '<button type="button" class="p-1 tbl-action-btn view" data-id="' . $order->id . '" title="View"><i class="ri-eye-line"></i></button>';
                     if ($order->gatewaySlug == 'bank') {
-                        $html .= '<a href="' . getFileUrl($order->folder_name, $order->file_name) . '"  class="p-1 tbl-action-btn" title="' . __('Bank slip download') . '" download><span class="iconify" data-icon="fa6-solid:download"></span></a>';
-                        $html .= '<button type="button" class="p-1 tbl-action-btn orderPayStatus" data-id="' . $order->id . '" title="' . __('Payment Status Change') . '"><span class="iconify" data-icon="fluent:text-change-previous-20-filled"></span></button>';
+                        $html .= '<a href="' . getFileUrl($order->folder_name, $order->file_name) . '"  class="p-1 tbl-action-btn" title="' . __('Bank slip download') . '" download><i class="ri-download-line"></i></a>';
+                        $html .= '<button type="button" class="p-1 tbl-action-btn orderPayStatus" data-id="' . $order->id . '" title="' . __('Payment Status Change') . '"><i class="ri-exchange-line"></i></button>';
                     }
                 } elseif ($order->payment_status == ORDER_PAYMENT_STATUS_PAID) {
-                    $html .= '<button type="button" class="p-1 tbl-action-btn view" data-id="' . $order->id . '" title="' . __('View') . '"><span class="iconify" data-icon="carbon:view-filled"></span></button>';
+                    $html .= '<button type="button" class="p-1 tbl-action-btn view" data-id="' . $order->id . '" title="' . __('View') . '"><i class="ri-eye-line"></i></button>';
                 }
                 $html .= '</div>';
                 return $html;
@@ -129,15 +129,15 @@ class OwnerSubscriptionOrderService
             ->addColumn('action', function ($order) {
                 $html = '<div class="tbl-action-btns d-inline-flex">';
                 if ($order->payment_status == ORDER_PAYMENT_STATUS_PENDING) {
-                    $html .= '<button type="button" class="p-1 tbl-action-btn view" data-id="' . $order->id . '" title="' . __('View') . '"><span class="iconify" data-icon="carbon:view-filled"></span></button>';
+                    $html .= '<button type="button" class="p-1 tbl-action-btn view" data-id="' . $order->id . '" title="' . __('View') . '"><i class="ri-eye-line"></i></button>';
                     if ($order->gatewaySlug == 'bank') {
-                        $html .= '<a href="' . getFileUrl($order->folder_name, $order->file_name) . '"  class="p-1 tbl-action-btn" title="' . __('Bank slip download') . '" download><span class="iconify" data-icon="fa6-solid:download"></span></a>';
-                        $html .= '<button type="button" class="p-1 tbl-action-btn orderPayStatus" data-id="' . $order->id . '" title="' . __('Payment Status Change') . '"><span class="iconify" data-icon="fluent:text-change-previous-20-filled"></span></button>';
+                        $html .= '<a href="' . getFileUrl($order->folder_name, $order->file_name) . '"  class="p-1 tbl-action-btn" title="' . __('Bank slip download') . '" download><i class="ri-download-line"></i></a>';
+                        $html .= '<button type="button" class="p-1 tbl-action-btn orderPayStatus" data-id="' . $order->id . '" title="' . __('Payment Status Change') . '"><i class="ri-exchange-line"></i></button>';
                     } elseif ($order->gatewaySlug == 'cash') {
-                        $html .= '<button type="button" class="p-1 tbl-action-btn orderPayStatus" data-id="' . $order->id . '" title="' . __('Payment Status Change') . '"><span class="iconify" data-icon="fluent:text-change-previous-20-filled"></span></button>';
+                        $html .= '<button type="button" class="p-1 tbl-action-btn orderPayStatus" data-id="' . $order->id . '" title="' . __('Payment Status Change') . '"><i class="ri-exchange-line"></i></button>';
                     }
                 } elseif ($order->payment_status == ORDER_PAYMENT_STATUS_PAID) {
-                    $html .= '<button type="button" class="p-1 tbl-action-btn view" data-id="' . $order->id . '" title="' . __('View') . '"><span class="iconify" data-icon="carbon:view-filled"></span></button>';
+                    $html .= '<button type="button" class="p-1 tbl-action-btn view" data-id="' . $order->id . '" title="' . __('View') . '"><i class="ri-eye-line"></i></button>';
                 }
                 $html .= '</div>';
                 return $html;

@@ -56,21 +56,17 @@
                                                         class="form-control multiple-square_feet"
                                                         placeholder="{{ __('Square Feet') }}">
                                                 </div>
-                                                <div class="col-md-2 col-lg-2 col-xl-2 mb-25">
+                                                <div class="col-md-4 col-lg-4 col-xl-4 mb-25">
                                                     <label
-                                                        class="label-text-title color-heading font-medium mb-2">{{ __('Amenities') }}</label>
-                                                    <input type="text" name="multiple[amenities][]"
-                                                        value="{{ $propertyUnit->amenities }}"
-                                                        class="form-control multiple-amenities"
-                                                        placeholder="{{ __('Amenities') }}">
-                                                </div>
-                                                <div class="col-md-2 col-lg-2 col-xl-2 mb-25">
-                                                    <label
-                                                        class="label-text-title color-heading font-medium mb-2">{{ __('Condition') }}</label>
-                                                    <input type="text" name="multiple[condition][]"
-                                                        value="{{ $propertyUnit->condition }}"
-                                                        class="form-control multiple-condition"
-                                                        placeholder="{{ __('Condition') }}">
+                                                        class="label-text-title color-heading font-medium mb-2 d-flex align-items-center justify-content-between">
+                                                        {{ __('Amenities') }}
+                                                        <button type="button" class="copy-prev-amenities-btn font-12" title="{{ __('Copy from previous unit') }}">{{ __('Copy previous') }}</button>
+                                                    </label>
+                                                    <select name="multiple[amenities][{{ $key }}][]" class="form-control multiple-amenities-select" multiple>
+                                                        @foreach ($amenities as $amenity)
+                                                            <option value="{{ $amenity->id }}" data-icon="{{ $amenity->icon }}" {{ $propertyUnit->amenityList->pluck('id')->contains($amenity->id) ? 'selected' : '' }}>{{ $amenity->name }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-2 col-lg-2 col-xl-2 mb-25">
                                                     <label
@@ -139,19 +135,17 @@
                                                     class="form-control multiple-square_feet"
                                                     placeholder="{{ __('Square Feet') }}">
                                             </div>
-                                            <div class="col-md-2 col-lg-2 col-xl-2 mb-25">
+                                            <div class="col-md-4 col-lg-4 col-xl-4 mb-25">
                                                 <label
-                                                    class="label-text-title color-heading font-medium mb-2">{{ __('Amenities') }}</label>
-                                                <input type="text" name="multiple[amenities][]" value=""
-                                                    class="form-control multiple-amenities"
-                                                    placeholder="{{ __('Amenities') }}">
-                                            </div>
-                                            <div class="col-md-2 col-lg-2 col-xl-2 mb-25">
-                                                <label
-                                                    class="label-text-title color-heading font-medium mb-2">{{ __('Condition') }}</label>
-                                                <input type="text" name="multiple[condition][]" value=""
-                                                    class="form-control multiple-condition"
-                                                    placeholder="{{ __('Condition') }}">
+                                                    class="label-text-title color-heading font-medium mb-2 d-flex align-items-center justify-content-between">
+                                                    {{ __('Amenities') }}
+                                                    <button type="button" class="copy-prev-amenities-btn font-12" title="{{ __('Copy from previous unit') }}">{{ __('Copy previous') }}</button>
+                                                </label>
+                                                <select name="multiple[amenities][{{ $i }}][]" class="form-control multiple-amenities-select" multiple>
+                                                    @foreach ($amenities as $amenity)
+                                                        <option value="{{ $amenity->id }}" data-icon="{{ $amenity->icon }}">{{ $amenity->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-2 col-lg-2 col-xl-2 mb-25">
                                                 <label
@@ -218,19 +212,17 @@
                                                     class="form-control multiple-square_feet"
                                                     placeholder="{{ __('Square Feet') }}">
                                             </div>
-                                            <div class="col-md-2 col-lg-2 col-xl-2 mb-25">
+                                            <div class="col-md-4 col-lg-4 col-xl-4 mb-25">
                                                 <label
-                                                    class="label-text-title color-heading font-medium mb-2">{{ __('Amenities') }}</label>
-                                                <input type="text" name="multiple[amenities][]" value=""
-                                                    class="form-control multiple-amenities"
-                                                    placeholder="{{ __('Amenities') }}">
-                                            </div>
-                                            <div class="col-md-2 col-lg-2 col-xl-2 mb-25">
-                                                <label
-                                                    class="label-text-title color-heading font-medium mb-2">{{ __('Condition') }}</label>
-                                                <input type="text" name="multiple[condition][]" value=""
-                                                    class="form-control multiple-condition"
-                                                    placeholder="{{ __('Condition') }}">
+                                                    class="label-text-title color-heading font-medium mb-2 d-flex align-items-center justify-content-between">
+                                                    {{ __('Amenities') }}
+                                                    <button type="button" class="copy-prev-amenities-btn font-12" title="{{ __('Copy from previous unit') }}">{{ __('Copy previous') }}</button>
+                                                </label>
+                                                <select name="multiple[amenities][{{ count($propertyUnits) + $i }}][]" class="form-control multiple-amenities-select" multiple>
+                                                    @foreach ($amenities as $amenity)
+                                                        <option value="{{ $amenity->id }}" data-icon="{{ $amenity->icon }}">{{ $amenity->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-2 col-lg-2 col-xl-2 mb-25">
                                                 <label

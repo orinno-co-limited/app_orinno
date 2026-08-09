@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Amenity;
 use App\Models\FileManager;
 use App\Models\MaintenanceIssue;
 use App\Models\Property;
@@ -48,8 +49,8 @@ class PropertyService
             ->addColumn('price', function ($property) {
                 return renderPropertyPriceCell($property);
             })
-            ->addColumn('type_filter', function ($property) {
-                return propertyFilterToken($property, 'type');
+            ->addColumn('category_filter', function ($property) {
+                return propertyFilterToken($property, 'category');
             })
             ->addColumn('status_filter', function ($property) {
                 return propertyFilterToken($property, 'status');
@@ -59,9 +60,9 @@ class PropertyService
             })
             ->addColumn('action', function ($property) {
                 return '<div class="tbl-action-btns d-inline-flex">
-                            <a type="button" class="p-1 tbl-action-btn" href="' . route('owner.property.edit', $property->id) . '" title="' . __('Edit') . '"><span class="iconify" data-icon="clarity:note-edit-solid"></span></a>
-                            <a type="button" class="p-1 tbl-action-btn" href="' . route('owner.property.show', $property->id) . '" title="' . __('View') . '"><span class="iconify" data-icon="carbon:view-filled"></span></a>
-                            <button onclick="deleteItem(\'' . route('owner.property.delete', $property->id) . '\', \'allDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>
+                            <a type="button" class="p-1 tbl-action-btn" href="' . route('owner.property.edit', $property->id) . '" title="' . __('Edit') . '"><i class="ri-edit-line"></i></a>
+                            <a type="button" class="p-1 tbl-action-btn" href="' . route('owner.property.show', $property->id) . '" title="' . __('View') . '"><i class="ri-eye-line"></i></a>
+                            <button onclick="deleteItem(\'' . route('owner.property.delete', $property->id) . '\', \'allDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><i class="ri-delete-bin-line"></i></button>
                         </div>';
             })
             ->rawColumns(['property', 'price', 'action'])
@@ -171,8 +172,8 @@ class PropertyService
             ->addColumn('price', function ($property) {
                 return renderPropertyPriceCell($property);
             })
-            ->addColumn('type_filter', function ($property) {
-                return propertyFilterToken($property, 'type');
+            ->addColumn('category_filter', function ($property) {
+                return propertyFilterToken($property, 'category');
             })
             ->addColumn('status_filter', function ($property) {
                 return propertyFilterToken($property, 'status');
@@ -182,9 +183,9 @@ class PropertyService
             })
             ->addColumn('action', function ($property) {
                 return '<div class="tbl-action-btns d-inline-flex">
-                            <a type="button" class="p-1 tbl-action-btn" href="' . route('owner.property.edit', $property->id) . '" title="' . __('Edit') . '"><span class="iconify" data-icon="clarity:note-edit-solid"></span></a>
-                            <a type="button" class="p-1 tbl-action-btn" href="' . route('owner.property.show', $property->id) . '" title="' . __('View') . '"><span class="iconify" data-icon="carbon:view-filled"></span></a>
-                            <button onclick="deleteItem(\'' . route('owner.property.delete', $property->id) . '\', \'allDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>
+                            <a type="button" class="p-1 tbl-action-btn" href="' . route('owner.property.edit', $property->id) . '" title="' . __('Edit') . '"><i class="ri-edit-line"></i></a>
+                            <a type="button" class="p-1 tbl-action-btn" href="' . route('owner.property.show', $property->id) . '" title="' . __('View') . '"><i class="ri-eye-line"></i></a>
+                            <button onclick="deleteItem(\'' . route('owner.property.delete', $property->id) . '\', \'allDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><i class="ri-delete-bin-line"></i></button>
                         </div>';
             })
             ->rawColumns(['property', 'price', 'action'])
@@ -235,6 +236,7 @@ class PropertyService
                 $property = new Property();
             }
             $property->property_type = $request->property_type;
+            $property->category = $request->category ?: PROPERTY_CATEGORY_RESIDENTIAL;
             $property->owner_user_id = getOwnerUserId();
             $property->name = ($request->property_type == PROPERTY_TYPE_OWN) ? $request->own_property_name : $request->lease_property_name;
             $property->number_of_unit = ($request->property_type == PROPERTY_TYPE_OWN) ? $request->own_number_of_unit : $request->lease_number_of_unit;
@@ -284,7 +286,8 @@ class PropertyService
             DB::commit();
             $response['property'] = $property;
             $response['message'] = __(UPDATED_SUCCESSFULLY);
-            $response['propertyUnits'] = PropertyUnit::where('property_id', $property->id)->get();
+            $response['propertyUnits'] = PropertyUnit::with('amenityList:id,name,icon')->where('property_id', $property->id)->get();
+            $response['amenities'] = Amenity::orderBy('name')->get();
             $response['step'] = UNIT_ACTIVE_CLASS;
             $response['view'] = view('owner.property.partial.render-unit', $response)->render();
             return $this->success($response);
@@ -336,11 +339,11 @@ class PropertyService
                     $property_unit->bath = $request->multiple['bath'][$i];
                     $property_unit->kitchen = $request->multiple['kitchen'][$i];
                     $property_unit->square_feet = $request->multiple['square_feet'][$i];
-                    $property_unit->amenities = $request->multiple['amenities'][$i];
-                    $property_unit->condition = $request->multiple['condition'][$i];
                     $property_unit->parking = $request->multiple['parking'][$i];
                     $property_unit->description = $request->multiple['description'][$i];
                     $property_unit->save();
+
+                    $property_unit->amenityList()->sync($request->multiple['amenities'][$i] ?? []);
 
                     if (isset($request->multiple['images'][$i])) {
                         $exitFile = FileManager::where('origin_type', 'App\Models\PropertyUnit')->where('origin_id', $property_unit->id)->first();
@@ -541,7 +544,8 @@ class PropertyService
     {
         try {
             $response['property'] = Property::where('owner_user_id', getOwnerUserId())->findOrFail($request->property_id);
-            $response['propertyUnits'] = PropertyUnit::where('property_id', $response['property']->id)->get();
+            $response['propertyUnits'] = PropertyUnit::with('amenityList:id,name,icon')->where('property_id', $response['property']->id)->get();
+            $response['amenities'] = Amenity::orderBy('name')->get();
             $response['view'] = view('owner.property.partial.render-unit', $response)->render();
             return $this->success($response);
         } catch (\Exception $e) {
@@ -622,7 +626,9 @@ class PropertyService
                 $q->on('tenants.user_id', 'users.id')->whereNull('users.deleted_at');
             })
             ->leftJoin('file_managers', ['property_units.id' => 'file_managers.origin_id', 'file_managers.origin_type' => (DB::raw("'App\\\Models\\\PropertyUnit'"))])
-            ->select('property_units.*', 'tenants.status as tenant_status', 'tenants.user_id', 'users.first_name', 'users.last_name', 'users.email', 'file_managers.file_name', 'file_managers.folder_name')
+            ->leftJoin('property_unit_amenity', 'property_units.id', '=', 'property_unit_amenity.property_unit_id')
+            ->leftJoin('amenities', 'property_unit_amenity.amenity_id', '=', 'amenities.id')
+            ->select('property_units.*', 'tenants.status as tenant_status', 'tenants.user_id', 'users.first_name', 'users.last_name', 'users.email', 'file_managers.file_name', 'file_managers.folder_name', DB::raw('GROUP_CONCAT(DISTINCT amenities.name SEPARATOR ", ") as amenity_names'))
             ->where('property_units.property_id', $id)
             ->where('properties.owner_user_id', getOwnerUserId())
             ->groupBy('property_units.id')

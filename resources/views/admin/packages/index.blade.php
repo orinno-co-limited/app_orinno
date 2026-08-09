@@ -63,8 +63,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="addModalLabel"><span class="modalTitle">{{ __('Add Package') }}</span></h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('admin.packages.store') }}" method="post"
                     enctype="multipart/form-data" data-handler="getShowMessage">
@@ -188,7 +187,7 @@
                                     <label
                                         class="label-text-title color-heading font-medium mb-2">{{ __('Other Fields') }}</label>
                                     <button type="button" class="btn btn-info px-1 addOtherField"><i
-                                            class="fa fa-plus"></i></button>
+                                            class="ri-add-line"></i></button>
                                     <hr class="my-2">
                                     <div class="otherFields">
                                         <div class="input-group">
@@ -268,8 +267,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editModalLabel"><span class="modalTitle">{{ __('Edit Package') }}</span>
                     </h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('admin.packages.store') }}" method="post"
                     enctype="multipart/form-data" data-handler="getShowMessage">
@@ -394,7 +392,7 @@
                                     <label
                                         class="label-text-title color-heading font-medium mb-2">{{ __('Other Fields') }}</label>
                                     <button type="button" class="btn btn-info px-1 addOtherField"><i
-                                            class="fa fa-plus"></i></button>
+                                            class="ri-add-line"></i></button>
                                     <hr class="my-2">
                                     <div class="otherFields">
                                     </div>

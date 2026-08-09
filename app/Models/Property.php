@@ -39,7 +39,9 @@ class Property extends Model
 
     public function propertyUnits(): HasMany
     {
-        return $this->hasMany(PropertyUnit::class, 'property_id', 'id')->select('id', 'unit_name', 'property_id');
+        return $this->hasMany(PropertyUnit::class, 'property_id', 'id')
+            ->select('id', 'unit_name', 'property_id')
+            ->with('amenityList:id,name,icon');
     }
 
     public function getThumbnailImageAttribute()

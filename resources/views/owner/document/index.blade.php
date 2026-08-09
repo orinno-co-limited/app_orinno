@@ -92,7 +92,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editFilesModalLabel">{{ __('Reject Reason') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.documents.reject.reason.store') }}" method="POST"
@@ -162,8 +162,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="viewModalLabel">{{ __('Details') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <div class="modal-body">
                     <div class="view-information-page-modal-content">

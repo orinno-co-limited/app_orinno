@@ -5,7 +5,7 @@
                 <li>
                     <a href="{{ route('owner.setting.gateway.index') }}"
                         class="account-settings-menu-item {{ @$subGatewaySettingActiveClass }}">
-                        <div class="d-flex"><span class="iconify" data-icon="fluent:payment-16-regular"></span></div>
+                        <div class="d-flex"><i class="ri-bank-card-line"></i></div>
                         {{ __('Payment Gateway') }}
                     </a>
                 </li>
@@ -19,35 +19,35 @@
                 <li>
                     <a href="{{ route('owner.setting.ticket-topic.index') }}"
                         class="account-settings-menu-item {{ @$subTicketTopicActiveClass }}">
-                        <div class="d-flex"><span class="iconify" data-icon="bi:bookmark-dash"></span></div>
+                        <div class="d-flex"><i class="ri-bookmark-line"></i></div>
                         {{ __('Tickets Topic') }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('owner.setting.tax-setting') }}"
                         class="account-settings-menu-item {{ @$subTaxSettingActiveClass }}">
-                        <div class="d-flex"><span class="iconify" data-icon="ant-design:percentage-outlined"></span></div>
+                        <div class="d-flex"><i class="ri-percent-line"></i></div>
                         {{ __('Tax Setting') }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('owner.setting.invoice-type.index') }}"
                         class="account-settings-menu-item {{ @$subInvoiceTypeActiveClass }}">
-                        <div class="d-flex"><span class="iconify" data-icon="vaadin:file-text-o"></span></div>
+                        <div class="d-flex"><i class="ri-file-text-line"></i></div>
                         {{ __('Invoice Type') }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('owner.setting.document-config.index') }}"
                         class="account-settings-menu-item {{ @$subDocumentConfigActiveClass }}">
-                        <div class="d-flex"><span class="iconify" data-icon="carbon:cloud-satellite-config"></span></div>
+                        <div class="d-flex"><i class="ri-cloud-line"></i></div>
                         {{ __('Document Config') }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('owner.setting.maintenance-issue.index') }}"
                         class="account-settings-menu-item {{ @$subMaintenanceIssueActiveClass }}">
-                        <div class="d-flex"><span class="iconify" data-icon="mdi:git-issue"></span></div>
+                        <div class="d-flex"><i class="ri-tools-line"></i></div>
                         {{ __('Maintenance Issue') }}
                     </a>
                 </li>

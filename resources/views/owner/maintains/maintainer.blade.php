@@ -101,8 +101,7 @@
                     <input type="hidden" id="user_id" name="user_id">
                     <div class="modal-header">
                         <h4 class="modal-title" id="addMaintainerModalLabel">{{ __('Add Maintainer') }}</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                                class="iconify" data-icon="akar-icons:cross"></span></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                     </div>
                     <div class="modal-body">
                         <!-- Modal Inner Form Box Start -->

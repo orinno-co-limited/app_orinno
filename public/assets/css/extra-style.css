@@ -31,6 +31,28 @@
     border: 1px solid var(--border-color)!important;
     box-shadow: 0 5px 12px rgb(0 0 0 / 10%)!important;
 }
+
+/* Multi-select (amenities picker etc.): the library's default relies on
+   `display: inline` + `inline-block` chips, which can produce a huge
+   phantom gap between wrapped lines in some layouts. Flexbox wrapping
+   avoids that and also keeps the box height tied to its actual content. */
+.select2-container--default .select2-selection--multiple {
+    height: auto!important;
+    min-height: 44px!important;
+    border: 1px solid var(--border-color)!important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    display: flex!important;
+    flex-wrap: wrap!important;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 6px!important;
+    width: 100%;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    margin: 0!important;
+    float: none!important;
+}
 /* Select2 Style End */
 
 /* Maintainer Ticket Details Start */
@@ -550,5 +572,153 @@ table.dataTable > tbody > tr.child ul.dtr-details > li .dtr-data {
 }
 
 /* Modern Dashboard Reskin End */
+
+/* Close the gap between the fixed top navbar (80px tall) and the left
+   sidebar, which was pinned 100px from the top in the vendor theme and left
+   a visible blank strip in the corner. */
+.vertical-menu {
+    top: 80px;
+}
+
+/* Property filter bar: flex row that keeps search/selects/view-toggle on
+   one line as long as there's room, instead of bootstrap's grid columns
+   wrapping the view-toggle onto its own row whenever the selects' min
+   content width doesn't fit the remaining percentage-based column. */
+.property-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.property-filter-search {
+    flex: 1 1 200px;
+    min-width: 160px;
+}
+
+/* Removed from the box tree so its 3 selects become direct flex children
+   of .property-filter-row (a plain wrapper div here would otherwise force
+   them to wrap amongst themselves before the row itself wraps, producing
+   an orphaned select stranded on its own line). */
+.property-filter-selects {
+    display: contents;
+}
+
+.property-filter-selects .form-select {
+    width: auto;
+    flex: 0 0 130px;
+}
+
+.property-filter-view-toggle-wrap {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* Amenity pills on property grid cards */
+.property-amenity-list {
+    margin-top: 10px;
+}
+
+.property-amenity-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: var(--body-font-color);
+}
+
+.property-amenity-pill i {
+    color: var(--primary-color);
+    font-size: 13px;
+}
+
+.property-amenity-pill-more {
+    color: var(--body-font-color);
+    font-weight: 600;
+}
+
+/* Property grid card meta row (units/available/rooms) restyled as a plain
+   icon+text line, matching the ITAB reference, instead of a boxed strip. */
+.property-item-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--body-font-color);
+}
+
+.property-item-meta-row i {
+    color: var(--body-font-color);
+    margin-right: 4px;
+}
+
+/* Property grid card footer: price + type/availability info on the left,
+   a compact View button on the right, replacing the old full-width button. */
+.property-item-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 4px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.property-item-price {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--blue-color);
+    line-height: 1.3;
+}
+
+.property-item-price-sub {
+    font-size: 12px;
+    color: var(--body-font-color);
+    margin-top: 2px;
+}
+
+.property-item-footer .theme-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+/* Extra breathing room in the card body so the footer button never sits
+   flush against the card's rounded corner. */
+.property-item .property-item-content.p-20 {
+    padding: 20px 22px 22px 20px;
+}
+
+/* Small inline action buttons on the add-property wizard: copy-previous-
+   unit-amenities and use-current-location, styled as text links rather
+   than default browser buttons. */
+.copy-prev-amenities-btn,
+.use-current-location-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.copy-prev-amenities-btn:hover,
+.use-current-location-btn:hover {
+    text-decoration: underline;
+}
+
+.use-current-location-btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
 
 /* Put Extra style Here End */

@@ -38,29 +38,24 @@
                                 </div>
                             </div>
                             <div class="property-filter-bar bg-off-white theme-border radius-10 p-20 mb-25">
-                                <div class="row align-items-center g-2">
-                                    <div class="col-md-4">
-                                        <div class="page-inner-search position-relative">
-                                            <span class="ri-search-line"></span>
-                                            <input type="text" class="form-control property-search" name="search"
-                                                placeholder="{{ __('Search by name, address, district...') }}">
-                                        </div>
+                                <div class="property-filter-row">
+                                    <div class="property-filter-search page-inner-search position-relative">
+                                        <span class="ri-search-line"></span>
+                                        <input type="text" class="form-control property-search" name="search"
+                                            placeholder="{{ __('Search by name, address, district...') }}">
                                     </div>
-                                    <div class="col-md-2">
-                                        <select class="form-select property-filter-type">
-                                            <option value="">{{ __('All Types') }}</option>
-                                            <option value="own">{{ __('Own') }}</option>
-                                            <option value="lease">{{ __('Lease') }}</option>
+                                    <div class="property-filter-selects">
+                                        <select class="form-select property-filter-category">
+                                            <option value="">{{ __('All Categories') }}</option>
+                                            @foreach (propertyCategoryOptions() as $categoryValue => $categoryLabel)
+                                                <option value="{{ $categoryValue }}">{{ $categoryLabel }}</option>
+                                            @endforeach
                                         </select>
-                                    </div>
-                                    <div class="col-md-2">
                                         <select class="form-select property-filter-status">
                                             <option value="">{{ __('All Status') }}</option>
                                             <option value="available">{{ __('Available') }}</option>
                                             <option value="rented">{{ __('Fully Rented') }}</option>
                                         </select>
-                                    </div>
-                                    <div class="col-md-2">
                                         <select class="form-select property-filter-district">
                                             <option value="">{{ __('All Districts') }}</option>
                                             @foreach ($districts ?? [] as $district)
@@ -68,8 +63,8 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-2 d-flex align-items-center justify-content-end">
-                                        <div class="property-view-toggle flex-shrink-0">
+                                    <div class="property-filter-view-toggle-wrap">
+                                        <div class="property-view-toggle">
                                             <button type="button"
                                                 class="view-toggle-btn {{ getOption('app_card_data_show', 1) == 1 ? 'active' : '' }}"
                                                 data-view="grid"
@@ -92,7 +87,7 @@
                                     @forelse($properties as $property)
                                         <!-- Property Item Start -->
                                         <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3 property-grid-item"
-                                            data-type="{{ propertyFilterToken($property, 'type') }}"
+                                            data-category="{{ propertyFilterToken($property, 'category') }}"
                                             data-status="{{ propertyFilterToken($property, 'status') }}"
                                             data-district="{{ propertyFilterToken($property, 'district') }}"
                                             data-search="{{ strtolower($property->name . ' ' . $property->propertyDetail?->address . ' ' . $property->propertyDetail?->state_id) }}">
@@ -161,30 +156,28 @@
                                                             <i class="ri-map-pin-2-fill"></i>
                                                         </div>
                                                         <div class="flex-grow-1 ms-1">
-                                                            <p>{{ $property->propertyDetail?->address }}</p>
+                                                            <p>{{ trim($property->propertyDetail?->address . ($property->propertyDetail?->state_id ? ', ' . $property->propertyDetail?->state_id : ''), ', ') }}</p>
                                                         </div>
                                                     </div>
-                                                    <div
-                                                        class="property-item-info d-flex mt-15 flex-wrap bg-white theme-border py-3 px-2 radius-4">
-                                                        <div class="property-info-item font-13">
-                                                            <i
-                                                                class="ri-home-5-fill me-1 "></i>{{ $property->number_of_unit }}
-                                                            {{ __('Unit') }}
-                                                        </div>
-                                                        <div class="property-info-item font-13">
-                                                            <i
-                                                                class="ri-dashboard-fill me-1 "></i>{{ propertyTotalRoom($property->id) }}
-                                                            {{ __('rooms') }}
-                                                        </div>
-                                                        <div class="property-info-item font-13">
-                                                            <i
-                                                                class="ri-checkbox-circle-fill me-1 "></i>{{ $property->available_unit }}
-                                                            {{ __('Available') }}
-                                                        </div>
+                                                    <div class="property-item-meta-row">
+                                                        <span><i class="ri-price-tag-3-fill"></i>{{ propertyCategoryLabel($property->category) }}</span>
+                                                        <span><i class="ri-home-5-fill"></i>{{ $property->number_of_unit }} {{ __('Unit') }}</span>
+                                                        <span><i class="ri-dashboard-fill"></i>{{ propertyTotalRoom($property->id) }} {{ __('rooms') }}</span>
+                                                        <span><i class="ri-checkbox-circle-fill"></i>{{ $property->available_unit }} {{ __('Available') }}</span>
                                                     </div>
-                                                    <a href="{{ route('owner.property.show', $property->id) }}"
-                                                        class="theme-btn mt-20 w-100"
-                                                        title="{{ __('View Details') }}">{{ __('View Details') }}</a>
+                                                    {!! renderPropertyAmenityBadges($property) !!}
+                                                    <div class="property-item-footer">
+                                                        <div>
+                                                            @if ($property->starting_price)
+                                                                <div class="property-item-price">{{ currencyPrice($property->starting_price) }}</div>
+                                                                <div class="property-item-price-sub">{{ __('per month') }} &middot; {{ $property->property_type == PROPERTY_TYPE_LEASE ? __('Lease') : __('Own') }}</div>
+                                                            @else
+                                                                <div class="property-item-price text-muted">{{ __('N/A') }}</div>
+                                                            @endif
+                                                        </div>
+                                                        <a href="{{ route('owner.property.show', $property->id) }}"
+                                                            class="theme-btn" title="{{ __('View Details') }}">{{ __('View') }}</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

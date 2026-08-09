@@ -75,8 +75,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="informationModalLabel">{{ __('Add Information') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('owner.information.store') }}" method="POST"
                     data-handler="getShowMessage">
@@ -154,8 +153,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="editInformationModalLabel">{{ __('Edit Information') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('owner.information.store') }}" method="POST"
                     data-handler="getShowMessage">
@@ -238,8 +236,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="viewInformationModalLabel">{{ __('Information') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <div class="modal-body">
                     <div class="view-information-page-modal-content">

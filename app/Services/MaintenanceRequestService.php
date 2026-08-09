@@ -52,10 +52,10 @@ class MaintenanceRequestService
                 $id = $maintenance->id;
                 return '<div class="tbl-action-btns d-inline-flex">
                             <button type="button" onclick="getEditModal(\'' . route('owner.maintenance-request.view', $id) . '\', \'#viewModal\')" class="p-1 tbl-action-btn reminder" title="' . __('View') . '">
-                                <span class="iconify" data-icon="carbon:view-filled"></span>
+                                <i class="ri-eye-line"></i>
                             </button>
-                            <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $id . '" title="' . __('Edit') . '"><span class="iconify" data-icon="clarity:note-edit-solid"></span></button>
-                            <button onclick="deleteItem(\'' . route('owner.maintenance-request.delete', $id) . '\', \'allDataTableDoc\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>
+                            <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $id . '" title="' . __('Edit') . '"><i class="ri-edit-line"></i></button>
+                            <button onclick="deleteItem(\'' . route('owner.maintenance-request.delete', $id) . '\', \'allDataTableDoc\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><i class="ri-delete-bin-line"></i></button>
                         </div>';
             })
             ->rawColumns(['status', 'action'])
@@ -91,10 +91,10 @@ class MaintenanceRequestService
                 $button = '<div class="tbl-action-btns d-inline-flex">';
                 if ($maintenance->status == MAINTENANCE_REQUEST_STATUS_PENDING) {
                     $button .= '<button type="button" onclick="getEditModal(\'' . route('tenant.maintenance-request.view', $id) . '\', \'#viewModal\')" class="p-1 tbl-action-btn reminder" title="' . __('View') . '">
-                                <span class="iconify" data-icon="carbon:view-filled"></span>
+                                <i class="ri-eye-line"></i>
                             </button>';
-                    $button .= ' <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $id . '" title="' . __('Edit') . '"><span class="iconify" data-icon="clarity:note-edit-solid"></span></button>';
-                    $button .= '<button onclick="deleteItem(\'' . route('tenant.maintenance-request.delete', $id) . '\', \'allDataTableDoc\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>';
+                    $button .= ' <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $id . '" title="' . __('Edit') . '"><i class="ri-edit-line"></i></button>';
+                    $button .= '<button onclick="deleteItem(\'' . route('tenant.maintenance-request.delete', $id) . '\', \'allDataTableDoc\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><i class="ri-delete-bin-line"></i></button>';
                 }
                 $button .= '</div>';
                 return $button;

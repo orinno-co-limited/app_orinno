@@ -109,7 +109,6 @@
     <script src="{{ asset('/') }}assets/libs/jquery-ui/jquery-ui.min.js"></script>
     <script src="{{ asset('/') }}assets/libs/owl-carousel/owl.carousel.min.js"></script>
     <script src="{{ asset('/') }}assets/libs/venobox/venobox.min.js"></script>
-    <script src="{{ asset('/') }}assets/js/iconify.min.js"></script>
     <script src="{{ asset('/') }}assets/libs/metismenu/metisMenu.min.js"></script>
     <script src="{{ asset('/') }}assets/libs/simplebar/simplebar.min.js"></script>
 

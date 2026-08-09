@@ -34,7 +34,7 @@
                                                     <div class="align-items-center d-flex justify-content-between">
                                                         <h4>{{ $pageTitle }}</h4>
                                                         <a title="{{__('Sync missing gateway')}}" href="{{ route('owner.setting.gateway.sync') }}" class="theme-btn me-3">
-                                                            <i class="fa fa-sync-alt"></i>
+                                                            <i class="ri-refresh-line"></i>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -96,9 +96,7 @@
                                                                         <button type="button"
                                                                             class="p-1 tbl-action-btn edit"
                                                                             data-id="{{ $gateway->id }}"
-                                                                            title="{{ __('Edit') }}"><span
-                                                                                class="iconify"
-                                                                                data-icon="clarity:note-edit-solid"></span>
+                                                                            title="{{ __('Edit') }}"><i class="ri-edit-line"></i>
                                                                         </button>
                                                                     </td>
                                                                 </tr>
@@ -124,8 +122,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="editModalLabel">{{ __('Edit Gateway') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                 </div>
                 <form class="ajax" action="{{ route('owner.setting.gateway.store') }}" method="POST"
                     data-handler="getShowMessage">
@@ -179,8 +176,7 @@
                                 </div>
                                 <div class="row mb-20">
                                     <div class="col-12 text-end"><button type="button" class="green-color add-bank"
-                                            title="{{ __('Add Bank') }}"><span class="iconify"
-                                                data-icon="material-symbols:add"></span> {{ __('Add Bank') }}</button>
+                                            title="{{ __('Add Bank') }}"><i class="ri-add-line"></i> {{ __('Add Bank') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -212,8 +208,7 @@
                                 <div class="col-md-12">
                                     <label
                                         class="label-text-title color-heading font-medium mb-2">{{ __('Conversion Rate') }}
-                                        <button type="button" class="add-currency edit-btn"><span class="iconify"
-                                                data-icon="material-symbols:add-rounded"></span></button>
+                                        <button type="button" class="add-currency edit-btn"><i class="ri-add-line"></i></button>
                                     </label>
                                     <div id="currencyConversionRateSection"></div>
                                 </div>

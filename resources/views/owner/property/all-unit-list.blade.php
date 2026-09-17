@@ -68,8 +68,7 @@
                                                                     @if (is_null($unit->first_name))
                                                                         <button class="p-1 tbl-action-btn deleteItem"
                                                                             data-formid="delete_row_form_{{ $unit->id }}">
-                                                                            <span class="iconify"
-                                                                                data-icon="ep:delete-filled"></span>
+                                                                            <i class="ri-delete-bin-line"></i>
                                                                         </button>
                                                                         <form
                                                                             action="{{ route('owner.property.unit.delete', [$unit->id]) }}"
@@ -81,7 +80,7 @@
                                                                         </form>
                                                                     @else
                                                                         <a href="{{route('owner.tenant.details', [$unit->tenantId, 'tab' => 'profile'])}}">
-                                                                            <span class="iconify" data-icon="carbon:view-filled"></span>
+                                                                            <i class="ri-eye-line"></i>
                                                                         </a>
                                                                     @endif
                                                                 </td>

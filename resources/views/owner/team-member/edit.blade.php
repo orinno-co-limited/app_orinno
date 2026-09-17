@@ -1,8 +1,7 @@
 <div class="modal-header">
     <h4 class="modal-title" id="editTeamMemberModalLabel"><span class="modalTitle">{{ __('Edit Staff User') }}</span>
     </h4>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-            class="iconify" data-icon="akar-icons:cross"></span></button>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
 </div>
 <form class="ajax" action="{{route('owner.team-member.store')}}" method="POST"
       enctype="multipart/form-data" data-handler="getShowMessage">

@@ -111,7 +111,7 @@ class ListingService
             })
             ->addColumn('action', function ($contact) {
                 return '<div class="tbl-action-btns d-inline-flex">
-                    <button type="button" class="p-1 tbl-action-btn reply" data-id="' . $contact->id . '" title="' . __('reply') . '"><span class="iconify" data-icon="bi:reply"></span></button>
+                    <button type="button" class="p-1 tbl-action-btn reply" data-id="' . $contact->id . '" title="' . __('reply') . '"><i class="ri-reply-line"></i></button>
                 </div>';
             })
             ->rawColumns(['name', 'status', 'action'])

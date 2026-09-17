@@ -34,6 +34,16 @@
                     </button>
                 </li>
             </ul>
+            <div class="row mt-20">
+                <div class="col-md-6">
+                    <label class="label-text-title color-heading font-medium mb-2">{{ __('Property Category') }}</label>
+                    <select class="form-select" name="category">
+                        @foreach (propertyCategoryOptions() as $categoryValue => $categoryLabel)
+                            <option value="{{ $categoryValue }}" {{ @$property->category == $categoryValue ? 'selected' : '' }}>{{ $categoryLabel }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="add-property-inner-box bg-white theme-border radius-4 p-20">

@@ -132,7 +132,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="createNewInvoiceModalLabel">{{ __('New Invoice') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.invoice.store') }}" method="post"
@@ -231,7 +231,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="payStatusChangeModalLabel">{{ __('Payment Status Change') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.invoice.payment.status') }}" method="post"
@@ -350,8 +350,8 @@
             },
             language: {
                 'paginate': {
-                    'previous': '<span class="iconify" data-icon="icons8:angle-left"></span>',
-                    'next': '<span class="iconify" data-icon="icons8:angle-right"></span>'
+                    'previous': '<i class="ri-arrow-left-s-line"></i>',
+                    'next': '<i class="ri-arrow-right-s-line"></i>'
                 }
             },
             columns: [

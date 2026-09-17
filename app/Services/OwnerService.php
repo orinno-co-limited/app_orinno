@@ -51,8 +51,8 @@ class OwnerService
             })
             ->addColumn('action', function ($owner) {
                 return '<div class="tbl-action-btns d-inline-flex">
-                            <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $owner->id . '" title="' . __('Edit') . '"><span class="iconify" data-icon="clarity:note-edit-solid"></span></button>
-                            <button onclick="deleteItem(\'' . route('admin.owner.delete', $owner->id) . '\', \'allOwnerDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>
+                            <button type="button" class="p-1 tbl-action-btn edit" data-id="' . $owner->id . '" title="' . __('Edit') . '"><i class="ri-edit-line"></i></button>
+                            <button onclick="deleteItem(\'' . route('admin.owner.delete', $owner->id) . '\', \'allOwnerDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><i class="ri-delete-bin-line"></i></button>
                         </div>';
             })
             ->rawColumns(['name', 'status', 'trail', 'action'])

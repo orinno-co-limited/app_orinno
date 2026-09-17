@@ -40,7 +40,7 @@
                                         <div class="flex-shrink-0">
                                             <div
                                                 class="tenant-nin-icon text-white rounded-circle d-inline-flex align-items-center justify-content-center font-20">
-                                                <span class="iconify" data-icon="clarity:notification-line"></span>
+                                                <i class="ri-notification-3-line"></i>
                                             </div>
                                         </div>
                                         <div class="flex-grow-1 ms-3">
@@ -128,8 +128,7 @@
                                                                             {{ __('Rejected') }}
                                                                         </div>
                                                                         <button type="button" class="read-more-btn">
-                                                                            <span class="iconify"
-                                                                                data-icon="material-symbols:auto-read-pause-outline"></span>
+                                                                            <i class="ri-arrow-down-s-line"></i>
                                                                         </button>
                                                                         <div class="reason-text mt-1 d-none-content">
                                                                             {{ $kycVerification->reason }}
@@ -142,14 +141,12 @@
                                                                             <button type="button"
                                                                                 class="p-1 tbl-action-btn edit"
                                                                                 data-id="{{ $kycVerification->id }}"
-                                                                                title="Edit"><span class="iconify"
-                                                                                    data-icon="clarity:note-edit-solid"></span></button>
+                                                                                title="Edit"><i class="ri-edit-line"></i></button>
                                                                             <button type="button"
                                                                                 class="p-1 tbl-action-btn deleteItem"
                                                                                 data-formid="delete_row_form_{{ $kycVerification->id }}"
                                                                                 title="{{ __('Delete') }}">
-                                                                                <span class="iconify"
-                                                                                    data-icon="ep:delete-filled"></span></button>
+                                                                                <i class="ri-delete-bin-line"></i></button>
                                                                             <form
                                                                                 action="{{ route('tenant.document.delete', [$kycVerification->id]) }}"
                                                                                 method="post"
@@ -186,7 +183,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="addFilesModalLabel">{{ __('Upload Files') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('tenant.document.store') }}" method="POST"
@@ -205,7 +202,7 @@
                                             @endforeach
                                         </select>
                                         <div  class="d-none demo-file d-flex align-items-center ms-1 border form-control rounded-sm w-25">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--material-symbols" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" data-icon="material-symbols:download"><path fill="currentColor" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"></path></svg>
+                                            <i class="ri-download-line"></i>
                                             <span class="ms-1"><a download>{{ __('Demo File') }}</a></span>
                                         </div>
                                     </div>
@@ -246,7 +243,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editFilesModalLabel">{{ __('Edit Files') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('tenant.document.store') }}" method="POST"

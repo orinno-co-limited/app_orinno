@@ -43,7 +43,7 @@
                                                                 {{ __('Import Keywords') }}
                                                             </button>
                                                             <button type="button" class="theme-btn-green addmore"> <i
-                                                                    class="fa fa-plus"></i>
+                                                                    class="ri-add-line"></i>
                                                                 {{ __('Add More') }}</button>
                                                         </div>
                                                     </div>
@@ -106,8 +106,7 @@
                     <input type="hidden" name="current" value="{{ $language->code }}">
                     <div class="modal-header">
                         <h5 class="modal-title">{{ __('Import Language') }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                                class="iconify" data-icon="akar-icons:cross"></span></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                     </div>
                     <div class="modal-body">
                         <div class="modal-inner-form-box">

@@ -195,7 +195,6 @@
                                                     <th>{{ __('Square Feet') }}</th>
                                                     <th>{{ __('Amenities') }}</th>
                                                     <th>{{ __('Parking') }}</th>
-                                                    <th>{{ __('Condition') }}</th>
                                                     <th>{{ __('Description') }}</th>
                                                     <th>{{ __('Image') }}</th>
                                                     <th>{{ __('Availability') }}</th>
@@ -210,9 +209,8 @@
                                                         <td>{{ $propertyUnit->bath }}</td>
                                                         <td>{{ $propertyUnit->kitchen }}</td>
                                                         <td>{{ $propertyUnit->square_feet }}</td>
-                                                        <td>{{ $propertyUnit->amenities }}</td>
+                                                        <td>{{ $propertyUnit->amenity_names }}</td>
                                                         <td>{{ $propertyUnit->parking }}</td>
-                                                        <td>{{ $propertyUnit->condition }}</td>
                                                         <td>{{ Str::limit($propertyUnit->description, 100, '...') }}</td>
                                                         <td>
                                                             <img class="rounded-circle avatar-md tbl-user-image"
@@ -254,7 +252,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="tenantAssignModalLabel">{{ __('Tenant Assign') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('owner.invoice.store') }}" method="post"

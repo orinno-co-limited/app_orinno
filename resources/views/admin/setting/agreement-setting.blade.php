@@ -155,8 +155,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="testModalLabel">{{ __('Test Agreement Send') }}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="iconify" data-icon="akar-icons:cross"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form class="ajax" action="{{ route('admin.agreement.test.send') }}" method="post"

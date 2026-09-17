@@ -92,9 +92,7 @@
                                                             <p class="font-13 text-break">{{ $tenant->email }}</p>
                                                         </div>
                                                         <a href="{{ route('owner.tenant.edit', $tenant->id) }}"
-                                                            class="p-1 tbl-action-btn" title="{{ __('Edit') }}"><span
-                                                                class="iconify"
-                                                                data-icon="material-symbols:edit-square-outline"></span></a>
+                                                            class="p-1 tbl-action-btn" title="{{ __('Edit') }}"><i class="ri-edit-line"></i></a>
                                                     </div>
                                                     <div class="tenants-item-info bg-white radius-4 theme-border">
                                                         <div class="border-bottom tenants-item-info-box">

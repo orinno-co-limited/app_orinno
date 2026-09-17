@@ -22,6 +22,13 @@ class FileManager extends Model
                 throw new Exception('Invalid File');
             }
 
+            if (in_array($to, ['Property', 'PropertyImage', 'PropertyUnit'])) {
+                $qualityIssue = propertyImageQualityCheck($file->getPathname(), $mime_type);
+                if ($qualityIssue) {
+                    throw new Exception($qualityIssue);
+                }
+            }
+
             if ($name == '') {
                 $file_name = mt_rand(100000, 999999) . time() . '.' . $extension;
             } else {
@@ -59,6 +66,13 @@ class FileManager extends Model
             $mime_type = mime_content_type($file->getPathname());
             if (!in_array($mime_type, allowMimes()) || !in_array($extension, allowExtensions())) {
                 throw new Exception('Invalid File');
+            }
+
+            if (in_array($to, ['Property', 'PropertyImage', 'PropertyUnit'])) {
+                $qualityIssue = propertyImageQualityCheck($file->getPathname(), $mime_type);
+                if ($qualityIssue) {
+                    throw new Exception($qualityIssue);
+                }
             }
 
             if ($name == '') {

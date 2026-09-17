@@ -10,8 +10,7 @@
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                 <div class="page-title-left">
                                     <h2 class="mb-sm-0">{{ __('Dashboard') }}</h2>
-                                    <p>{{ __('Welcome back') }}, {{ auth()->user()->name }} <span class="iconify font-24"
-                                            data-icon="openmoji:waving-hand"></span></p>
+                                    <p>{{ __('Welcome back') }}, {{ auth()->user()->name }} <i class="ri-hand-heart-line font-24"></i></p>
                                 </div>
                             </div>
                         </div>
@@ -21,7 +20,7 @@
                             <div class="dashboard-feature-item stat-orange bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify" data-icon="mdi:account-group"></span>
+                                    <i class="ri-team-line"></i>
                                 </div>
                                 <p class="mt-2">{{ __('Total Owner') }}</p>
                                 <h2 class="mt-1">{{ $totalOwner }}</h2>
@@ -32,7 +31,7 @@
                             <div class="dashboard-feature-item stat-blue bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify" data-icon="bxs:home-circle"></span>
+                                    <i class="ri-home-4-line"></i>
                                 </div>
                                 <p class="mt-2">{{ __('Total Property') }}</p>
                                 <h2 class="mt-1">{{ $totalProperty }}</h2>
@@ -43,7 +42,7 @@
                             <div class="dashboard-feature-item stat-purple bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify" data-icon="mdi:home-group"></span>
+                                    <i class="ri-community-line"></i>
                                 </div>
                                 <p class="mt-2">{{ __('Total Unit') }}</p>
                                 <h2 class="mt-1">{{ $totalUnit }}</h2>
@@ -54,7 +53,7 @@
                             <div class="dashboard-feature-item stat-green bg-off-white theme-border radius-4 p-20 mb-25">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
-                                    <span class="iconify" data-icon="mdi:account"></span>
+                                    <i class="ri-user-line"></i>
                                 </div>
                                 <p class="mt-2">{{ __('Total Tenant') }}</p>
                                 <h2 class="mt-1">{{ $totalTenant }}</h2>

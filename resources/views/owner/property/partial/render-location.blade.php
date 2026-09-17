@@ -9,15 +9,33 @@
             <div class="row">
                 <div class="col-md-4 mb-25">
                     <label class="label-text-title color-heading font-medium mb-2">{{ __('Country') }}</label>
-                    <input type="text" name="country_id" class="form-control" placeholder="{{ __('Country') }}" value="{{ @$property->propertyDetail->country_id }}">
+                    <input type="text" name="country_id" class="form-control" placeholder="{{ __('Country') }}" value="{{ @$property->propertyDetail->country_id ?? 'Uganda' }}">
                 </div>
                 <div class="col-md-4 mb-25">
                     <label class="label-text-title color-heading font-medium mb-2">{{ __('District') }}</label>
-                    <input type="text" name="state_id" class="form-control" placeholder="{{ __('District') }}" value="{{ @$property->propertyDetail->state_id }}">
+                    <select name="state_id" class="form-select select2-location">
+                        <option value="">{{ __('Select District') }}</option>
+                        @php $currentDistrict = @$property->propertyDetail->state_id; @endphp
+                        @if ($currentDistrict && !in_array($currentDistrict, ugandaDistricts()))
+                            <option value="{{ $currentDistrict }}" selected>{{ $currentDistrict }}</option>
+                        @endif
+                        @foreach (ugandaDistricts() as $district)
+                            <option value="{{ $district }}" {{ $currentDistrict == $district ? 'selected' : '' }}>{{ $district }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-4 mb-25">
-                    <label class="label-text-title color-heading font-medium mb-2">{{ __('City') }}</label>
-                    <input type="text" name="city_id" class="form-control" placeholder="{{ __('City') }}" value="{{ @$property->propertyDetail->city_id }}">
+                    <label class="label-text-title color-heading font-medium mb-2">{{ __('City / Town') }}</label>
+                    <select name="city_id" class="form-select select2-location">
+                        <option value="">{{ __('Select City / Town') }}</option>
+                        @php $currentCity = @$property->propertyDetail->city_id; @endphp
+                        @if ($currentCity && !in_array($currentCity, ugandaTowns()))
+                            <option value="{{ $currentCity }}" selected>{{ $currentCity }}</option>
+                        @endif
+                        @foreach (ugandaTowns() as $town)
+                            <option value="{{ $town }}" {{ $currentCity == $town ? 'selected' : '' }}>{{ $town }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="row">
@@ -29,11 +47,16 @@
             </div>
             <div class="row">
                 <div class="col-md-12 mb-25">
-                    <label class="label-text-title color-heading font-medium mb-2">{{ __('Map link') }}</label>
+                    <label class="label-text-title color-heading font-medium mb-2 d-flex align-items-center justify-content-between">
+                        {{ __('Map link') }}
+                        <button type="button" id="useCurrentLocationBtn" class="use-current-location-btn font-13">
+                            <i class="ri-map-pin-user-fill"></i> {{ __('Use my current location') }}
+                        </button>
+                    </label>
                     <input type="text" name="map_link" value="{{ @$property->propertyDetail->map_link }}"
                         class="form-control map_link" placeholder="{{ __('Map link') }}">
-                    <small>N.B : <a href="https://maps.google.com/"
-                            target="_blank">{{ __('Google iframe src link') }}</a></small>
+                    <small id="mapLocationStatus">N.B : <a href="https://maps.google.com/"
+                            target="_blank">{{ __('Google iframe src link') }}</a> {{ __('or use the button above to auto-fill from your device\'s current location.') }}</small>
                 </div>
 
                 <div class="col-md-12">

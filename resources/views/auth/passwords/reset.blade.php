@@ -38,7 +38,7 @@
                                         <div class="form-group mb-0 position-relative">
                                             <input class="form-control password" name="password"
                                                 placeholder="{{ __('Password') }}" type="password">
-                                            <span class="toggle cursor fas fa-eye pass-icon"></span>
+                                            <span class="toggle cursor ri-eye-line pass-icon"></span>
                                         </div>
                                         @error('password')
                                             <span class="text-danger">{{ $message }}</span>
@@ -52,7 +52,7 @@
                                         <div class="form-group mb-0 position-relative">
                                             <input class="form-control password" name="password_confirmation"
                                                 placeholder="{{ __('Confirm Password') }}" type="password">
-                                            <span class="toggle cursor fas fa-eye pass-icon"></span>
+                                            <span class="toggle cursor ri-eye-line pass-icon"></span>
                                         </div>
                                     </div>
                                 </div>

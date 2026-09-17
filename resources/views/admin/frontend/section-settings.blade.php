@@ -69,8 +69,7 @@
                                                                         <button type="button" class="p-1 tbl-action-btn"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#editHeroModal">
-                                                                            <span class="iconify"
-                                                                                data-icon="clarity:note-edit-solid"></span>
+                                                                            <i class="ri-edit-line"></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
@@ -94,8 +93,7 @@
                                                                         <button type="button" class="p-1 tbl-action-btn"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#editAmazingFeaturesModal">
-                                                                            <span class="iconify"
-                                                                                data-icon="clarity:note-edit-solid"></span>
+                                                                            <i class="ri-edit-line"></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
@@ -119,8 +117,7 @@
                                                                         <button type="button" class="p-1 tbl-action-btn"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#editAboutUsModal">
-                                                                            <span class="iconify"
-                                                                                data-icon="clarity:note-edit-solid"></span>
+                                                                            <i class="ri-edit-line"></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
@@ -144,8 +141,7 @@
                                                                         <button type="button" class="p-1 tbl-action-btn"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#editHowItWorkModal">
-                                                                            <span class="iconify"
-                                                                                data-icon="clarity:note-edit-solid"></span>
+                                                                            <i class="ri-edit-line"></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
@@ -169,8 +165,7 @@
                                                                         <button type="button" class="p-1 tbl-action-btn"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#advanceFeatureModal">
-                                                                            <span class="iconify"
-                                                                                data-icon="clarity:note-edit-solid"></span>
+                                                                            <i class="ri-edit-line"></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
@@ -194,8 +189,7 @@
                                                                         <button type="button" class="p-1 tbl-action-btn"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#editPriceModal">
-                                                                            <span class="iconify"
-                                                                                data-icon="clarity:note-edit-solid"></span>
+                                                                            <i class="ri-edit-line"></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
@@ -219,8 +213,7 @@
                                                                         <button type="button" class="p-1 tbl-action-btn"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#editIntegrationModal">
-                                                                            <span class="iconify"
-                                                                                data-icon="clarity:note-edit-solid"></span>
+                                                                            <i class="ri-edit-line"></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
@@ -244,8 +237,7 @@
                                                                         <button type="button" class="p-1 tbl-action-btn"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#editTestimonialModal">
-                                                                            <span class="iconify"
-                                                                                data-icon="clarity:note-edit-solid"></span>
+                                                                            <i class="ri-edit-line"></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
@@ -269,8 +261,7 @@
                                                                         <button type="button" class="p-1 tbl-action-btn"
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#editFaqModal">
-                                                                            <span class="iconify"
-                                                                                data-icon="clarity:note-edit-solid"></span>
+                                                                            <i class="ri-edit-line"></i>
                                                                         </button>
                                                                     </div>
                                                                 </td>
@@ -296,7 +287,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editHeroModalLabel">{{ __('Hero Section') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="{{ route('admin.setting.general-setting.update') }}" method="POST"
@@ -354,7 +345,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editAmazingFeaturesModalLabel">{{ __('Features Section') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="{{ route('admin.setting.general-setting.update') }}" method="POST"
@@ -420,7 +411,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editAboutUsModalLabel">{{ __('About Us Section') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="{{ route('admin.setting.general-setting.update') }}" method="POST"
@@ -514,7 +505,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editHowItWorkModalLabel">{{ __('How It Work Section') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="{{ route('admin.setting.general-setting.update') }}" method="POST"
@@ -574,7 +565,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="advanceFeatureModalLabel">{{ __('Advance Feature Section') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="{{ route('admin.setting.general-setting.update') }}" method="POST"
@@ -636,7 +627,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editPriceModalLabel">{{ __('Price Section') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="{{ route('admin.setting.general-setting.update') }}" method="POST"
@@ -691,7 +682,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editIntegrationModalLabel">{{ __('Integration Section') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="{{ route('admin.setting.general-setting.update') }}" method="POST"
@@ -758,7 +749,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editTestimonialModalLabel">{{ __('Testimonial Section') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="{{ route('admin.setting.general-setting.update') }}" method="POST">
@@ -813,7 +804,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="editFaqModalLabel">{{ __('Faq Section') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="iconify" data-icon="akar-icons:cross"></span>
+                        <i class="ri-close-line"></i>
                     </button>
                 </div>
                 <form action="{{ route('admin.setting.general-setting.update') }}" method="POST">

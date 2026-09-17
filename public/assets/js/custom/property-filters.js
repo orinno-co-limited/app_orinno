@@ -1,7 +1,7 @@
 (function ($) {
     "use strict";
 
-    var FILTER_COLUMN_INDEX = { type: 3, status: 4, district: 5 };
+    var FILTER_COLUMN_INDEX = { category: 3, status: 4, district: 5 };
 
     function getActiveDataTable() {
         return window.__propertyDataTable || null;
@@ -10,7 +10,7 @@
     function currentFilters() {
         return {
             search: ($('.property-search').val() || '').toLowerCase().trim(),
-            type: $('.property-filter-type').val() || '',
+            category: $('.property-filter-category').val() || '',
             status: $('.property-filter-status').val() || '',
             district: $('.property-filter-district').val() || ''
         };
@@ -21,7 +21,7 @@
         $('.property-grid-item').each(function () {
             var $item = $(this);
             var matches =
-                (!filters.type || $item.data('type') == filters.type) &&
+                (!filters.category || $item.data('category') == filters.category) &&
                 (!filters.status || $item.data('status') == filters.status) &&
                 (!filters.district || $item.data('district') == filters.district) &&
                 (!filters.search || String($item.data('search') || '').indexOf(filters.search) !== -1);
@@ -37,7 +37,7 @@
         if (!table) return null;
 
         table.search(filters.search);
-        table.column(FILTER_COLUMN_INDEX.type).search(filters.type ? '^' + filters.type + '$' : '', true, false);
+        table.column(FILTER_COLUMN_INDEX.category).search(filters.category ? '^' + filters.category + '$' : '', true, false);
         table.column(FILTER_COLUMN_INDEX.status).search(filters.status ? '^' + filters.status + '$' : '', true, false);
         table.column(FILTER_COLUMN_INDEX.district).search(filters.district ? '^' + filters.district + '$' : '', true, false);
         table.draw();
@@ -63,7 +63,7 @@
         window.__propertyFilterDebounce = setTimeout(runFilters, 200);
     });
 
-    $(document).on('change', '.property-filter-type, .property-filter-status, .property-filter-district', runFilters);
+    $(document).on('change', '.property-filter-category, .property-filter-status, .property-filter-district', runFilters);
 
     $(document).on('click', '.view-toggle-btn', function () {
         setTimeout(runFilters, 50);

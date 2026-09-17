@@ -60,8 +60,8 @@ class ExpenseService
             })
             ->addColumn('action', function ($expense) {
                 return '<div class="tbl-action-btns d-inline-flex">
-                            <button type="button" class="p-1 tbl-action-btn edit" data-detailsurl="' . route('owner.expense.details', $expense->id) . '" title="' . __('Edit') . '"><span class="iconify" data-icon="clarity:note-edit-solid"></span></button>
-                            <button onclick="deleteItem(\'' . route('owner.expense.destroy', $expense->id) . '\', \'expensesDatatable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>
+                            <button type="button" class="p-1 tbl-action-btn edit" data-detailsurl="' . route('owner.expense.details', $expense->id) . '" title="' . __('Edit') . '"><i class="ri-edit-line"></i></button>
+                            <button onclick="deleteItem(\'' . route('owner.expense.destroy', $expense->id) . '\', \'expensesDatatable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><i class="ri-delete-bin-line"></i></button>
                         </div>';
             })
             ->rawColumns(['property', 'expense_type_name', 'action'])->make(true);

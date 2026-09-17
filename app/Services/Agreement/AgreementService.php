@@ -51,7 +51,7 @@ class AgreementService
             })
             ->addColumn('action', function ($data) {
                 return '<div class="tbl-action-btns d-inline-flex">
-                    <a href="' . route('owner.agreement.download', $data->envelope_id) . '" class="p-1 tbl-action-btn" title="' . __('Download') . '"><span class="iconify" data-icon="material-symbols:download"></span></a>
+                    <a href="' . route('owner.agreement.download', $data->envelope_id) . '" class="p-1 tbl-action-btn" title="' . __('Download') . '"><i class="ri-download-line"></i></a>
                 </div>';
             })
             ->rawColumns(['status', 'action'])

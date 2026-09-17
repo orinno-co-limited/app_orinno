@@ -41,8 +41,8 @@ class TeamMemberService
             ->addColumn('action', function ($teamMember) {
                 $id = $teamMember->id;
                 return '<div class="tbl-action-btns d-inline-flex">
-                            <button type="button" onclick="getEditModal(\'' . route('owner.team-member.edit', $id) . '\', \'#editTeamMemberModal\')" class="p-1 tbl-action-btn"  title="' . __('Edit') . '"><span class="iconify" data-icon="clarity:note-edit-solid"></span></button>
-                            <button onclick="deleteItem(\'' . route('owner.team-member.delete', $id) . '\', \'teamMemberDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><span class="iconify" data-icon="ep:delete-filled"></span></button>
+                            <button type="button" onclick="getEditModal(\'' . route('owner.team-member.edit', $id) . '\', \'#editTeamMemberModal\')" class="p-1 tbl-action-btn"  title="' . __('Edit') . '"><i class="ri-edit-line"></i></button>
+                            <button onclick="deleteItem(\'' . route('owner.team-member.delete', $id) . '\', \'teamMemberDataTable\')" class="p-1 tbl-action-btn"   title="' . __('Delete') . '"><i class="ri-delete-bin-line"></i></button>
                         </div>';
             })
             ->rawColumns(['status', 'action','name'])

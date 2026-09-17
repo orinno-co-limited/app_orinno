@@ -100,15 +100,13 @@
                                                                                 data-font="{{ $language->font }}"
                                                                                 title="Edit" data-bs-toggle="modal"
                                                                                 data-bs-target="#editLanguageModal">
-                                                                                <span class="iconify"
-                                                                                    data-icon="clarity:note-edit-solid"></span>
+                                                                                <i class="ri-edit-line"></i>
                                                                             </button>
 
                                                                             <a href="#"
                                                                                 class="p-1 tbl-action-btn deleteItem"
                                                                                 data-formid="delete_row_form_{{ $language->id }}"
-                                                                                title="Delete"><span class="iconify"
-                                                                                    data-icon="ep:delete-filled"></span></a>
+                                                                                title="Delete"><i class="ri-delete-bin-line"></i></a>
                                                                             <form
                                                                                 action="{{ route('admin.language.delete', [$language->id]) }}"
                                                                                 method="post"
@@ -150,8 +148,7 @@
                     @csrf
                     <div class="modal-header">
                         <h4 class="modal-title" id="addLanguageModalLabel">{{ __('Add Language') }}</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                                class="iconify" data-icon="akar-icons:cross"></span></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                     </div>
                     <div class="modal-body">
                         <div class="modal-inner-form-box">
@@ -249,8 +246,7 @@
                     @csrf
                     <div class="modal-header">
                         <h4 class="modal-title" id="editLanguageModalLabel">{{ __('Edit Language') }}</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                                class="iconify" data-icon="akar-icons:cross"></span></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ri-close-line"></i></button>
                     </div>
                     <div class="modal-body">
                         <!-- Modal Inner Form Box Start -->
